@@ -1,7 +1,0 @@
-{
-  "pageType": "crud",
-  "pageTitle": "Landing Page",
-  "crudOpt": {
-    "gridTheme": "list-sortable"
-  }
-}
