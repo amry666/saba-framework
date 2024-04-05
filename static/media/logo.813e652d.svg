@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="112.448mm" height="76.4646mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 11244.8 7646.46"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:none}
+    .fil1 {fill:none}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <rect x="6667.5" y="52.92" width="4418.55" height="7593.54"/>
+   </clipPath>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <path class="fil0" d="M-0 0l0 2382.6c0,0 110.01,842.91 664.71,1385.23l3932.91 3878.63 2104.95 -55.4 -387.76 -4155.68 -775.49 -941.92 -2437.31 -2493.46 -3102.01 0z"/>
+  <polygon class="fil1" points="2540,5635.63 4233.34,1164.17 5609.17,2592.92 "/>
+  <polygon id="Shape_3_copy" class="fil1" points="2540,5635.63 4630.21,1587.5 5609.17,2592.92 " data-name="Shape 3 copy"/>
+  <path class="fil0" d="M2548.07 5651.74l5594.72 -5596.34 3102.01 0 0 2382.6c0,0 -64.61,794.17 -498.53,1218.99l-4043.71 3989.47 -2160.32 0 -1994.17 -1994.72z"/>
+  <g style="clip-path:url(#id0)">
+   <image x="6667.5" y="52.92" width="4418.55" height="7593.54" xlink:href="logo_Images\logo_ImgID1.png"/>
+  </g>
+ </g>
+</svg>

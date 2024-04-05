@@ -1,0 +1,61 @@
+.body-report {
+  padding: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.page-title {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.header {
+  padding: 10px;
+  
+}
+
+.two-column-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+  width: 48%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.logo {
+  padding: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding:6px 20px;
+}
+tr th {
+ border: 1px solid #dddddd;
+  text-align: center;
+  padding: 10px 20px !important;
+  background-color: #14293e;
+  color:#fff;
+}
+
+tr:hover {
+  background-color: #dddddd;
+  cursor: pointer;
+}
+
+.content td, .content th {
+    border-top: 1px solid transparent;
+    padding: 2px 10px 2px 15px;
+}

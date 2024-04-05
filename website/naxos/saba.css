@@ -1,0 +1,102 @@
+   /* Add styles for the loader overlay */
+   #saba_loader-overlay {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: rgba(255, 255, 255, 1);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       z-index: 1000;
+       display: none;
+   }
+
+   /* Add styles for the loader spinner */
+   #saba_loader {
+       border: 4px solid #f3f3f3;
+       border-top: 4px solid #3498db;
+       border-radius: 50%;
+       width: 50px;
+       height: 50px;
+       animation: spin 1s linear infinite;
+   }
+
+   @keyframes spin {
+       0% {
+           transform: rotate(0deg);
+       }
+
+       100% {
+           transform: rotate(360deg);
+       }
+   }
+
+   /* [saba-section-type] {
+       display: none;
+   } */
+
+   .saba_appLogo {
+       max-height: 40px !important
+   }
+
+   .saba_appLogoText {
+    font-weight: 600;
+    font-size: 25px;
+    color: #fff;
+    vertical-align: middle;
+   }
+
+   .navbar-brand2 .saba_appLogoText {
+    color: #222 !important;
+   }
+
+   .m-menu-header .saba_appLogoText {
+    color: #222 !important;
+   }
+
+   .saba_unitLogo_container {
+       padding-left: 25px;
+   }
+
+   .saba_unitLogo {
+       /* max-height: 28px !important */
+       max-height: 40px !important
+   }
+
+   /* .saba_html_content img {
+    max-width: none !important;
+       max-height: 95px !important */
+   /* } */
+
+   .feature-box .box-icon .icon {
+       width: 35px;
+       font-size: 35px;
+       line-height: 35px;
+   }
+
+   .owl-carousel .owl-stage {
+       display: flex;
+       align-items: center;
+   }
+
+   .saba_main_image {
+       /* max-width: 620px;
+       max-height: 550px; */
+   }
+
+   .saba_video_background {
+       position: absolute;
+       top: -35px;
+       left: 0;
+       width: 100%;
+       /* height: 100%; */
+       zoom: 7.5;
+       overflow: hidden;
+   }
+
+   .team-member .team-image {
+    background-color: #f7f7f7 !important;
+}
+   

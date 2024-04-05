@@ -1,0 +1,306 @@
+/* Normalize */
+body {
+    direction:rtl;
+    unicode-bidi:embed;
+}
+
+p,
+ol, ul, dl,
+h1, h2, h3, h4, h5, h6 {
+	text-align:right;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right:auto;
+}
+
+blockquote {
+	text-align:right;
+}
+
+blockquote cite:before {
+	margin:0 0 0 4px;
+}
+
+/* Bootstrap */
+.text-center * {
+	text-align:center;
+}
+
+/* Settings */
+.block-settings-wrapper {
+	left:auto;
+	right:-251px;
+}
+
+.block-settings-wrapper #settings_close {
+	left:-39px;
+	right:auto;
+	text-indent:9000px;
+}
+
+.block-settings-wrapper section ul li.active > i {
+	margin:0 5px 0 0;
+}
+
+.block-settings-wrapper section span {
+	float:right;
+	margin:0 0 0 3px;
+}
+
+.opened-settings .block-settings-wrapper {
+	left:auto;
+	right:0px;
+}
+
+/* Navigation */
+.nav-menu li a {
+	text-align:right;	
+}
+
+/* Search */
+.search-wrapper-close {
+	left:40px;
+	right:auto;
+}
+
+/* Banner */
+.button-store .custom-btn i {
+	margin:0 0 0 10px;
+}
+
+@media (min-width:992px) {
+	.banner .banner-text,
+	.button-store {
+		text-align:right;
+	}
+}
+
+/* Section title */
+.row.justify-content-center .section-title > * {
+	text-align:center;
+}
+
+/* Features */
+.feature-box .box-icon {
+	margin:0 0 0 20px;
+}
+
+/* Overview */
+.overview-box .content {
+	padding:0 20px 0 0;
+}
+
+.overview-list ul {
+	margin:0 2em 0 0;
+}
+
+.fa-li {
+	left:auto;
+	right:-2em;
+}
+
+/* Support */
+#accordion [data-toggle="collapse"].collapsed:after,
+#accordion [data-toggle="collapse"]:after {
+	left:20px;
+	right:auto;
+}
+
+#accordion .accordion-header h5 {
+	margin-left:50px;
+	margin-right:0;
+}
+
+/* Author social links */
+.author-social {
+	text-align:right;
+}
+
+/* Our team */
+.progress-heading .progress-title {
+	float:right;
+}
+
+.progress-heading .progress-value > span {
+	left:-4px;
+	right:unset;
+}
+
+.progress-heading .progress-value > span:before {
+	left:4px;
+	right:unset;
+	border-left:0 !important;
+	border-right:8px solid transparent !important;
+}
+
+/* Blog home */
+.blog-home .blog-category {
+	right:20px;
+	left:auto;
+}
+
+.blog-home .blog-text {
+	text-align:right;
+}
+
+.blog-home .more-link:before {
+	right:0;
+	left:auto;
+}
+
+.blog-home .blog-col:hover .more-link {
+	padding-right:20px;
+	padding-left:0;
+}
+
+/* Contact */
+.contact-info .icon {
+	float:right;
+    margin:0 0 0 10px;
+}
+
+#contact-submit {
+	float:right;
+}
+
+/* Widgets */
+.footer-social {
+	text-align:right;
+}
+
+.footer-social a:first-child {
+	margin-right:0;
+	margin-left:10px;
+}
+
+.footer-social a:last-child {
+	margin-left:0;
+	margin-right:10px;
+}
+
+.to-top {
+	left:30px;
+	right:auto;
+}
+
+/* Blog */
+.blog-post header .info {
+	text-align:right;
+}
+
+.sidebar .search-form button {
+	left:0;
+	right:auto;
+}
+
+.post-meta > li.post-like > .post-counters {
+	float:left;
+}
+
+.post-meta > li.post-like > .post-counters > li {
+	margin:0 0 0 10px;
+}
+
+section.page ul li, 
+.blog-post ul li, 
+section.page ol li, 
+.blog-post ol li {
+	padding-right:6px;
+	padding-left:0;
+}
+
+.share-btn > p > i {
+	margin-left:8px;
+	margin-right:0;
+}
+
+.author-content h5,
+.author-content p {
+	text-align:center;
+}
+
+.sidebar header h4:before {
+	margin-left:15px;
+	margin-right:0;
+}
+
+.sidebar header h4:after {
+	margin-right:15px;
+	margin-left:0;
+}
+
+.sbi-screenreader {
+	display:none !important;
+}
+
+.recent-post-image:before {
+	right:-14px;
+	left:auto;
+}
+
+.recent-post-info {
+	padding-right:12px;
+	padding-left:0;
+}
+
+.widget_categories li span {
+	float:left;
+}
+
+.page-title .blog-date:before {
+	margin-right:-38px;
+	margin-left:0;
+}
+
+.page-title .blog-date:after {
+	margin-right:15px;
+	margin-left:0;
+}
+
+.blog-post .image-slider .arrows {
+	left:12px;
+	right:auto;
+}
+
+.blog-post .arrows .arrow.left {
+	float:left;
+}
+
+/* Comments */
+.user-comment .image {
+	float:right;
+	margin:0 0 0 20px;
+}
+
+.user-comment .details {
+	margin:0 100px 0 0;
+}
+
+.user-comment .details .info {
+	text-align:right;
+}
+
+/* Pagination */
+.pagination {
+	padding-right:0;
+}
+
+.pagination li {
+	margin:0 0 0 10px;
+}
+
+.user-comment.bypostauthor .user-comment-inner:after {
+	left:-20px;
+	right:auto;
+	transform:rotate(135deg);
+}
+
+
+
+
+
+
+
+

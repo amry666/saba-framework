@@ -1,0 +1,8 @@
+{
+  "pageType": "crud",
+  "pageTitle": "Mahasiswa",
+  "crudOpt": {
+    "endpointName": "https://globaldata-api.insaba.co.id/demoMahasiswa",
+    "detailFromGrid": true
+  }
+}

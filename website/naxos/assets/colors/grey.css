@@ -1,0 +1,134 @@
+a,
+h1 > a:hover, 
+h2 > a:hover, 
+h3 > a:hover, 
+h4 > a:hover, 
+h5 > a:hover, 
+h6 > a:hover,
+.custom-btn,
+.play-btn:hover > i,
+.button-store .custom-btn:hover i,
+.button-store .custom-btn:hover p,
+.button-store .custom-btn:hover p span,
+.feature-box .box-icon .icon,
+.feature-box:hover .box-text > h4,
+.service-single:hover .icon,
+.service-single.service-style-2 .icon,
+.service-single.service-style-2:hover .icon,
+.service-single.service-style-2:hover h5,
+.overview-box:hover .icon,
+.overview-list .fa-li,
+.pricing-item .pricing-head .price,
+.pricing-item .pricing-head .price .dollar-sign,
+.fixed-menu .nav-menu li a.active,
+.nav-menu li.dropdown .submenu li a.active-submenu,
+.op-mobile-menu .nav-menu li a:hover,
+.page-header .page-header-content .breadcrumb li a:hover,
+.testimonial-carousel .carousel-text .single-box i,
+#accordion .accordion-header a:not(.collapsed),
+#accordion .accordion-header a:hover,
+.blog-home .blog-col:hover .blog-text h4 > a,
+.price-table .icon,
+.price-table:hover .plan-type,
+.contact-info .icon,
+.contact-form-result > h4,
+footer a:hover,
+.footer-social a:hover > i,
+.blog-post .image-slider .arrows .arrow:hover,
+.post-counters li > a:hover,
+.share-btn:hover > p,
+.share-btn li:hover > a,
+.nav-links a:hover,
+.sidebar .search-form button:hover,
+.sidebar .search-form button:focus,
+.sidebar ul.menu li a:hover, 
+.sidebar ul.menu li a:focus,
+.sidebar ul.links li a:hover, 
+.sidebar ul.links li a:focus,
+.author-social a:hover,
+.icon.colored i {
+	color:#656d78;
+}
+
+.fixed-menu .nav-menu li a:hover {
+	color:#656d78 !important;
+}
+
+.custom-btn,
+.price-table.plan-popular,
+.service-single.service-style-2:hover,
+.testimonial-carousel .carousel-images .slick-center img,
+.clients-slider .owl-dots .owl-dot span,
+.screenshot-slider .owl-dots .owl-dot span,
+.progress-heading .progress-value > span:before {
+	border-color:#656d78;
+}
+
+input:focus, 
+textarea:focus,
+input.notice, 
+textarea.notice {
+	border-color:#656d78 !important;
+}
+
+.page-loader .progress {
+	border-left-color:#656d78;
+}
+
+.user-comment.bypostauthor .user-comment-inner:after {
+	border-top-color:#656d78;
+}
+
+.banner:before {
+	background:linear-gradient(-47deg, #656d78 0%, #535353 100%);
+}
+
+.btn,
+.to-top:hover,
+.play-btn,
+.service-single:hover,
+.service-single .icon,
+.overview-box .icon,
+.overview-box:hover,
+.fixed-menu .nav-menu li a.active span:after,
+.nav-menu li.dropdown .submenu li a:hover,
+.nav-menu li.dropdown .submenu li a.active-submenu,
+.search-wrapper .search-close-btn:hover:before,
+.search-wrapper .search-close-btn:hover:after,
+.clients-slider .owl-dots .active span,
+.screenshot-slider .owl-dots .active span,
+.blog-home .blog-col:hover .blog-category,
+.page-title .blog-category > a:hover,
+.pagination li a.active, 
+.pagination li a:hover,
+.pagination li:last-child a,
+.pagination li:first-child a,
+.sidebar ul.menu li span,
+.recent-post-image:before,
+.author-social a:hover,
+.member-info:after,
+.progress .progress-bar,
+.progress-heading .progress-value > span,
+.tags .tag:hover,
+blockquote {
+	background-color:#656d78;
+}
+
+.btn:hover,
+#zoom-in:hover, 
+#zoom-out:hover,
+.pagination li a:hover,
+.pagination li a.active {
+	background-color:#5a5e63;
+}
+
+#zoom-in, 
+#zoom-out,
+.team-member .team-social {
+	background-color:rgba(101, 109, 120, 0.85);
+}
+
+
+
+
+
