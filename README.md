@@ -2,11 +2,9 @@
 
 # Welcome to Saba Framework!
 
-<div style="text-align:center;">
   <img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="200">
-</div>
 
-## Version : <span style="display:none">**version**</span>20240407-2254<span style="display:none">**version_end**</span>
+## Version : <span style="display:none">**version**</span>20240407-1654<span style="display:none">**version_end**</span>
 
 This Repository is **Saba Framework React Js (Compiled)**.
 
@@ -15,17 +13,18 @@ This Repository is **Saba Framework React Js (Compiled)**.
 ##### Whats New in this version ?
 
 <span style="display:none">**changes**</span>
-- _Top 10 recent changes:_ 
+
+- _Top 10 recent changes:_
+- 2024-04-07 23:54:14 | Cleanup public_repo after operations
+- 2024-04-07 23:54:12 | Remove build folder to avoid detection
+- 2024-04-07 23:53:50 | Update id.json
+- 2024-04-07 23:53:08 | Update move_build.yml
+- 2024-04-07 23:26:39 | Update id.json
+- 2024-04-07 23:26:23 | Update id.json
+- 2024-04-07 23:23:02 | Update id.json
+- 2024-04-07 22:59:23 | text build 4
 - 2024-04-07 22:54:34 | Update move_build.yml
-- 2024-04-07 22:44:29 | Cleanup public_repo after operations
-- 2024-04-07 22:44:28 | Remove build folder to avoid detection
-- 2024-04-07 22:43:55 | test build 3
-- 2024-04-07 22:25:24 | test push build 2
-- 2024-04-07 22:23:52 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
-- 2024-04-07 22:23:29 | Update move_build.yml
-- 2024-04-07 22:12:51 | Remove build folder to avoid detection
-- 2024-04-07 22:11:26 | test build push
-- 2024-04-07 22:00:01 | Update move_build.yml<span style="display:none">**changes_end**</span>
+- 2024-04-07 22:44:29 | Cleanup public_repo after operations<span style="display:none">**changes_end**</span>
 
 # Live Example
 
