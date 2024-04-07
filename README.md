@@ -1,30 +1,27 @@
-<div style="text-align:center;">
+# <p align="center">Welcome to Saba Framework!</p>
 
-# Welcome to Saba Framework!
+<p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-  <img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="200">
-
-## Version : <span style="display:none">**version**</span>20240407-1654<span style="display:none">**version_end**</span>
+## <p align="center">Version : </p><p align="center"><~ 20240408-0106 ~></p>
 
 This Repository is **Saba Framework React Js (Compiled)**.
 
-</div>
-
 ##### Whats New in this version ?
 
-<span style="display:none">**changes**</span>
+============ Recent Changes =============
 
-- _Top 10 recent changes:_
+- 2024-04-08 01:06:36 | update readme md and workflow
+- 2024-04-08 00:06:10 | Cleanup public_repo after operations
+- 2024-04-08 00:06:09 | Remove build folder to avoid detection
+- 2024-04-08 00:05:42 | upload build
 - 2024-04-07 23:54:14 | Cleanup public_repo after operations
 - 2024-04-07 23:54:12 | Remove build folder to avoid detection
 - 2024-04-07 23:53:50 | Update id.json
 - 2024-04-07 23:53:08 | Update move_build.yml
 - 2024-04-07 23:26:39 | Update id.json
 - 2024-04-07 23:26:23 | Update id.json
-- 2024-04-07 23:23:02 | Update id.json
-- 2024-04-07 22:59:23 | text build 4
-- 2024-04-07 22:54:34 | Update move_build.yml
-- 2024-04-07 22:44:29 | Cleanup public_repo after operations<span style="display:none">**changes_end**</span>
+
+=====================================
 
 # Live Example
 
