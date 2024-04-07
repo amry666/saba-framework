@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240407-1842 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240408-0213 ~></p>
 
 This Repository is **Saba Framework React Js (Compiled)**.
 
@@ -10,16 +10,16 @@ This Repository is **Saba Framework React Js (Compiled)**.
 
 ============ Recent Changes =============
 
+- 2024-04-08 02:13:13 | Update updateBuildDate.js
+- 2024-04-08 01:53:47 | Cleanup operations
+- 2024-04-08 01:53:18 | new build
+- 2024-04-08 01:52:46 | Update move_build.yml
 - 2024-04-08 01:42:22 | Cleanup operations
 - 2024-04-08 01:41:52 | update new build
 - 2024-04-08 01:38:04 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
 - 2024-04-08 01:37:54 | Update move_build.yml
 - 2024-04-08 01:25:59 | Cleanup operations
 - 2024-04-08 01:25:36 | Update id.json
-- 2024-04-08 01:25:12 | Update move_build.yml
-- 2024-04-08 01:12:53 | update link to source compiled & build new
-- 2024-04-08 01:06:36 | update readme md and workflow
-- 2024-04-08 00:06:10 | Cleanup public_repo after operations
 
 =====================================
 
