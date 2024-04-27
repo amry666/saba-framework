@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240426-1406 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240428-0106 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -10,16 +10,16 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-04-28 01:06:48 | fix looping bug in menu, login style, loader on dynamicCard, add some quotes loading, fix loading table, etc.
+- 2024-04-26 15:33:40 | add illustration anim
+- 2024-04-26 14:40:25 | Cleanup operations
+- 2024-04-26 14:39:23 | add new build
 - 2024-04-26 14:06:21 | add quotes on loading
 - 2024-04-25 21:40:26 | Cleanup operations
 - 2024-04-25 21:39:47 | add new build
 - 2024-04-25 21:32:23 | dynamicForm: serversideGrid on dropdownAsTable Fixed, table: keep search visible if data failed
 - 2024-04-25 14:03:43 | Cleanup operations
 - 2024-04-25 14:02:52 | add new build
-- 2024-04-25 13:55:20 | add new font family jersey
-- 2024-04-25 13:53:48 | dynamicForm: serverSideGrid in dropdownAsTable, style:fix some style & loader zIndex, feature: login with swiper image
-- 2024-04-24 14:17:18 | Cleanup operations
-- 2024-04-24 14:16:19 | rebuild source
 
 =====================================
 
