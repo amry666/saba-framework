@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240429-1536 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240502-0132 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -10,16 +10,16 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-05-02 01:32:34 | dynamicForm : id_unit change detect, dynamicForm : id_unit dropdown with array field label & separator, moment date locale, table experimental
+- 2024-05-01 21:51:59 | treeview switch to orgchart cache, treeview filtered node linked to orgchart
+- 2024-05-01 16:52:18 | export to image on treeview & dataYearBadge bug on first login
+- 2024-04-30 18:39:23 | global_data_year on initial load
+- 2024-04-30 10:56:42 | remove stopPropagation() on dropdown
+- 2024-04-30 10:20:28 | table: search by columns fix no data, add search by columns dropdown by lookup value
+- 2024-04-29 15:42:58 | Cleanup operations
+- 2024-04-29 15:42:03 | add new build
 - 2024-04-29 15:36:48 | table: autoColumnsMaxWidth, table: search by columns, globalFilterDataYear Fix bug, native pagination on table without serverSideGrid, etc.
 - 2024-04-28 01:27:44 | fix menu load
-- 2024-04-28 01:18:26 | Cleanup operations
-- 2024-04-28 01:17:52 | add new build
-- 2024-04-28 01:06:48 | fix looping bug in menu, login style, loader on dynamicCard, add some quotes loading, fix loading table, etc.
-- 2024-04-26 15:33:40 | add illustration anim
-- 2024-04-26 14:40:25 | Cleanup operations
-- 2024-04-26 14:39:23 | add new build
-- 2024-04-26 14:06:21 | add quotes on loading
-- 2024-04-25 21:40:26 | Cleanup operations
 
 =====================================
 
