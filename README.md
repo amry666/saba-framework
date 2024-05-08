@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240502-1525 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240508-0936 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -10,16 +10,16 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
-- 2024-05-02 15:25:00 | filter on orgchart, 90% fix bugs orgchart & treeview
-- 2024-05-02 11:19:02 | orgChart 2 : viewOnly fature, max width text and wrap text, TABLE: scrollbar styling darkMode
-- 2024-05-02 02:01:54 | Cleanup operations
-- 2024-05-02 01:40:30 | add new build
-- 2024-05-02 01:32:34 | dynamicForm : id_unit change detect, dynamicForm : id_unit dropdown with array field label & separator, moment date locale, table experimental
-- 2024-05-01 21:51:59 | treeview switch to orgchart cache, treeview filtered node linked to orgchart
-- 2024-05-01 16:52:18 | export to image on treeview & dataYearBadge bug on first login
-- 2024-04-30 18:39:23 | global_data_year on initial load
-- 2024-04-30 10:56:42 | remove stopPropagation() on dropdown
-- 2024-04-30 10:20:28 | table: search by columns fix no data, add search by columns dropdown by lookup value
+- 2024-05-08 09:36:06 | table: fixed showIf columns bugs & loading color on dark menu, dynamicForm: dropdown font color #fff on dark menu
+- 2024-05-08 01:14:39 | table: fix loader style
+- 2024-05-08 00:58:24 | selectTable: add dynamicColumnsFilter and remember last filter on page change
+- 2024-05-07 12:39:34 | table : remove tableSkeleton loading, contextMenu active by pageAttributes, remove columnsAutoMaxWidth
+- 2024-05-06 22:53:27 | table: add new feature right click on cell to show actions button, table: maxColumns fixed size, orgchart2: add modal close btn & hide overview top on mobile, style: scrollbar condition on table
+- 2024-05-05 02:00:41 | orgchart2 line type & fix not allowed viewOnly twice
+- 2024-05-04 23:16:43 | orgchart2 zoom slider & chaced, treeview & orgchart2 style on mobile
+- 2024-05-04 20:01:25 | orgchart2 : better export res & color preset
+- 2024-05-03 11:47:47 | style on selectable check all
+- 2024-05-03 11:45:11 | trigger change number-button, selectTable with filter table-header, OrgCharts, hide Dev Button on form,
 
 =====================================
 
