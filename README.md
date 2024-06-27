@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240626-2054 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240627-1356 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -10,6 +10,9 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-06-27 13:56:55 | fixed default checked value on input type switch
+- 2024-06-26 21:04:32 | Cleanup operations
+- 2024-06-26 21:03:44 | add new build
 - 2024-06-26 20:54:51 | print loading
 - 2024-06-26 13:12:33 | page change serverside On selectTable
 - 2024-06-26 11:45:02 | fixed getApiAfterPost Issues
@@ -17,9 +20,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-06-25 16:02:00 | style & loading on table
 - 2024-06-24 23:20:43 | login mobile style
 - 2024-06-24 17:13:30 | Cleanup operations
-- 2024-06-24 17:12:42 | add new build
-- 2024-06-24 17:00:08 | report: customEndpointName with dynamic rpt name, widget countdown fixed if finished date.
-- 2024-06-24 14:13:42 | fixed skeleton loading on table, check version handle error, print page issue still on progress
 
 =====================================
 
