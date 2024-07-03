@@ -1,4 +1,11 @@
 <h1>Saba Framework</h1>
+<h1 style="display:none">saba framework</h1>
+<h1 style="display:none">saba-framework</h1>
+<h1 style="display:none">saba-framework-frontend</h1>
+<h1 style="display:none">framework-indonesia</h1>
+<h1 style="display:none">react-framework</h1>
+<h1 style="display:none">react-cms</h1>
+<h1 style="display:none">cms, reactjs, react, framework, insaba, indonesian, bandung</h1>
 
 # <p align="center">Welcome to Saba Framework!</p>
 
