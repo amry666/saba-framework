@@ -1,2 +1,0 @@
-(this["webpackJsonpsaba-react-framework"]=this["webpackJsonpsaba-react-framework"]||[]).push([[103],{492:function(a){a.exports=JSON.parse('{"pageType":"crud","pageTitle":"Landing Page","crudOpt":{"gridTheme":"list-sortable"}}')}}]);
-//# sourceMappingURL=103.7ea92c15.chunk.js.map

@@ -2,7 +2,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240701-2011 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240704-0139 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -10,16 +10,16 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-07-04 01:39:42 | expandable : fixed disableBtnAddFromParent & hide expander on groupByKey if search, homepage: add welcome widget if qod not present, chat enhancement, fixed some style
+- 2024-07-03 02:56:39 | fixed some bugs on chats
+- 2024-07-02 14:16:35 | Update GlobalUnitDropdownForm.js
+- 2024-07-02 01:08:23 | expandable table inherit style from parent, pagination on groupBy (expandables) table
+- 2024-07-01 20:19:53 | Cleanup operations
+- 2024-07-01 20:18:58 | add new build
 - 2024-07-01 20:11:42 | add bottom nav mobile, add some mobile style, icon with solid attr on second separator
 - 2024-07-01 17:13:56 | check resultArr when disabledCondition_or
 - 2024-07-01 16:37:18 | remove unit loader
 - 2024-07-01 15:38:07 | fixed disabledCondition_or condition
-- 2024-07-01 14:57:33 | reset on dev Url Replacer, nav hover only child, detail loading minHeight, hide JSON button on table if ciew on dashbioard, unit dropdown loading init, style on login mobile view
-- 2024-07-01 03:22:58 | Cleanup operations
-- 2024-07-01 03:22:14 | add new build
-- 2024-07-01 03:13:37 | timeout clear on app init, Feature: Url Replacer on Unit App (by Domain),  fixed issues data loading twice,
-- 2024-06-29 19:03:29 | Cleanup operations
-- 2024-06-29 19:02:47 | add new build
 
 =====================================
 
