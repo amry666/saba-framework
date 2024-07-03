@@ -1,11 +1,4 @@
 <h1>Saba Framework</h1>
-<h1 style="display:none">saba framework</h1>
-<h1 style="display:none">saba-framework</h1>
-<h1 style="display:none">saba-framework-frontend</h1>
-<h1 style="display:none">framework-indonesia</h1>
-<h1 style="display:none">react-framework</h1>
-<h1 style="display:none">react-cms</h1>
-<h1 style="display:none">cms, reactjs, react, framework, insaba, indonesian, bandung</h1>
 
 # <p align="center">Welcome to Saba Framework!</p>
 
@@ -44,3 +37,11 @@ You can read the guide at the https://saba-framework.gitbook.io/saba-framework-d
 
 https://sabaframework.web.app/public
 https://www.instagram.com/sabaframework/
+
+<p style="display:none">saba framework</p>
+<p style="display:none">saba-framework</p>
+<p style="display:none">saba-framework-frontend</p>
+<p style="display:none">framework-indonesia</p>
+<p style="display:none">react-framework</p>
+<p style="display:none">react-cms</p>
+<p style="display:none">cms, reactjs, react, framework, insaba, indonesian, bandung</p>
