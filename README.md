@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240705-0026 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240705-0347 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,9 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-07-05 03:47:26 | chat test, chat not allowed send when user in oher app,
+- 2024-07-05 00:39:48 | Cleanup operations
+- 2024-07-05 00:38:58 | add new build
 - 2024-07-05 00:26:27 | exclusive btn print loading when multiple action btn print, form loading when type is column, chat with emoji character support, add more images on greeting card, fixed some style
 - 2024-07-04 02:05:20 | Cleanup operations
 - 2024-07-04 02:04:21 | add new build
@@ -19,9 +22,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-07-04 01:39:42 | expandable : fixed disableBtnAddFromParent & hide expander on groupByKey if search, homepage: add welcome widget if qod not present, chat enhancement, fixed some style
 - 2024-07-03 02:56:39 | fixed some bugs on chats
 - 2024-07-02 14:16:35 | Update GlobalUnitDropdownForm.js
-- 2024-07-02 01:08:23 | expandable table inherit style from parent, pagination on groupBy (expandables) table
-- 2024-07-01 20:19:53 | Cleanup operations
-- 2024-07-01 20:18:58 | add new build
 
 =====================================
 
