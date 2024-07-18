@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240718-0109 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240718-1209 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-07-18 12:09:32 | user profile update
 - 2024-07-18 01:09:25 | fixed widget role visibility issue
 - 2024-07-17 21:34:14 | fix resetData if app have global_filter_data_year
 - 2024-07-16 16:03:41 | fixed the view/edit button missing due to the wizard feature
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-07-01 17:13:56 | check resultArr when disabledCondition_or
 - 2024-07-01 16:37:18 | remove unit loader
 - 2024-07-01 15:38:07 | fixed disabledCondition_or condition
-- 2024-07-01 14:57:33 | reset on dev Url Replacer, nav hover only child, detail loading minHeight, hide JSON button on table if ciew on dashbioard, unit dropdown loading init, style on login mobile view
 
 =====================================
 
