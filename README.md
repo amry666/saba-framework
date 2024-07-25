@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240718-1209 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240725-2111 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,8 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-07-25 21:11:02 | username input in users form with maxLength 50 char, showIf columns from expanded data with property fieldNameFromExpandedData.
+- 2024-07-19 16:08:57 | showIf  : force return to false if value is undefined
 - 2024-07-18 12:09:32 | user profile update
 - 2024-07-18 01:09:25 | fixed widget role visibility issue
 - 2024-07-17 21:34:14 | fix resetData if app have global_filter_data_year
@@ -30,8 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-07-02 01:08:23 | expandable table inherit style from parent, pagination on groupBy (expandables) table
 - 2024-07-01 20:11:42 | add bottom nav mobile, add some mobile style, icon with solid attr on second separator
 - 2024-07-01 17:13:56 | check resultArr when disabledCondition_or
-- 2024-07-01 16:37:18 | remove unit loader
-- 2024-07-01 15:38:07 | fixed disabledCondition_or condition
 
 =====================================
 
