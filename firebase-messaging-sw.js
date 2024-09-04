@@ -23,28 +23,28 @@ messaging.onBackgroundMessage(function (payload) {
   // self.registration.showNotification(notificationTitle, notificationOptions)
 })
 
-// Handle notification click event
-self.addEventListener("notificationclick", function (event) {
-  event.notification.close() // Close the notification
-  console.log(event)
-  const url = event.notification.data.click_action
-  if (url) {
-    event.waitUntil(
-      clients
-        .matchAll({ type: "window", includeUncontrolled: true })
-        .then((windowClients) => {
-          // Check if there is already a window/tab open with the target URL
-          for (let i = 0; i < windowClients.length; i++) {
-            const client = windowClients[i]
-            if (client.url === url && "focus" in client) {
-              return client.focus()
-            }
-          }
-          // If not, then open the URL in a new window/tab
-          if (clients.openWindow) {
-            return clients.openWindow(url)
-          }
-        })
-    )
-  }
-})
+//// Handle notification click event
+// self.addEventListener("notificationclick", function (event) {
+//   console.log(event)
+//   event.notification.close() // Close the notification
+//   const url = event.notification.data.click_action
+//   if (url) {
+//     event.waitUntil(
+//       clients
+//         .matchAll({ type: "window", includeUncontrolled: true })
+//         .then((windowClients) => {
+//           // Check if there is already a window/tab open with the target URL
+//           for (let i = 0; i < windowClients.length; i++) {
+//             const client = windowClients[i]
+//             if (client.url === url && "focus" in client) {
+//               return client.focus()
+//             }
+//           }
+//           // If not, then open the URL in a new window/tab
+//           if (clients.openWindow) {
+//             return clients.openWindow(url)
+//           }
+//         })
+//     )
+//   }
+// })
