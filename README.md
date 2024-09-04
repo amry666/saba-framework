@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240904-1324 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240904-1429 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,8 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-04 14:29:25 | Update style.scss
+- 2024-09-04 14:08:57 | fixed style issues on deployed & local
 - 2024-09-04 13:24:36 | fix table_tree issues
 - 2024-09-04 10:53:24 | fixed table_tree switch issues
 - 2024-09-04 09:15:33 | +FEATURE : gridTheme "table_tree"
@@ -30,8 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-08-06 15:50:10 | add feature: treeview with default counter count_child / count_all_child
 - 2024-08-06 14:16:33 | add feature: orgchart with default counter count_child / count_all_childs
 - 2024-08-06 13:47:14 | Filter affected to summary params fixed
-- 2024-08-06 13:03:11 | Filter affected to summary fixed
-- 2024-08-06 11:47:13 | add feature: Filter affected to summary with attr "dynamicColumnsFilterToSummary": true.
 
 =====================================
 
