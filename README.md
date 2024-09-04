@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240904-1053 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240904-1324 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-04 13:24:36 | fix table_tree issues
 - 2024-09-04 10:53:24 | fixed table_tree switch issues
 - 2024-09-04 09:15:33 | +FEATURE : gridTheme "table_tree"
 - 2024-09-02 13:20:54 | +Feature: Add new fitur to activate Google ReCaptcha v2 on login.
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-08-06 13:47:14 | Filter affected to summary params fixed
 - 2024-08-06 13:03:11 | Filter affected to summary fixed
 - 2024-08-06 11:47:13 | add feature: Filter affected to summary with attr "dynamicColumnsFilterToSummary": true.
-- 2024-07-31 01:17:58 | force page to 1 when filtering/searching if serverside true on table, try to fixed chat contact list scroll peformance
 
 =====================================
 
