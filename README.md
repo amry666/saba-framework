@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240906-1538 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240911-1944 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,10 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-11 19:44:23 | add attribute to hide googleStreetViewLink
+- 2024-09-11 18:39:26 | trim() error on input if value is not str
+- 2024-09-11 10:40:25 | fixed map fullscreen side-table, background color map on dark
+- 2024-09-10 20:06:12 | Add new feature "image overlay" on map page, improvements and enhancements on dynamicCards, etc
 - 2024-09-06 15:38:44 | showIf with value from domainName
 - 2024-09-04 14:29:25 | Update style.scss
 - 2024-09-04 14:08:57 | fixed style issues on deployed & local
@@ -28,10 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-08-19 11:43:04 | treeview fixed structured on view
 - 2024-08-15 12:16:08 | add treeview minHeight & fixed form-repeater payload issue
 - 2024-08-14 15:00:11 | BulkUpdate on table fix issues on regular required field
-- 2024-08-13 13:47:16 | add new feature: BulkUpdate on table, chat input focus after send
-- 2024-08-09 21:12:02 | orgchart: keep isAssistant layout on switch template, treeview: counter with badge & add optional property to hiding counter & fixed back button on view only node, table: add new feature updateSelection still on progress...
-- 2024-08-06 15:50:10 | add feature: treeview with default counter count_child / count_all_child
-- 2024-08-06 14:16:33 | add feature: orgchart with default counter count_child / count_all_childs
 
 =====================================
 
