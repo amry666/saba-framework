@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240912-1057 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240912-1427 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,9 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-12 14:27:19 | fixed search length, after search params, and fixed some issues on table_tree & treeview
+- 2024-09-12 11:11:12 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
+- 2024-09-12 11:10:55 | fixed add child button visibility on table_tree
 - 2024-09-12 10:57:56 | still on table_tree fixed initial show expandableBtn if serverSide true
 - 2024-09-12 10:36:41 | add counter & __level__ to lazyLoad response data on table_tree/treeview page
 - 2024-09-12 10:19:29 | add image tutorial to enable chrome notification & add some translate
@@ -29,9 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-09-02 13:20:54 | +Feature: Add new fitur to activate Google ReCaptcha v2 on login.
 - 2024-09-01 20:32:42 | add new feature: show whitelabel info on login page (with 2 position option) & show in app footer, add timer to refresh on connection failed to sso
 - 2024-08-30 09:54:03 | dropdown with parent_id disabled condition, treeview with filter
-- 2024-08-29 18:27:31 | handle if field_value not present on dropdown
-- 2024-08-29 14:45:19 | default form from currentExpandableRow  on add modal only selectable
-- 2024-08-28 12:27:27 | fix some bugs on dev-mode menu create, still progress on table_tree, fix some style on treeview, add fetch button on orgchart
 
 =====================================
 
