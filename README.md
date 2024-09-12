@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240912-2140 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240912-2232 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-12 22:32:47 | fixed table_tree pagination
 - 2024-09-12 21:40:01 | table_tree style & fixed some bug
 - 2024-09-12 14:27:19 | fixed search length, after search params, and fixed some issues on table_tree & treeview
 - 2024-09-12 11:11:12 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-09-04 10:53:24 | fixed table_tree switch issues
 - 2024-09-04 09:15:33 | +FEATURE : gridTheme "table_tree"
 - 2024-09-02 13:20:54 | +Feature: Add new fitur to activate Google ReCaptcha v2 on login.
-- 2024-09-01 20:32:42 | add new feature: show whitelabel info on login page (with 2 position option) & show in app footer, add timer to refresh on connection failed to sso
 
 =====================================
 
