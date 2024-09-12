@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240911-2357 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240912-1057 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,9 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-12 10:57:56 | still on table_tree fixed initial show expandableBtn if serverSide true
+- 2024-09-12 10:36:41 | add counter & __level__ to lazyLoad response data on table_tree/treeview page
+- 2024-09-12 10:19:29 | add image tutorial to enable chrome notification & add some translate
 - 2024-09-11 23:57:51 | add lazy load on table_tree, syncronize data fetch to orgchart in treeview & table_tree
 - 2024-09-11 19:44:23 | add attribute to hide googleStreetViewLink
 - 2024-09-11 18:39:26 | trim() error on input if value is not str
@@ -29,9 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-08-29 18:27:31 | handle if field_value not present on dropdown
 - 2024-08-29 14:45:19 | default form from currentExpandableRow  on add modal only selectable
 - 2024-08-28 12:27:27 | fix some bugs on dev-mode menu create, still progress on table_tree, fix some style on treeview, add fetch button on orgchart
-- 2024-08-19 15:36:54 | re-add serverside fetch button on treeview
-- 2024-08-19 11:43:04 | treeview fixed structured on view
-- 2024-08-15 12:16:08 | add treeview minHeight & fixed form-repeater payload issue
 
 =====================================
 
