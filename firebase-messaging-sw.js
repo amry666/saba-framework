@@ -24,27 +24,25 @@ messaging.onBackgroundMessage(function (payload) {
 })
 
 //// Handle notification click event
-// self.addEventListener("notificationclick", function (event) {
-//   console.log(event)
-//   event.notification.close() // Close the notification
-//   const url = event.notification.data.click_action
-//   if (url) {
-//     event.waitUntil(
-//       clients
-//         .matchAll({ type: "window", includeUncontrolled: true })
-//         .then((windowClients) => {
-//           // Check if there is already a window/tab open with the target URL
-//           for (let i = 0; i < windowClients.length; i++) {
-//             const client = windowClients[i]
-//             if (client.url === url && "focus" in client) {
-//               return client.focus()
-//             }
-//           }
-//           // If not, then open the URL in a new window/tab
-//           if (clients.openWindow) {
-//             return clients.openWindow(url)
-//           }
-//         })
-//     )
-//   }
-// })
+self.addEventListener("notificationclick", function (event) {
+  console.log(event.notification)
+  event.notification.close() // Tutup notifikasi setelah klik
+  const url =
+    event.notification.data.click_action || event.notification.data.link
+
+  event.waitUntil(
+    clients
+      .matchAll({ type: "window", includeUncontrolled: true })
+      .then(function (clientList) {
+        for (let i = 0; i < clientList.length; i++) {
+          const client = clientList[i]
+          if (client.url === url && "focus" in client) {
+            return client.focus()
+          }
+        }
+        if (clients.openWindow) {
+          return clients.openWindow(url)
+        }
+      })
+  )
+})
