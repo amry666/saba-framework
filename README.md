@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20240917-1520 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20240919-1539 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,8 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2024-09-19 15:39:06 | fixed menu style overflow issues & add new widget user login growth only for developer
+- 2024-09-18 12:13:54 | fixed issues on expandable as tab with getAlwaysGrid
 - 2024-09-17 15:20:48 | remove error on map
 - 2024-09-17 12:21:43 | add nested type page "endpointByLevel" & fixed map init bound issues. sample on  http://localhost:7010/dyn_pages/playground/dataOther9
 - 2024-09-15 13:10:24 | +New Features : input type "domainData" & input type "current_location". see implementation on https://saba-framework.gitbook.io/saba-framework-documentation/examples/dynamic-form/input-type/domain-claims-data
@@ -30,8 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-09-11 10:40:25 | fixed map fullscreen side-table, background color map on dark
 - 2024-09-10 20:06:12 | Add new feature "image overlay" on map page, improvements and enhancements on dynamicCards, etc
 - 2024-09-06 15:38:44 | showIf with value from domainName
-- 2024-09-04 14:29:25 | Update style.scss
-- 2024-09-04 14:08:57 | fixed style issues on deployed & local
 
 =====================================
 

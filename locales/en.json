@@ -1182,5 +1182,10 @@
   "Most Active Users": "Most Active Users",
   "Top 10 Active Users in The last 1 Month": "Top 10 Active Users in The last 1 Month",
   "Connection Failed!": "Connection Failed!",
-  "There is a problem connecting to the server or this app is not yet registered with Saba SSO.": "There is a problem connecting to the server or this app is not yet registered with Saba SSO."
+  "There is a problem connecting to the server or this app is not yet registered with Saba SSO.": "There is a problem connecting to the server or this app is not yet registered with Saba SSO.",
+  "Users Login Statistics": "Users Login Statistics",
+  "Today": "Today",
+  "Last 7 Days": "Last 7 Days",
+  "Last 30 Days": "30 Hari Terakhir",
+  "User Growth Last 1 Week": "User Growth Last 1 Week"
 }
