@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig)
 // Retrieve firebase messaging
 const messaging = firebase.messaging()
 messaging.onBackgroundMessage(function (payload) {
-  console.log("Received background message ", payload)
+  // console.log("Received background message ", payload)
   // Customize notification here
   const notificationTitle = payload?.notification?.title
   const notificationOptions = {
@@ -23,26 +23,25 @@ messaging.onBackgroundMessage(function (payload) {
   // self.registration.showNotification(notificationTitle, notificationOptions)
 })
 
-//// Handle notification click event
 self.addEventListener("notificationclick", function (event) {
   console.log(event.notification)
-  event.notification.close() // Tutup notifikasi setelah klik
+  event.notification.close()
   const url =
     event.notification.data.click_action || event.notification.data.link
-
-  event.waitUntil(
-    clients
-      .matchAll({ type: "window", includeUncontrolled: true })
-      .then(function (clientList) {
-        for (let i = 0; i < clientList.length; i++) {
-          const client = clientList[i]
-          if (client.url === url && "focus" in client) {
-            return client.focus()
-          }
-        }
-        if (clients.openWindow) {
-          return clients.openWindow(url)
-        }
-      })
-  )
+  clients.openWindow(url)
+  // event.waitUntil(
+  //   clients
+  //     .matchAll({ type: "window", includeUncontrolled: true })
+  //     .then(function (clientList) {
+  //       for (let i = 0; i < clientList.length; i++) {
+  //         const client = clientList[i]
+  //         if (client.url === url && "focus" in client) {
+  //           return client.focus()
+  //         }
+  //       }
+  //       if (clients.openWindow) {
+  //         return clients.openWindow(url)
+  //       }
+  //     })
+  // )
 })
