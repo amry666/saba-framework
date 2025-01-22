@@ -1,7 +1,8 @@
 const currentUrl = window.location.href
 const currentPath = window.location.pathname
 const currentDomain = new URL(currentUrl).origin
-const ssoUrl = "https://auth.insaba.co.id/"
+const ssoUrl = "https://auth-dev.insaba.co.id/"
+// const ssoUrl = "https://auth.insaba.co.id/"
 // const ssoUrl = "http://127.0.0.1:5001/"
 
 let globalDefaultDataAttr = {}
@@ -131,7 +132,12 @@ const getDefaultAttributes = (domainClaims) => {
                   image: appLogoFix,
                   link: "#"
                 }
-              : {},
+              : {
+                  title: "Saba Framework",
+                  image:
+                    "https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png",
+                  link: "https://sabaframework.web.app/public"
+                },
             {
               title: "Saba Framework",
               image:
@@ -700,7 +706,7 @@ function updateMainElements(storeDomainClaims, defaultAttributes) {
     domainClaims?.unit?.unit_app_attributes?.appLogoLogin ??
     domainClaims?.app?.logo?.appLogoLoginBig ??
     domainClaims?.app?.logo?.appLogoLogin ??
-    domainClaims.app?.logo?.appLogo
+    domainClaims?.app?.logo?.appLogo
 
   const appLogoBigExist =
     domainClaims?.unit?.unit_app_attributes?.appLogoLoginBig ??
@@ -722,6 +728,12 @@ function updateMainElements(storeDomainClaims, defaultAttributes) {
         element.innerHTML = appNameFix
       })
     }
+  } else {
+    const logoElements = document.querySelectorAll(".saba_appLogo")
+    logoElements.forEach((element) => {
+      element.src = logoResp?.appLogo
+      element.alt = unitNameFix ?? appNameFix ?? "Unit Logo"
+    })
   }
 
   //LOGO UNIT
@@ -738,7 +750,7 @@ function updateMainElements(storeDomainClaims, defaultAttributes) {
   // FAVICON
   updateFavicon(
     domainClaims?.unit?.unit_app_attributes?.favicon ??
-      logoResp.favicon ??
+      logoResp?.favicon ??
       domainClaims?.app?.logo?.appLogo
   )
 
