@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250204-1435 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250205-0948 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-02-05 09:48:00 | fixed dynamicPar on renderCustomHtml
 - 2025-02-04 14:35:19 | renderCustomHtml in pageType = "report", loadExternalResources  on dynamic card if dataFrom value (static)
 - 2025-01-31 13:22:36 | forced multiple update selection pageType = "edit"
 - 2025-01-30 01:40:18 | fix scale inmage on login
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-09-19 15:39:06 | fixed menu style overflow issues & add new widget user login growth only for developer
 - 2024-09-18 12:13:54 | fixed issues on expandable as tab with getAlwaysGrid
 - 2024-09-17 15:20:48 | remove error on map
-- 2024-09-17 12:21:43 | add nested type page "endpointByLevel" & fixed map init bound issues. sample on  http://localhost:7010/dyn_pages/playground/dataOther9
 
 =====================================
 
