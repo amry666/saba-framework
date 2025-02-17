@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250214-2352 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250217-1122 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-02-17 11:22:41 | now support "lordicon", add pageDescExtra, etc
 - 2025-02-14 23:52:54 | now support images/bg_color/youtube_url on widget & crud announcements, visibility of default widget allow hidden by user and by app setting, force reset reload otherpage on detail page,
 - 2025-02-11 22:22:44 | data index selector to first row in html report
 - 2025-02-11 11:28:57 | afterRenderEvents on extraButton -> renderCustomHtml
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2024-10-07 11:15:11 | fixed: show map modal on click marker
 - 2024-09-23 14:53:00 | fixed dashboard page issue
 - 2024-09-23 14:49:50 | Treeview auto expand on fetch, fixed dashboard page issues
-- 2024-09-21 20:59:30 | chat refresh when incoming new and when app active
 
 =====================================
 
