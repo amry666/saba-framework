@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250221-2331 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250223-2102 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-02-23 21:02:32 | subtitle & subtitle2 in column, fixed some style
 - 2025-02-21 23:31:52 | fixed login style issue
 - 2025-02-21 23:21:19 | fixed serverSideGridPath issue, fixed announcements height style, table border style, table non-serverside custom pagination & style, lordicon cache, login font issue & add input icon, tooltip style bg, page type 'blog' coming soon.
 - 2025-02-20 08:32:52 | column type "progress2", iconLeft & iconRight on dynamicColumns, etc
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-01-30 01:07:58 | fixed update selection & support lottie anim in login
 - 2025-01-23 01:32:02 | fix globalFilter Widget if include id_unit,  dynamic card support external resources like highchart or cdn
 - 2025-01-22 21:40:56 | add js & css render on widget type html.
-- 2025-01-22 09:33:54 | html type on widget, multiple search fieldName on table, error message with html resp,  add lottie animation support, menu collapsed by domainClaims, textArea input suggestion from AI, reloadAllAfterPut (refresh),
 
 =====================================
 
