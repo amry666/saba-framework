@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250224-1438 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250306-2002 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,8 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-03-06 20:02:08 | hide PageLength if dynamicColumnsFilterPos ===  "table-header"
+- 2025-03-06 19:42:27 | fixed page Length style issue, add feature cachedToIndexDb, map multipolygon still in progress
 - 2025-02-24 14:38:05 | optimizing on click map marker
 - 2025-02-23 21:02:32 | subtitle & subtitle2 in column, fixed some style
 - 2025-02-21 23:31:52 | fixed login style issue
@@ -30,8 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-02-04 14:35:19 | renderCustomHtml in pageType = "report", loadExternalResources  on dynamic card if dataFrom value (static)
 - 2025-01-31 13:22:36 | forced multiple update selection pageType = "edit"
 - 2025-01-30 01:40:18 | fix scale inmage on login
-- 2025-01-30 01:07:58 | fixed update selection & support lottie anim in login
-- 2025-01-23 01:32:02 | fix globalFilter Widget if include id_unit,  dynamic card support external resources like highchart or cdn
 
 =====================================
 
