@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250306-2002 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250410-1204 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,11 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-04-10 12:04:35 | map feature  "import .shp" move to input property
+- 2025-04-09 20:45:12 | treeView default expanded, treeview update peformance on search, Map import SHP fixed re-mount on second upload
+- 2025-04-09 13:06:27 | ++new Feature : Import SHP file to map
+- 2025-03-19 12:18:14 | fixed map set zoom on form
+- 2025-03-14 19:06:54 | fixed cachedToIndexDb if no data, add new feature map nested, etc
 - 2025-03-06 20:02:08 | hide PageLength if dynamicColumnsFilterPos ===  "table-header"
 - 2025-03-06 19:42:27 | fixed page Length style issue, add feature cachedToIndexDb, map multipolygon still in progress
 - 2025-02-24 14:38:05 | optimizing on click map marker
@@ -27,11 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-02-10 09:59:30 | ai Asistant with custom endpoint on Input
 - 2025-02-05 22:42:55 | summary card widget supported css style in string format with 3 variant.
 - 2025-02-05 13:30:33 | tableSearchByColumn in input with dropdownAsTable
-- 2025-02-05 12:50:17 | new widget type "actions_button" & fixed dynamicPar on renderCustomHtml
-- 2025-02-05 09:48:00 | fixed dynamicPar on renderCustomHtml
-- 2025-02-04 14:35:19 | renderCustomHtml in pageType = "report", loadExternalResources  on dynamic card if dataFrom value (static)
-- 2025-01-31 13:22:36 | forced multiple update selection pageType = "edit"
-- 2025-01-30 01:40:18 | fix scale inmage on login
 
 =====================================
 
