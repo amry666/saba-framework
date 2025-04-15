@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250410-1204 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250415-1403 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,13 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-04-15 14:03:19 | enabled dynamicTooltipColumnsAsModal on map
+- 2025-04-15 11:47:21 | disabled expandable rows on expand show loading if gridtheme not "table-tree","treeview", "map"
+- 2025-04-14 15:09:32 | add button on expandable to solid color
+- 2025-04-14 15:08:42 | input map polygon or latlng with initialViewMode = "satellite"
+- 2025-04-11 14:53:01 | map-polygon shared input component
+- 2025-04-11 09:49:58 | map-latlng shared input component
+- 2025-04-10 13:14:52 | useGeolocation property to disable detect current location on map-latlng input
 - 2025-04-10 12:04:35 | map feature  "import .shp" move to input property
 - 2025-04-09 20:45:12 | treeView default expanded, treeview update peformance on search, Map import SHP fixed re-mount on second upload
 - 2025-04-09 13:06:27 | ++new Feature : Import SHP file to map
@@ -25,13 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-02-21 23:21:19 | fixed serverSideGridPath issue, fixed announcements height style, table border style, table non-serverside custom pagination & style, lordicon cache, login font issue & add input icon, tooltip style bg, page type 'blog' coming soon.
 - 2025-02-20 08:32:52 | column type "progress2", iconLeft & iconRight on dynamicColumns, etc
 - 2025-02-18 15:09:41 | actions_button with form.
-- 2025-02-17 11:22:41 | now support "lordicon", add pageDescExtra, etc
-- 2025-02-14 23:52:54 | now support images/bg_color/youtube_url on widget & crud announcements, visibility of default widget allow hidden by user and by app setting, force reset reload otherpage on detail page,
-- 2025-02-11 22:22:44 | data index selector to first row in html report
-- 2025-02-11 11:28:57 | afterRenderEvents on extraButton -> renderCustomHtml
-- 2025-02-10 09:59:30 | ai Asistant with custom endpoint on Input
-- 2025-02-05 22:42:55 | summary card widget supported css style in string format with 3 variant.
-- 2025-02-05 13:30:33 | tableSearchByColumn in input with dropdownAsTable
 
 =====================================
 
