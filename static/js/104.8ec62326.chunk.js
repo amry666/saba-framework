@@ -1,1 +1,0 @@
-(this["webpackJsonpsaba-react-framework"]=this["webpackJsonpsaba-react-framework"]||[]).push([[104],{510:function(e){e.exports=JSON.parse('{"pageType":"crud","pageTitle":"Landing Page","pageModuleTitle":"App Setting","crudOpt":{"gridTheme":"list-sortable"}}')}}]);
