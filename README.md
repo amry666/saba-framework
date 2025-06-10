@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250507-1455 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250610-1247 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,15 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-06-10 12:47:53 | fix detail header style
+- 2025-06-10 09:20:04 | new paget type "report_dynamic" for SQL dynamic Reports, fixed map fullscreen side table, new widget type "slider_card", etc
+- 2025-05-22 12:51:56 | activate mapEvents, tableHeaderClassNames, afterEditRedirectPage === false
+- 2025-05-09 18:39:11 | pdf preview on input fileType "previewStyle" & "previewOnly"
+- 2025-05-09 16:24:40 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
+- 2025-05-09 16:24:25 | fixed afterRequest target field if file_image type pdf support test
+- 2025-05-09 16:00:14 | fixed afterRequest target field if file_image type
+- 2025-05-09 15:33:53 | add condition to afterRequest target field is file_image type
+- 2025-05-08 22:44:10 | afterChangeFillOther with operators support in form repeater
 - 2025-05-07 14:55:36 | treeviewDefaultExpanded = true default on unit page, add payloadOnlyChangedInput property to force all input to payload,  fixed last logout url if error, can custom home menu text & icon, classStyleIf on columns, fixed after update and add data if data_idField exist, map centerFromField, get WebCam still on Progress
 - 2025-04-21 15:31:17 | import SHP support zip file
 - 2025-04-21 14:15:09 | detect polyline
@@ -23,15 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-04-11 14:53:01 | map-polygon shared input component
 - 2025-04-11 09:49:58 | map-latlng shared input component
 - 2025-04-10 13:14:52 | useGeolocation property to disable detect current location on map-latlng input
-- 2025-04-10 12:04:35 | map feature  "import .shp" move to input property
-- 2025-04-09 20:45:12 | treeView default expanded, treeview update peformance on search, Map import SHP fixed re-mount on second upload
-- 2025-04-09 13:06:27 | ++new Feature : Import SHP file to map
-- 2025-03-19 12:18:14 | fixed map set zoom on form
-- 2025-03-14 19:06:54 | fixed cachedToIndexDb if no data, add new feature map nested, etc
-- 2025-03-06 20:02:08 | hide PageLength if dynamicColumnsFilterPos ===  "table-header"
-- 2025-03-06 19:42:27 | fixed page Length style issue, add feature cachedToIndexDb, map multipolygon still in progress
-- 2025-02-24 14:38:05 | optimizing on click map marker
-- 2025-02-23 21:02:32 | subtitle & subtitle2 in column, fixed some style
 
 =====================================
 
