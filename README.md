@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250610-1247 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250616-2235 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,10 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-06-16 22:35:47 | fixed if no secondaryColor error handle
+- 2025-06-16 09:38:28 | add features to hide and order system widgets, fixed some style
+- 2025-06-13 15:45:58 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
+- 2025-06-13 15:45:47 | http_request on extraActionButton, etc
 - 2025-06-10 12:47:53 | fix detail header style
 - 2025-06-10 09:20:04 | new paget type "report_dynamic" for SQL dynamic Reports, fixed map fullscreen side table, new widget type "slider_card", etc
 - 2025-05-22 12:51:56 | activate mapEvents, tableHeaderClassNames, afterEditRedirectPage === false
@@ -28,10 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-04-15 14:03:19 | enabled dynamicTooltipColumnsAsModal on map
 - 2025-04-15 11:47:21 | disabled expandable rows on expand show loading if gridtheme not "table-tree","treeview", "map"
 - 2025-04-14 15:09:32 | add button on expandable to solid color
-- 2025-04-14 15:08:42 | input map polygon or latlng with initialViewMode = "satellite"
-- 2025-04-11 14:53:01 | map-polygon shared input component
-- 2025-04-11 09:49:58 | map-latlng shared input component
-- 2025-04-10 13:14:52 | useGeolocation property to disable detect current location on map-latlng input
 
 =====================================
 

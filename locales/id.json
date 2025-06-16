@@ -1197,11 +1197,11 @@
   "Top 10 Active Users in The last 1 Month": "10 Pengguna Aktif Teratas dalam 1 Bulan Terakhir",
   "Connection Failed!": "Koneksi Gagal!",
   "There is a problem connecting to the server or this app is not yet registered with Saba SSO.": "Ada masalah saat menghubungkan ke server atau aplikasi ini belum terdaftar pada Saba SSO.",
-  "Users Login Statistics": "Statistik Login Pengguna",
+  "Users Login Statistics": "Statistik Login",
   "Today": "Hari Ini",
   "Last 7 Days": "7 Hari Terakhir",
   "Last 30 Days": "30 Hari Terakhir",
-  "User Growth Last 1 Week": "Pertumbuhan Login Pengguna se-Minggu Terakhir",
+  "User Growth Last 1 Week": "Pertumbuhan Login Minggu Terakhir",
   "Reimbursement Request": "Ajuan Reimburse",
   "Lens": "Lensa",
   "Amount": "Jumlah",
@@ -1244,5 +1244,6 @@
   "Outpatient": "Rawat Jalan",
   "Search Address or Coordinate": "Cari Alamat atau Koordinat",
   "Example": "Contoh",
-  "example": "contoh"
+  "example": "contoh",
+  "At this time, there is no data.": "Saat ini tidak ada data."
 }
