@@ -5,8 +5,187 @@ const ssoUrl = "https://auth-dev.insaba.co.id/"
 // const ssoUrl = "https://auth.insaba.co.id/"
 // const ssoUrl = "http://127.0.0.1:5001/"
 
+let dataDomain
+let defaultFormValues = {}
 let globalDefaultDataAttr = {}
 const defaultTheme = "naxos"
+
+function renderIcon(
+  iconStr,
+  classz = "me-1",
+  size = null,
+  stylex = "",
+  skin = null
+) {
+  let styleFix = stylex
+
+  if (size && !styleFix.includes("font-size")) {
+    if (iconStr.includes("material")) {
+      let newSize = parseInt(size) + 6
+      styleFix += `font-size: ${newSize}px`
+    } else if (iconStr.includes("fontAwesome")) {
+      let newSize = parseInt(size)
+      styleFix += `font-size: ${newSize}px`
+    } else if (iconStr.includes("lordicon")) {
+      let newSize = parseInt(size) + 2
+      styleFix += `font-size: ${newSize}px`
+    } else {
+      let newSize = parseInt(size) + 3
+      styleFix += `font-size: ${newSize}px`
+    }
+  }
+
+  let iconStrType = "feather"
+  let iconStrFix = iconStr
+  let isSolid = false
+
+  const lordiconProps = {
+    trigger: "loop",
+    stroke: "regular",
+    state: "hover-pinch",
+    delay: "2000"
+  }
+
+  const parts = iconStr.split(":")
+  if (parts.length > 1) {
+    iconStrType = parts[0]
+    iconStrFix = parts[1]
+    isSolid = parts.length > 2 && iconStrType !== "lordicon"
+
+    if (parts.length > 2) {
+      const propStr = parts[2]
+      propStr.split(",").forEach((prop) => {
+        const [key, value] = prop.split("=")
+        if (key && value) {
+          if (key === "colors" && value.includes("-")) {
+            const colorParts = value.match(/var\(--[^)]+\)|[^-]+/g) || []
+            let primary = colorParts[0] ?? "#625f6e"
+            let secondary = colorParts[1] ?? "#83878C"
+            if (secondary.includes("var(--primary-color)")) {
+              secondary = getComputedStyle(document.documentElement)
+                .getPropertyValue("--primary-color")
+                .trim()
+            }
+            lordiconProps[key] = `primary:${primary},secondary:${secondary}`
+          } else if (key === "colors" && value === "system") {
+            classz += " lordicon-color-system"
+            if (skin === "dark") {
+              lordiconProps[key] = `primary:#FFFFFF,secondary:#FFFFFF`
+            } else {
+              lordiconProps[key] = `primary:#625f6e,secondary:#625f6e`
+            }
+          } else {
+            lordiconProps[key] = value
+          }
+        }
+      })
+    }
+  }
+
+  let el
+
+  if (iconStrType.includes("material")) {
+    // el = document.createElement("span")
+    // el.textContent = iconStrFix
+    // el.className = `${
+    //   isSolid ? "material-icons" : "material-icons-outlined"
+    // } ${classz} align-middle`
+    // Object.assign(el.style, styleFix)
+    return `<span style="${styleFix}" class="material-icons ${classz}">${iconStrFix}</span>`
+  } else if (iconStrType === "fontAwesome") {
+    // el = document.createElement("i")
+    // el.className = `fa fa-${iconStrFix} ${classz} align-middle`
+    // Object.assign(el.style, styleFix)
+    return `<i style="${styleFix}" class="fas fa-${iconStrFix} ${classz}"></i>`
+  } else if (iconStrType === "lordicon") {
+    const className = `align-middle ${classz?.replace("me-1", "me-75")}`
+    const width = `${(size ?? 24) + 8}px`
+    const height = `${(size ?? 24) + 8}px`
+    return `
+      <lord-icon
+      class="${className}"
+        src="https://cdn.lordicon.com/${iconStrFix}.json"
+        trigger="${lordiconProps.trigger}"
+        stroke="${lordiconProps.stroke}"
+        state="${lordiconProps.state}"
+        delay="${lordiconProps.delay}"
+        colors="${lordiconProps.colors}"
+        style="width:${width};height:${height}"
+      ></lord-icon>`
+  } else {
+    // fallback feather icon atau default bulatan
+    el = document.createElement("i")
+    el.className = `feather-icon ${iconStrFix} ${classz} align-middle`
+    Object.assign(el.style, styleFix)
+  }
+
+  return el
+}
+
+function hexToRgb(hex) {
+  // Hilangkan tanda '#' jika ada
+  hex = hex.replace("#", "")
+
+  // Ubah nilai warna dari format hex menjadi format RGB
+  const r = parseInt(hex.substring(0, 2), 16)
+  const g = parseInt(hex.substring(2, 4), 16)
+  const b = parseInt(hex.substring(4, 6), 16)
+
+  // Kembalikan nilai warna dalam format RGB
+  return `rgb(${r}, ${g}, ${b})`
+}
+
+function hexToRgbVal(hex) {
+  // Hilangkan tanda '#' jika ada
+  hex = hex.replace("#", "")
+
+  // Ubah nilai warna dari format hex menjadi format RGB
+  const r = parseInt(hex.substring(0, 2), 16)
+  const g = parseInt(hex.substring(2, 4), 16)
+  const b = parseInt(hex.substring(4, 6), 16)
+
+  // Kembalikan nilai warna dalam format RGB
+  return `${r}, ${g}, ${b}`
+}
+
+function replacePrimaryColor(primaryColorBe, secondaryColorBe = null) {
+  // console.log("replace root style begin...")
+  // console.log(secondaryColorBe)
+  const rootSelect = document.documentElement
+  const elementSelect = rootSelect.style
+  elementSelect.setProperty("--bs-primary-rgb", `${primaryColorBe}`)
+  elementSelect.setProperty("--primary-color", `${primaryColorBe}`)
+  if (secondaryColorBe) {
+    elementSelect.setProperty("--secondary-color", `${secondaryColorBe}`)
+  }
+  // console.log("replace root style end...")
+
+  // console.log("replace head style begin...")
+
+  const rgbColor = hexToRgb(primaryColorBe)
+  const rgbColorVal = hexToRgbVal(primaryColorBe)
+  const rgbColorValSecondary = secondaryColorBe
+    ? hexToRgbVal(secondaryColorBe)
+    : null
+
+  const styleElement = document.createElement("style")
+  styleElement.textContent = `
+  :root { 
+    --primary-color: ${primaryColorBe} !important;
+    --bs-primary-rgb: ${rgbColorVal} !important;
+    --primary-color-lightest: rgba(${rgbColorVal}, 0.03) !important;
+    --primary-color-lighter: rgba(${rgbColorVal}, 0.1) !important;
+    --primary-color-light: rgba(${rgbColorVal}, 0.5) !important;
+    --primary-color-semi-light: rgba(${rgbColorVal}, 0.8) !important;
+    --secondary-color: ${secondaryColorBe} !important;
+  }
+`
+  // const titleElement = document.querySelector("title")
+  // document.head.insertBefore(styleElement, titleElement)
+  document.head.appendChild(styleElement)
+
+  // console.log("replace head style end...")
+}
 
 const getDefaultAttributes = (domainClaims) => {
   const app_setting = {
@@ -45,6 +224,9 @@ const getDefaultAttributes = (domainClaims) => {
     app_setting?.layout?.primaryColor ||
     domainClaims?.unit?.unit_app_attributes?.background_video_overlay ||
     domainClaims?.app?.setting?.background_video_overlay
+
+  if (hasColorAttr) {
+  }
 
   const defaultAttr = {
     gridTheme: defaultTheme,
@@ -157,43 +339,43 @@ const getDefaultAttributes = (domainClaims) => {
               title: "Mudah Digunakan",
               subtitle:
                 "Desain UI & UX disesuaikan berdasarkan survei pengguna dan referensi, memastikan kemudahan penggunaan.",
-              icon: "far fa-smile"
+              icon: "lordicon:xlayapaf"
             },
             {
               title: "Responsif",
               subtitle:
                 "Tetap optimal di berbagai perangkat, beradaptasi dengan ukuran layar yang berbeda.",
-              icon: "fas fa-mobile-alt"
+              icon: "lordicon:iuqyhlid"
             },
             {
               title: "Penyimpanan Cloud",
               subtitle:
                 "Kolaborasi dan kontrol data yang mudah, tanpa perlu biaya tambahan untuk server fisik.",
-              icon: "fas fa-cloud-upload-alt"
+              icon: "lordicon:sifiooif"
             },
             {
               title: "Perlindungan Privasi",
               subtitle:
                 "Melindungi data dari akses tidak sah, perubahan, dan pengungkapan tanpa izin.",
-              icon: "fas fa-shield-alt"
+              icon: "lordicon:yaxbmvvh"
             },
             {
               title: "Keamanan Terjamin",
               subtitle:
                 "Penggunaan teknologi TSL dan ORM untuk menjaga kerahasiaan data dan mencegah SQL Injection.",
-              icon: "fas fa-lock"
+              icon: "lordicon:drdlomqk"
             },
             {
               title: "Kinerja Tinggi",
               subtitle:
                 "Aplikasi Halaman Tunggal (SPA) dan Manajemen State untuk mempercepat kinerja aplikasi.",
-              icon: "fas fa-tachometer-alt"
+              icon: "fontAwesome:tachometer-alt"
             },
             {
               title: "Pengembangan Mudah",
               subtitle:
                 "Integrasi dan komunikasi data antar aplikasi menggunakan teknologi REST API.",
-              icon: "fas fa-code"
+              icon: "lordicon:ienbfpxp"
             },
 
             {
@@ -206,7 +388,7 @@ const getDefaultAttributes = (domainClaims) => {
               title: "Fitur Chat",
               subtitle:
                 "Temukan dan mulai obrolan dengan petugas yang sedang bekerja.",
-              icon: "fas fa-comments"
+              icon: "lordicon:fmdwwfgs"
             },
             // {
             //   title: "Migrasi Data",
@@ -216,7 +398,7 @@ const getDefaultAttributes = (domainClaims) => {
             {
               title: "Pusat Bantuan",
               subtitle: `Dapatkan dukungan dari tim support dan helpdesk ${domainClaims?.app?.name}.`,
-              icon: "fas fa-life-ring"
+              icon: "lordicon:abhwievu"
             }
           ]
         },
@@ -246,6 +428,27 @@ const getDefaultAttributes = (domainClaims) => {
           fieldLabel: "",
           fieldDesc: "",
           type: "team",
+          isHidden: true
+        },
+        {
+          fieldName: "blog_latest",
+          fieldLabel: "",
+          fieldDesc: "",
+          type: "blog_latest",
+          isHidden: true
+        },
+        {
+          fieldName: "contact",
+          fieldLabel: "",
+          fieldDesc: "",
+          type: "contact",
+          isHidden: true
+        },
+        {
+          fieldName: "floating_wa",
+          fieldLabel: "",
+          fieldDesc: "",
+          type: "floating_wa",
           isHidden: true
         },
         {
@@ -324,10 +527,90 @@ const getDefaultAttributes = (domainClaims) => {
   return defaultAttr
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  showLoader()
-  updateUrlWithoutReload("/public")
-  fetchData()
+// document.addEventListener("DOMContentLoaded", function () {
+showLoader()
+updateUrlWithoutReload("/public")
+fetchData()
+// })
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form")
+  const submitBtn = document.getElementById("contact-submit")
+  if (form) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault() // Hindari reload form
+
+      const formData = new FormData(form)
+
+      const payload = {}
+      formData.forEach((value, key) => {
+        payload[key] = value
+      })
+
+      // Disable tombol dan ubah teks saat loading
+      submitBtn.disabled = true
+      submitBtn.textContent = "Mengirim..."
+
+      try {
+        const response = await fetch(`${ssoUrl}api/app/landing_page_contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        })
+
+        if (response.ok) {
+          Swal.fire({
+            icon: "success",
+            title: "Pesan Terkirim!",
+            text: "Terima kasih, kami akan segera menghubungi Anda."
+          })
+          form.reset()
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Gagal Mengirim",
+            text: "Silakan coba lagi nanti."
+          })
+        }
+      } catch (error) {
+        console.error("Error:", error)
+        Swal.fire({
+          icon: "error",
+          title: "Terjadi Kesalahan",
+          text: "Periksa koneksi Anda atau hubungi admin."
+        })
+      } finally {
+        // Aktifkan kembali tombol setelah selesai
+        submitBtn.disabled = false
+        submitBtn.textContent = "Kirim Pesan"
+
+        const contact_message = document.getElementById("contact_message")
+        if (contact_message) {
+          contact_message.value = defaultFormValues?.contact_message
+        }
+
+        const contact_appname = document.getElementById("contact_appname")
+        if (contact_appname) {
+          contact_appname.value = defaultFormValues?.contact_appname
+        }
+
+        const contact_subject = document.getElementById("contact_subject")
+        if (contact_subject) {
+          contact_subject.value = defaultFormValues?.contact_subject
+        }
+
+        const contact_message_category = document.getElementById(
+          "contact_message_category"
+        )
+        if (contact_message_category) {
+          contact_message_category.value =
+            defaultFormValues?.contact_message_category
+        }
+      }
+    })
+  }
 })
 
 // window.onload = function () {
@@ -376,6 +659,41 @@ async function fetchData() {
       const publicAttributes = data?.data?.landing_page_attr
       const theme = publicAttributes?.gridTheme ?? defaultTheme
 
+      dataDomain = data?.data
+      // console.log(data.data)
+      const app_setting = {
+        ...{
+          layout: data.data?.unit?.unit_app_attributes?.layout ?? {}
+        },
+        ...(data?.data?.app?.setting ?? {})
+      }
+
+      // console.log(app_setting)
+      const primaryColor =
+        app_setting?.layout?.primaryColor ??
+        app_setting?.primaryColor ??
+        "#007aff"
+      const secondaryColor =
+        app_setting?.layout?.secondaryColor ?? app_setting?.secondaryColor
+      if (primaryColor) {
+        replacePrimaryColor(primaryColor, secondaryColor)
+
+        if (secondaryColor) {
+          const style = document.createElement("style")
+          style.type = "text/css"
+          style.textContent = `
+            .banner::before {
+              background: linear-gradient(
+                -47deg,
+                var(--secondary-color) 0%,
+                var(--primary-color) 100%
+              ) !important;
+            }
+          `
+          document.head.appendChild(style)
+        }
+      }
+
       // SECTION TYPE HIDE ALL FIRST
       const sectionsType = document.querySelectorAll(`[saba-section-type]`)
 
@@ -403,21 +721,50 @@ async function fetchData() {
 
       //   console.log(publicAttributes?.data?.mainMenu)
       let newMenuElement = ``
+      let menuTextLength = 0
+
       mainMenu.forEach((menu) => {
-        ///SET MAIN MENU SYNC WITH SECTION
-        newMenuElement += ` <li class="nav-item">
-                                <a class="nav-link js-scroll-trigger ${
-                                  menu?.link === "#top-page" ? "active" : ""
-                                }" target="${
-          menu?.link?.includes("http://") || menu?.link?.includes("https://")
-            ? "_blank"
-            : "_self"
-        }" href="${menu?.link}">
-                                <span>${menu?.title}</span>
-                                </a>
-                                </li>`
+        const hasChildren = Array.isArray(menu.data) && menu.data.length > 0
+
+        if (menu?.title) {
+          menuTextLength += menu.title.length
+        }
+
+        newMenuElement += `
+    <li class="nav-item ${hasChildren ? "dropdown" : ""}">
+      <a class="nav-link js-scroll-trigger ${
+        menu?.link === "#top-page" ? "active" : ""
+      }" 
+         href="${menu?.link}"
+         target="${menu?.link?.startsWith("http") ? "_blank" : "_self"}">
+        <span>${menu?.title}</span>
+      </a>`
+
+        if (hasChildren) {
+          newMenuElement += `<ul class="submenu">`
+
+          menu.data.forEach((child) => {
+            newMenuElement += `
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" 
+             href="${child?.link}" 
+             target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
+            <span>${child?.title}</span>
+          </a>
+        </li>`
+          })
+
+          newMenuElement += `</ul>`
+        }
+
+        newMenuElement += `</li>`
       })
+
       const menuElement = document.querySelector(".saba_main_menu")
+      // console.log(menuTextLength)
+      if (menuTextLength > 80) {
+        menuElement.classList.add("saba_main_menu_long")
+      }
       menuElement.innerHTML = newMenuElement
 
       //// RENDER BANNER
@@ -473,6 +820,7 @@ async function fetchData() {
         dynamicSection.unshift(bannerDataDefault)
       }
 
+      // console.log("Dynamic Section", dynamicSection)
       //   dynamicSection.find((item) => item?.type === "banner").data =
       //     mixBannerData
       //   console.log(dynamicSection)
@@ -497,12 +845,14 @@ async function fetchData() {
         let sections_order = publicAttributes?.data?.dynamicSection?.map(
           (section) => {
             let secName = section.type
+            // console.log(secName)
             if (!section.isHidden) {
               return secName
             }
           }
         )
-        // console.log(sectionsType)
+
+        // console.log(sections_order)
         const sectionsMap = {}
         sectionsType.forEach((element) => {
           let sectionTypeName = element.getAttribute("saba-section-type")
@@ -511,6 +861,8 @@ async function fetchData() {
           //   sectionTypeName = "header"
           // }
           // element.style.display = "inherit"
+
+          // console.log(sectionTypeName)
           sectionsMap[sectionTypeName] = element
           if (
             !defaultAttributes.data.dynamicSection
@@ -547,7 +899,7 @@ async function fetchData() {
       dynamicSection.forEach((attr) => {
         if (!attr?.isHidden) {
           const attributeValue = attr?.type
-          //    console.log(attributeValue, `[${attributeName}="${attributeValue}"]`)
+          // console.log(attributeValue, `[${attributeName}="${attributeValue}"]`)
           const element = document.querySelector(
             `[${attributeName}="${attributeValue}"]`
           )
@@ -591,6 +943,10 @@ async function fetchData() {
 
               //   console.log(attributeName, sampleData)
               let dataAttr = attr?.data ?? sampleData
+
+              // console.log(attr)
+
+              // $(".owl-carousel").trigger("destroy.owl.carousel")
               if (attr?.html) {
                 childElement.innerHTML = attr.html
               } else if (!attr?.html && dataAttr) {
@@ -601,6 +957,8 @@ async function fetchData() {
                   attr
                 )
               }
+
+              // $(".owl-carousel").trigger("refresh.owl.carousel")
             }
 
             let copyFooter = null
@@ -621,15 +979,48 @@ async function fetchData() {
         }
       })
 
+      sectionsType.forEach((element) => {
+        let sectionTypeName = element.getAttribute("saba-section-type")
+        // console.log(sectionTypeName)
+        // if (sectionTypeName === "banner") {
+        //   sectionTypeName = "header"
+        // }
+        // element.style.display = "inherit"
+        let currentItem = publicAttributes.data.dynamicSection?.find(
+          (item) => !item?.isHidden && item.type === sectionTypeName
+        )
+        // ?.map((sextion) => sextion.type === sectionTypeName)
+        // console.log(currentItem)
+        if (
+          [
+            "parallax-video",
+            "overview",
+            "team",
+            "faq",
+            "table-price",
+            "services",
+            "articles-latest",
+            "slider_img",
+            "blog_latest"
+          ].includes(sectionTypeName) &&
+          (!currentItem?.data || currentItem?.fieldLabel === "")
+        ) {
+          element.style.display = "none"
+          element.remove()
+        }
+      })
       //   console.log(data)
       updateMainElements(data, defaultAttributes)
-      const app_setting = {
-        ...{
-          layout: data.data?.unit?.unit_app_attributes?.layout ?? {}
-        },
-        ...(data?.data?.app?.setting ?? {})
-      }
 
+      // sectionsType.forEach((element) => {
+      //   let sectionTypeName = element.getAttribute("saba-section-type")
+      //   if (
+      //     sectionTypeName === "parallax-video" &&
+      //     !sections_order.includes("parallax-video")
+      //   ) {
+      //     element.style.display = "none"
+      //   }
+      // })
       // COLORS
       //   if (
       //     app_setting?.layout?.primaryColor ||
@@ -645,16 +1036,72 @@ async function fetchData() {
       //   }
 
       // console.log(app_setting?.layout?.primaryColor)
-      if (app_setting?.layout?.primaryColor) {
+      if (primaryColor) {
         // setTimeout(() => {
-        replaceColorCode("#004899", app_setting?.layout?.primaryColor)
+        replaceColorCode("#004899", primaryColor)
         // }, 1000)
       }
     })
     .then((response) => {
       setTimeout(() => {
         hideLoader()
-      }, 500)
+
+        const carousels = document.querySelectorAll(".owl-carousel")
+
+        carousels.forEach((el) => {
+          const $el = $(el)
+
+          if ($el.hasClass("owl-loaded")) {
+            $el.trigger("destroy.owl.carousel")
+            $el.find(".owl-stage-outer").children().unwrap()
+            $el.removeClass("owl-loaded owl-hidden")
+          }
+
+          $el.owlCarousel({
+            // items: 3,
+            loop: true
+            // margin: 10,
+            // nav: true
+          })
+        })
+
+        // ==== SLICK SLIDER ====
+        if ($(".testimonial-slider").length > 0) {
+          $(".testimonial-slider").slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: ".testimonial-nav"
+          })
+
+          $(".testimonial-nav").slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            asNavFor: ".testimonial-slider",
+            arrows: false,
+            centerMode: true,
+            focusOnSelect: true,
+            variableWidth: false,
+            responsive: [
+              {
+                breakpoint: 991,
+                settings: {
+                  slidesToShow: 3,
+                  arrows: false
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  arrows: false
+                }
+              }
+            ]
+          })
+        }
+      }, 100)
     })
     .catch((error) => {
       console.error("Error fetching data:", error)
@@ -868,11 +1315,21 @@ function replaceColorCode(oldColor, newColor) {
       color: ${newColor};
     }
   `
+  const newStyles2 = `.btn, .to-top:hover, .play-btn, .service-single:hover, .service-single .icon, .overview-box .icon, .overview-box:hover, .fixed-menu .nav-menu li a.active span:after, .nav-menu li.dropdown .submenu li a:hover, .nav-menu li.dropdown .submenu li a.active-submenu, .search-wrapper .search-close-btn:hover:before, .search-wrapper .search-close-btn:hover:after, .clients-slider .owl-dots .active span, .screenshot-slider .owl-dots .active span, .blog-home .blog-col:hover .blog-category, .page-title .blog-category > a:hover, .pagination li a.active, .pagination li a:hover, .pagination li:last-child a, .pagination li:first-child a, .sidebar ul.menu li span, .recent-post-image:before, .author-social a:hover, .member-info:after, .progress .progress-bar, .progress-heading .progress-value > span, .tags .tag:hover, blockquote {
+    background-color: ${newColor};
+  }
+  `
+
+  const newStyles3 = `.custom-btn, .price-table.plan-popular, .service-single.service-style-2:hover, .testimonial-carousel .carousel-images .slick-center img, .clients-slider .owl-dots .owl-dot span, .screenshot-slider .owl-dots .owl-dot span, .progress-heading .progress-value > span:before {
+    border-color: ${newColor};
+}`
 
   const head = document.head || document.getElementsByTagName("head")[0]
   const newStyleElement = document.createElement("style")
   newStyleElement.type = "text/css"
   newStyleElement.appendChild(document.createTextNode(newStyles))
+  newStyleElement.appendChild(document.createTextNode(newStyles2))
+  newStyleElement.appendChild(document.createTextNode(newStyles3))
   head.appendChild(newStyleElement)
 
   // const styleElement = document.getElementById("saba_css_color")
@@ -919,6 +1376,13 @@ const renderHtml = (type, theme, data, attr) => {
     return renderHtml_services(theme, data, attr?.mainImage)
   } else if (type === "overview") {
     return renderHtml_overview(theme, data, attr?.mainImage)
+  } else if (type === "blog_latest") {
+    // console.log(data)
+    return renderHtml_blog_latest(theme, data, attr?.mainImage)
+  } else if (type === "contact") {
+    return renderHtml_contact(theme, data, attr?.mainImage)
+  } else if (type === "floating_wa") {
+    return renderHtml_floating_wa(theme, data, attr)
   }
 }
 
@@ -1034,7 +1498,173 @@ const renderHtml_overview = (theme, data) => {
                     </div>`)
     })
   }
-  let separator = '<div class="empty-100"></div>'
+  let separator = ""
+  return result.join(separator)
+}
+
+const renderHtml_blog_latest = (theme, data) => {
+  // console.log(data)
+  let result = []
+  if (theme === "naxos") {
+    data.forEach((item, index) => {
+      const title = item?.title ?? ""
+      const subtitle = item?.subtitle ?? ""
+      const link = item?.link ?? "#"
+      const image =
+        item?.image ?? "https://via.placeholder.com/300x200.png?text=No+Image"
+      const badgeText = item?.badgeText
+        ? `<span class="blog-category">${item?.badgeText}</span>`
+        : ""
+      const target =
+        link?.includes("http") || link?.includes("https") ? "blank" : "_self"
+      result.push(`
+                <!-- Item ${index} -->
+                 <div class="col-12 col-lg-3 res-margin">
+                  <div class="blog-col">
+                    <div>
+                      <a target="${target}" href="${link}">
+                        <div class="blog-img" style="height: 200px;background: url(${image}) #f5f1f1 center no-repeat;background-size: 90%;border-radius: 6px;">
+                        </div>
+                      </a>
+                      ${badgeText}
+                    </div>
+
+                    <div class="blog-wrapper">
+                      <div class="blog-text">
+                        <h4>
+                          <a target="_blank" href="${link}"
+                            >${title}</a
+                          >
+                        </h4>
+
+                        <p style="margin-bottom:25px;">
+                          ${subtitle}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                `)
+    })
+  }
+  let separator = ""
+  return result.join(separator)
+}
+
+const renderHtml_contact = (theme, data) => {
+  let result = []
+  let separator = ""
+  if (theme === "naxos") {
+    result.push(`
+      <h5>
+        <span class="icon icon-basic-geolocalize-05"></span>
+        Alamat
+      </h5>
+      <p id="contact-address">
+       ${data?.address ?? ""}
+      </p>
+
+      <h5>
+        <span class="icon icon-basic-smartphone"></span>
+        Nomor Telepon
+      </h5>
+      <p id="contact-phoneNum">
+        <a href="tel:${data?.phoneNum ?? ""}">${data?.phoneNum ?? ""}</a>
+      </p>
+
+      <h5>
+        <span class="icon icon-basic-mail"></span>
+        Email
+      </h5>
+      <p>
+        <a id="contact-email" href="mailto:${data?.email ?? ""}">
+          ${data?.email ?? ""}</a>
+      </p>
+
+      <h5>
+        <span class="icon icon-basic-clock"></span>
+        Jam Kerja
+      </h5>
+      <p id="contact-workingHour">${data?.workingHour ?? ""}</p>
+    `)
+
+    const appName = dataDomain?.app?.name ?? ""
+    const contact_appname = document.getElementById("contact_appname")
+    if (contact_appname) {
+      contact_appname.value = appName
+      defaultFormValues["contact_appname"] = appName
+    }
+
+    if (data?.isRequestDemoApp) {
+      const contact_subject = document.getElementById("contact_subject")
+      if (contact_subject) {
+        const value = `Permintaan Demo ${appName}`
+        contact_subject.value = value
+        defaultFormValues["contact_subject"] = value
+      }
+
+      const contact_message = document.getElementById("contact_message")
+      if (contact_message) {
+        const value = `Dengan hormat, Saya bermaksud untuk mengajukan permohonan demo aplikasi ${appName} agar dapat memahami fitur dan fungsionalitasnya secara lebih mendalam. Atas perhatian dan kesempatannya, saya ucapkan terima kasih.`
+        contact_message.value = value
+        defaultFormValues["contact_message"] = value
+      }
+
+      const contact_message_category = document.getElementById(
+        "contact_message_category"
+      )
+      let value = ""
+      if (contact_message_category) {
+        value = `Permintaan Demo Aplikasi`
+      } else {
+        value = `Pesan Biasa`
+      }
+      contact_message_category.value = value
+      defaultFormValues["contact_message_category"] = value
+    }
+  }
+  return result.join(separator)
+}
+
+const renderHtml_floating_wa = (theme, data, attr) => {
+  const appName = dataDomain?.app?.name ?? ""
+  let result = []
+  let separator = ""
+  let text =
+    attr?.fieldLabel && attr?.fieldLabel !== ""
+      ? `<span>${attr?.fieldLabel}</span>`
+      : ""
+  let btn_class = text && text !== "" ? "" : "btn-only"
+  // Fungsi normalisasi nomor telepon
+  const normalizePhoneNumber = (rawNumber) => {
+    if (!rawNumber) return ""
+    // Hapus semua karakter selain angka
+    let cleaned = rawNumber.replace(/[^\d]/g, "")
+    // Jika dimulai dengan "0", ganti jadi "62"
+    if (cleaned.startsWith("0")) {
+      cleaned = `62${cleaned.substring(1)}`
+    }
+    return cleaned
+  }
+
+  // Fungsi replace template seperti {appName}
+  const replaceTemplateVars = (text, vars) => {
+    if (!text) return ""
+    return text.replace(/{(\w+)}/g, (_, key) => vars[key] ?? "")
+  }
+
+  if (theme === "naxos") {
+    let phoneNum = normalizePhoneNumber(data?.phoneNum ?? "6281313964776")
+    let rawTemplate =
+      data?.messageTemplate ??
+      `Halo, Saya ingin konsultasi mengenai aplikasi ${appName}.`
+    let parsedMessage = replaceTemplateVars(rawTemplate, { appName })
+    let encodedMessage = encodeURIComponent(parsedMessage)
+    result.push(`<a class="${btn_class}" href="https://api.whatsapp.com/send?phone=${phoneNum}&text=${encodedMessage}" target="_blank">
+    ${renderIcon("lordicon:edecmgef:colors=#ffffff-#ebe6ef", "", 15)}
+   ${text}
+  </a>`)
+  }
   return result.join(separator)
 }
 
@@ -1061,12 +1691,15 @@ const renderHtml_services = (theme, data) => {
 const renderHtml_banner_btn = (buttons) => {
   let result = ""
   buttons.forEach((btn, indexBtn) => {
+    // console.log(btn?.icon)
+    // console.log(renderIcon(btn?.icon))
+    let icon = btn?.icon ? renderIcon(btn?.icon, "me-2", 40) : ""
     result += `<a
                    ${btn?.link?.includes("#") ? "" : ' target="blank_"'}
                     href="${btn?.link ?? "#"}"
                     class="custom-btn d-inline-flex align-items-center m-2 m-sm-0 me-sm-3"
                     >
-                    ${btn?.icon ? `<i class="${btn.icon}"></i>` : ""}
+                      ${icon}
                     <p>${btn?.subtitle}<span>${btn?.title}</span></p>
                 </a>`
   })
@@ -1117,6 +1750,21 @@ const renderHtml_banner = (theme, data, attr) => {
   data.forEach((item, index) => {
     if (theme === "naxos") {
       if (index === 0) {
+        const image = item?.image ?? bannerDataDefault?.image
+        let imageEl = false
+
+        if (image) {
+          if (image?.endsWith(".lottie")) {
+            imageEl = ` <dotlottie-player  class="bounce-effect" src="${
+              item?.image ?? bannerDataDefault?.image
+            }" background="transparent" speed="1" style="width: 400px; height: 400px" direction="1" playMode="forward" loop autoplay></dotlottie-player>`
+          } else {
+            imageEl = `<img class="bounce-effect" src="${
+              item?.image ?? bannerDataDefault?.image
+            }"/>`
+          }
+        }
+
         result += `
             ${
               item?.background_video || bannerDataDefault.background_video
@@ -1132,6 +1780,7 @@ const renderHtml_banner = (theme, data, attr) => {
                     ></iframe>`
                 : ""
             }
+            
             
             <!-- Container -->
             <div class="container mt-lg-5">
@@ -1186,11 +1835,7 @@ const renderHtml_banner = (theme, data, attr) => {
                             data-wow-duration="1s"
                             data-wow-delay="0.3s"
                         >
-                            <img
-                                class="bounce-effect"
-                                src="${item?.image ?? bannerDataDefault?.image}"
-                              
-                            />
+                        ${imageEl}
                         </div>
                     </div>
                 </div>
@@ -1233,12 +1878,19 @@ const renderHtml_features = (theme, data, mainImage) => {
   let column2 = []
   if (theme === "naxos") {
     data.forEach((item, index) => {
+      let icon = item?.icon ?? ""
+      if (icon?.includes(":")) {
+        icon = renderIcon(item?.icon, "icon", 35)
+      } else {
+        icon = `<div class="icon ${item?.icon ?? ""}"></div>`
+      }
+
       let featureBoxEl = `
                         <li>
                             <div class="feature-box d-flex">
 
                             <div style="text-align: center;" class="box-icon">
-                                <div class="icon ${item?.icon ?? ""}"></div>
+                                ${icon ?? ""}
                             </div>
 
                             <div style="min-height: 120px;" class="box-text align-self-center align-self-md-start">
