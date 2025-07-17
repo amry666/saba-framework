@@ -1,0 +1,9 @@
+@media (min-width: 992px) {
+  .saba_banner div {
+    width: 40vw;
+  }
+  .saba_banner div img {
+    width: 40vw;
+    margin-left: -300px;
+  }
+}

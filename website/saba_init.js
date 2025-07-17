@@ -1,3 +1,6 @@
+/* eslint-disable no-mixed-operators */
+// import { theme } from "react-contexify"
+
 const currentUrl = window.location.href
 const currentPath = window.location.pathname
 const currentDomain = new URL(currentUrl).origin
@@ -8,7 +11,103 @@ const ssoUrl = "https://auth-dev.insaba.co.id/"
 let dataDomain
 let defaultFormValues = {}
 let globalDefaultDataAttr = {}
-const defaultTheme = "naxos"
+let defaultTheme = "naxos"
+let activeTheme = "naxos"
+let activeThemeFolder = "naxos"
+let activeThemeFullName = "naxos"
+let activeLatLng = ""
+
+let default_color_themes = {
+  naxos: ["#007aff", "#007aff"],
+  appsland: ["#6E49D9", "#01DBB0", "#ED9443"]
+}
+function renderMenu(theme, mainMenu) {
+  let newMenuElement = ``
+  let menuTextLength = 0
+  let newMenuElementFooter = ``
+  if (theme === "naxos") {
+    mainMenu.forEach((menu) => {
+      const hasChildren = Array.isArray(menu.data) && menu.data.length > 0
+
+      if (menu?.title) {
+        menuTextLength += menu.title.length
+      }
+
+      newMenuElement += `
+    <li class="nav-item ${hasChildren ? "dropdown" : ""}">
+      <a class="nav-link js-scroll-trigger ${
+        menu?.link === "#top-page" ? "active" : ""
+      }"
+         href="${menu?.link}"
+         target="${menu?.link?.startsWith("http") ? "_blank" : "_self"}">
+        <span>${menu?.title}</span>
+      </a>`
+
+      if (hasChildren) {
+        newMenuElement += `<ul class="submenu">`
+
+        menu.data.forEach((child) => {
+          newMenuElement += `
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger"
+             href="${child?.link}"
+             target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
+            <span>${child?.title}</span>
+          </a>
+        </li>`
+        })
+
+        newMenuElement += `</ul>`
+      }
+
+      newMenuElement += `</li>`
+    })
+  } else if (theme?.includes("appsland")) {
+    mainMenu.forEach((menu) => {
+      const hasChildren = Array.isArray(menu.data) && menu.data.length > 0
+
+      if (menu?.title) {
+        menuTextLength += menu.title.length
+      }
+
+      let link = menu?.link
+      if (menu?.link === "#top-page") {
+        link = "#home"
+      }
+      newMenuElement += `
+      <li class="${
+        link === "#top-page" ? "active" : ""
+      }"><a class="nav-item" href="${link}" target="${
+        link?.startsWith("http") ? "_blank" : "_self"
+      }">${menu?.title}</a></li>
+    `
+
+      newMenuElementFooter += ` <li><a class="nav-item" target="${
+        menu?.link?.startsWith("http") ? "_blank" : "_self"
+      }" href="${link}">${menu?.title}</a></li>`
+
+      // if (hasChildren) {
+      //   newMenuElement += `<ul class="submenu">`
+
+      //   menu.data.forEach((child) => {
+      //     newMenuElement += `
+      //   <li class="nav-item">
+      //     <a class="nav-link js-scroll-trigger"
+      //        href="${child?.link}"
+      //        target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
+      //       <span>${child?.title}</span>
+      //     </a>
+      //   </li>`
+      //   })
+
+      //   newMenuElement += `</ul>`
+      // }
+
+      newMenuElement += `</li>`
+    })
+  }
+  return { newMenuElement, menuTextLength, newMenuElementFooter }
+}
 
 function renderIcon(
   iconStr,
@@ -96,7 +195,14 @@ function renderIcon(
     // el = document.createElement("i")
     // el.className = `fa fa-${iconStrFix} ${classz} align-middle`
     // Object.assign(el.style, styleFix)
-    return `<i style="${styleFix}" class="fas fa-${iconStrFix} ${classz}"></i>`
+    // console.log(iconStrFix)
+    let classFirst = `${iconStrFix} ${classz}`
+    if (
+      !["fas ", "fab ", "far "].some((prefix) => iconStrFix.startsWith(prefix))
+    ) {
+      classFirst = `fas fa-${iconStrFix} ${classz}`
+    }
+    return `<i style="${styleFix}" class="${classFirst}"></i>`
   } else if (iconStrType === "lordicon") {
     const className = `align-middle ${classz?.replace("me-1", "me-75")}`
     const width = `${(size ?? 24) + 8}px`
@@ -114,12 +220,118 @@ function renderIcon(
       ></lord-icon>`
   } else {
     // fallback feather icon atau default bulatan
-    el = document.createElement("i")
-    el.className = `feather-icon ${iconStrFix} ${classz} align-middle`
-    Object.assign(el.style, styleFix)
+    // el = document.createElement("i")
+    // el.className = `feather-icon ${iconStrFix} ${classz} align-middle`
+    // Object.assign(el.style, styleFix)
+    // console.log(iconStrFix)
+    let classFirst = `${iconStrFix} ${classz}`
+    if (
+      !["fas ", "fab ", "far "].some((prefix) => iconStrFix.startsWith(prefix))
+    ) {
+      classFirst = `fas fa-${iconStrFix} ${classz}`
+    }
+    return `<i style="${styleFix}" class="${classFirst}"></i>`
+    // return `<div class="icon ${item?.icon ?? ""}"></div>`
   }
 
   return el
+}
+
+function reInitiatePlugins(theme = "naxos") {
+  if (theme === "naxos") {
+    // const carousels = document.querySelectorAll(".owl-carousel")
+    // carousels.forEach((el) => {
+    //   const $el = $(el)
+    //   if ($el.hasClass("owl-loaded")) {
+    //     $el.trigger("destroy.owl.carousel")
+    //     $el.find(".owl-stage-outer").children().unwrap()
+    //     $el.removeClass("owl-loaded owl-hidden")
+    //   }
+    //   $el.owlCarousel({
+    //     // items: 3,
+    //     loop: true
+    //     // margin: 10,
+    //     // nav: true
+    //   })
+    // })
+    // // ==== SLICK SLIDER ====
+    // if ($(".testimonial-slider").length > 0) {
+    //   $(".testimonial-slider").slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     fade: true,
+    //     asNavFor: ".testimonial-nav"
+    //   })
+    //   $(".testimonial-nav").slick({
+    //     slidesToShow: 5,
+    //     slidesToScroll: 1,
+    //     asNavFor: ".testimonial-slider",
+    //     arrows: false,
+    //     centerMode: true,
+    //     focusOnSelect: true,
+    //     variableWidth: false,
+    //     responsive: [
+    //       {
+    //         breakpoint: 991,
+    //         settings: {
+    //           slidesToShow: 3,
+    //           arrows: false
+    //         }
+    //       },
+    //       {
+    //         breakpoint: 480,
+    //         settings: {
+    //           slidesToShow: 1,
+    //           arrows: false
+    //         }
+    //       }
+    //     ]
+    //   })
+    // }
+    // //Screenshots
+    // if ($(".screenshot-slider").length > 0) {
+    //   var $screenshot = $(".screenshot-slider")
+    //   $screenshot.owlCarousel({
+    //     responsive: {
+    //       0: {
+    //         items: 1
+    //       },
+    //       768: {
+    //         items: 2
+    //       },
+    //       960: {
+    //         items: 4
+    //       }
+    //     },
+    //     responsiveClass: true,
+    //     autoplay: true,
+    //     autoplaySpeed: 1000,
+    //     loop: true,
+    //     margin: 30,
+    //     dotsEach: 2,
+    //     rtl: NaxosOptions.rtl
+    //   })
+    //   if ($screenshot.hasClass("zoom-screenshot")) {
+    //     $screenshot.magnificPopup({
+    //       delegate: "a",
+    //       type: "image",
+    //       closeOnContentClick: false,
+    //       closeBtnInside: false,
+    //       mainClass: "mfp-with-zoom",
+    //       image: { verticalFit: true },
+    //       gallery: { enabled: true },
+    //       zoom: {
+    //         enabled: true,
+    //         duration: 300, // Don't forget to change the duration also in CSS
+    //         opener: function (element) {
+    //           return element.find("img")
+    //         }
+    //       }
+    //     })
+    //   }
+    // }
+  }
 }
 
 function hexToRgb(hex) {
@@ -213,7 +425,7 @@ const getDefaultAttributes = (domainClaims) => {
   const bgImgFix =
     domainClaims?.unit?.unit_app_attributes?.background_img ??
     domainClaims?.app?.logo?.background_img ??
-    `${currentDomain}/website/${defaultTheme}/images/banner/single-image.jpg`
+    `${currentDomain}/website/${activeThemeFolder}/images/banner/single-image.jpg`
 
   const mainBgVideoFix =
     domainClaims?.unit?.unit_app_attributes?.background_video ??
@@ -528,12 +740,52 @@ const getDefaultAttributes = (domainClaims) => {
 }
 
 // document.addEventListener("DOMContentLoaded", function () {
-showLoader()
-updateUrlWithoutReload("/public")
-fetchData()
+// showLoader()
+// updateUrlWithoutReload("/public")
+// fetchData()
 // })
 
-document.addEventListener("DOMContentLoaded", () => {
+function loadScript(src, callback) {
+  const script = document.createElement("script")
+  script.src = src
+  script.onload = callback
+  script.onerror = () => console.error(`Failed to load ${src}`)
+  document.body.appendChild(script)
+}
+
+async function sabaInit() {
+  showLoader()
+  updateUrlWithoutReload("/public")
+
+  await fetchData() // tunggu sampai selesai
+
+  // Setelah fetchData selesai, baru load main.js
+  activeTheme = localStorage.getItem("default_theme_public")
+  activeThemeSuffix = localStorage.getItem("default_theme_public_suffix")
+  activeThemeFolder = localStorage.getItem("default_theme_public_folder")
+  if (activeTheme === "naxos") {
+    loadScript(`website/${activeThemeFolder}/assets/js/main.js`, () => {
+      console.log("main.js loaded and executed.")
+    })
+  } else if (activeTheme.includes("appsland")) {
+    loadScript(
+      `website/${activeThemeFolder}/assets/js/jquery.bundle.js`,
+      () => {
+        console.log("jquery.bundle.js loaded and executed.")
+        loadScript(`website/${activeThemeFolder}/assets/js/script.js`, () => {
+          console.log("script.js loaded and executed.")
+        })
+      }
+    )
+  }
+}
+
+// Jalankan saat DOM siap (jika kamu masih pakai defer di HTML)
+// document.addEventListener("DOMContentLoaded", )
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await sabaInit()
+
   const form = document.getElementById("contact-form")
   const submitBtn = document.getElementById("contact-submit")
   if (form) {
@@ -620,8 +872,20 @@ document.addEventListener("DOMContentLoaded", () => {
 // }
 
 function showLoader() {
-  // Show the loader overlay
-  const loaderOverlay = document.getElementById("saba_loader-overlay")
+  let loaderOverlay = document.getElementById("saba_loader-overlay")
+
+  if (!loaderOverlay) {
+    // Buat ulang elemen sesuai struktur HTML yang kamu kasih
+    loaderOverlay = document.createElement("div")
+    loaderOverlay.id = "saba_loader-overlay"
+
+    const loader = document.createElement("div")
+    loader.id = "saba_loader"
+
+    loaderOverlay.appendChild(loader)
+    document.body.appendChild(loaderOverlay)
+  }
+
   loaderOverlay.style.display = "flex"
 }
 
@@ -636,28 +900,523 @@ const defaultMenuTitle = (fieldName) => {
   else if (fieldName === "clients") return "Home"
 }
 
+// async function fetchDataOld() {
+//   const postData = {
+//     // key1: "value1",
+//     // key2: "value2"
+//   }
+
+//   // const domainClaimStorage = JSON.parse(localStorage.getItem("domainClaim"))
+
+//   await fetch(`${ssoUrl}domain_claims`, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       public: "1"
+//     },
+//     body: JSON.stringify(postData)
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data?.message === "Domain not found!") {
+//         return (window.location.href = currentDomain)
+//       }
+//       const defaultAttributes = getDefaultAttributes(data.data)
+//       const publicAttributes = data?.data?.landing_page_attr
+//       const theme = publicAttributes?.gridTheme ?? defaultTheme
+//       activeTheme = theme
+//       dataDomain = data?.data
+//       // console.log(data.data)
+//       const app_setting = {
+//         ...{
+//           layout: data.data?.unit?.unit_app_attributes?.layout ?? {}
+//         },
+//         ...(data?.data?.app?.setting ?? {})
+//       }
+
+//       // console.log(app_setting)
+//       const primaryColor =
+//         app_setting?.layout?.primaryColor ??
+//         app_setting?.primaryColor ??
+//         "#007aff"
+//       const secondaryColor =
+//         app_setting?.layout?.secondaryColor ?? app_setting?.secondaryColor
+//       if (primaryColor) {
+//         replacePrimaryColor(primaryColor, secondaryColor)
+
+//         if (secondaryColor) {
+//           const style = document.createElement("style")
+//           style.type = "text/css"
+//           style.textContent = `
+//             .banner::before {
+//               background: linear-gradient(
+//                 -47deg,
+//                 var(--secondary-color) 0%,
+//                 var(--primary-color) 100%
+//               ) !important;
+//             }
+//           `
+//           document.head.appendChild(style)
+//         }
+//       }
+
+//       // SECTION TYPE HIDE ALL FIRST
+//       const sectionsType = document.querySelectorAll(`[saba-section-type]`)
+
+//       sectionsType.forEach((element) => {
+//         element.style.display = "none"
+//       })
+
+//       //// RENDER MENU
+//       const mainMenuFromSection = () => {
+//         let menu = publicAttributes?.data?.dynamicSection?.find(
+//           (section) => section.type === "header"
+//         )?.data
+//         if (menu?.length > 0) {
+//           return menu
+//         } else {
+//           return null
+//         }
+//       }
+//       const mainMenu = [
+//         { title: "Home", link: "#top-page" },
+//         ...(mainMenuFromSection() ??
+//           publicAttributes?.data?.mainMenu ??
+//           defaultAttributes.data.mainMenu)
+//       ]
+
+//       //   console.log(publicAttributes?.data?.mainMenu)
+//       let newMenuElement = ``
+//       let menuTextLength = 0
+
+//       mainMenu.forEach((menu) => {
+//         const hasChildren = Array.isArray(menu.data) && menu.data.length > 0
+
+//         if (menu?.title) {
+//           menuTextLength += menu.title.length
+//         }
+
+//         newMenuElement += `
+//     <li class="nav-item ${hasChildren ? "dropdown" : ""}">
+//       <a class="nav-link js-scroll-trigger ${
+//         menu?.link === "#top-page" ? "active" : ""
+//       }"
+//          href="${menu?.link}"
+//          target="${menu?.link?.startsWith("http") ? "_blank" : "_self"}">
+//         <span>${menu?.title}</span>
+//       </a>`
+
+//         if (hasChildren) {
+//           newMenuElement += `<ul class="submenu">`
+
+//           menu.data.forEach((child) => {
+//             newMenuElement += `
+//         <li class="nav-item">
+//           <a class="nav-link js-scroll-trigger"
+//              href="${child?.link}"
+//              target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
+//             <span>${child?.title}</span>
+//           </a>
+//         </li>`
+//           })
+
+//           newMenuElement += `</ul>`
+//         }
+
+//         newMenuElement += `</li>`
+//       })
+
+//       const menuElement = document.querySelector(".saba_main_menu")
+
+//       if (menuElement) {
+//         if (menuTextLength > 80) {
+//           menuElement.classList.add("saba_main_menu_long")
+//         }
+//         menuElement.innerHTML = newMenuElement
+//       }
+
+//       //// RENDER BANNER
+//       let bannerDataDefault = defaultAttributes.data.dynamicSection.find(
+//         (item) => item?.type === "banner"
+//       )
+//       //   let bannerDataUser =
+//       //     publicAttributes.data.dynamicSection.find(
+//       //       (item) => item?.type === "banner"
+//       //     ) ?? {}
+//       //   let mixBannerDataAll = { ...bannerDataDefault, ...bannerDataUser }
+//       //   let mixBannerData = {
+//       //     ...bannerDataDefault?.data[0],
+//       //     ...bannerDataUser?.data[0]
+//       //   }
+//       //   let mixAll = { ...mixBannerDataAll, ...{ data: mixBannerData } }
+//       // let dynamicSection = publicAttributes?.data?.dynamicSection
+//       //   ? publicAttributes?.data?.dynamicSection
+//       //   : defaultAttributes.data.dynamicSection
+//       // let dynamicSection = [
+//       //   publicAttributes?.data?.dynamicSection ?? [],
+//       //   ...defaultAttributes.data.dynamicSection
+//       // ]
+//       let dynamicSection = []
+//       // console.log(publicAttributes)
+//       if (publicAttributes?.data?.dynamicSection) {
+//         defaultAttributes.data.dynamicSection.map((sections) => {
+//           let section = sections
+//           // console.log(
+//           //   publicAttributes?.data?.dynamicSection?.find(
+//           //     (sectionUser) => sectionUser?.type === section?.type
+//           //   )
+//           // )
+//           let newPublicSection =
+//             publicAttributes?.data?.dynamicSection?.find(
+//               (sectionUser) => sectionUser?.type === section?.type
+//             ) ?? {}
+//           if (newPublicSection) {
+//             section["isHidden"] = newPublicSection?.isHidden ?? false
+//           }
+//           dynamicSection.push({
+//             ...section,
+//             ...publicAttributes?.data?.dynamicSection?.find(
+//               (sectionUser) => sectionUser?.type === section?.type
+//             )
+//           })
+//         })
+//       } else {
+//         dynamicSection = defaultAttributes.data.dynamicSection
+//       }
+
+//       if (!dynamicSection.find((item) => item?.type === "banner")) {
+//         dynamicSection.unshift(bannerDataDefault)
+//       }
+
+//       // console.log("Dynamic Section", dynamicSection)
+//       //   dynamicSection.find((item) => item?.type === "banner").data =
+//       //     mixBannerData
+//       //   console.log(dynamicSection)
+//       //   let dynamicSectionBanner = dynamicSection.find(
+//       //     (item) => item?.type === "banner"
+//       //   )?.data[0]
+//       //   if (!dynamicSectionBanner) {
+//       //     dynamicSection.unshift(mixBannerData[0])
+//       //   } else {
+//       //     dynamicSectionBanner = mixBannerData[0]
+//       //   }
+
+//       //   console.log(dynamicSection)
+//       //// RENDER SECTIONS
+//       const attributeName = "saba-section-type"
+//       const parentElement = document.body
+//       // console.log(
+//       //   dynamicSection?.map((item) => !item?.isHidden && item.fieldName)
+//       // )
+//       // create array sections order based on response
+//       if (publicAttributes?.data?.dynamicSection) {
+//         let sections_order = publicAttributes?.data?.dynamicSection?.map(
+//           (section) => {
+//             let secName = section.type
+//             // console.log(secName)
+//             if (!section.isHidden) {
+//               return secName
+//             }
+//           }
+//         )
+
+//         // console.log(sections_order)
+//         const sectionsMap = {}
+//         sectionsType.forEach((element) => {
+//           let sectionTypeName = element.getAttribute("saba-section-type")
+//           // console.log(sectionTypeName)
+//           // if (sectionTypeName === "banner") {
+//           //   sectionTypeName = "header"
+//           // }
+//           // element.style.display = "inherit"
+
+//           // console.log(sectionTypeName)
+//           sectionsMap[sectionTypeName] = element
+//           if (
+//             !defaultAttributes.data.dynamicSection
+//               ?.filter((item) => !item?.isHidden)
+//               ?.map((sextion) => sextion.type)
+//               .includes(sectionTypeName)
+//           ) {
+//             element.remove()
+//           }
+//         })
+
+//         // console.log(sectionsMap)
+//         // Buat array baru yang menyusun elemen sesuai dengan urutan sections_order
+//         const orderedSections = sections_order.map(
+//           (sectionType) => sectionsMap[sectionType]
+//         )
+
+//         // console.log(orderedSections)
+
+//         let parentElementSection = document.getElementById(
+//           "remove_section_start"
+//         )
+
+//         orderedSections.forEach((element) => {
+//           if (element instanceof Node) {
+//             // parentElementSection.appendChild(element)
+//             parentElementSection.insertAdjacentElement("afterend", element)
+//           }
+//         })
+//       }
+
+//       // console.log(dynamicSection)
+
+//       dynamicSection.forEach((attr) => {
+//         if (!attr?.isHidden) {
+//           const attributeValue = attr?.type
+//           // console.log(attributeValue, `[${attributeName}="${attributeValue}"]`)
+//           const element = document.querySelector(
+//             `[${attributeName}="${attributeValue}"]`
+//           )
+//           if (element) {
+//             element.style.display = "inherit"
+
+//             // APPEND CONTENT TO CHILD
+//             const childElementTitle = element.querySelector(
+//               ".saba_section_title"
+//             )
+//             if (childElementTitle && attr?.fieldLabel) {
+//               childElementTitle.innerHTML = attr.fieldLabel
+//               const childElementDesc =
+//                 element.querySelector(".saba_section_desc")
+//               if (childElementDesc && attr?.fieldDesc) {
+//                 childElementDesc.innerHTML = attr.fieldDesc
+//               }
+//             } else {
+//               const childElementTitleCont = element.querySelector(
+//                 ".saba_section_container"
+//               )
+//               if (childElementTitleCont) {
+//                 childElementTitleCont.style.display = "none"
+//               }
+//             }
+
+//             if (attributeValue === "parallax-video" && attr?.videoLink) {
+//               const parallaxVideoEl = element.querySelector(
+//                 ".saba_section_video"
+//               )
+//               if (parallaxVideoEl) {
+//                 parallaxVideoEl.href = attr.videoLink
+//               }
+//             }
+
+//             const childElement = element.querySelector(".saba_html_content")
+//             if (childElement) {
+//               let sampleData = defaultAttributes?.data?.dynamicSection.find(
+//                 (item) => item?.type === attributeValue
+//               )?.data
+
+//               //   console.log(attributeName, sampleData)
+//               let dataAttr = attr?.data ?? sampleData
+
+//               // console.log(attr)
+
+//               // $(".owl-carousel").trigger("destroy.owl.carousel")
+//               if (attr?.html) {
+//                 childElement.innerHTML = attr.html
+//               } else if (!attr?.html && dataAttr) {
+//                 childElement.innerHTML = renderHtml(
+//                   attributeValue,
+//                   theme,
+//                   dataAttr,
+//                   attr
+//                 )
+//               }
+
+//               // $(".owl-carousel").trigger("refresh.owl.carousel")
+//             }
+
+//             let copyFooter = null
+//             if (!["header", "banner"].includes(attributeValue)) {
+//               if (attributeValue === "footer") {
+//                 copyFooter = element
+//                 parentElement.removeChild(element)
+//               } else {
+//                 let copyElement = element
+//                 parentElement.removeChild(element)
+//                 parentElement.appendChild(copyElement)
+//               }
+//             }
+//             if (copyFooter) {
+//               parentElement.appendChild(copyFooter)
+//             }
+//           }
+//         }
+//       })
+
+//       sectionsType.forEach((element) => {
+//         let sectionTypeName = element.getAttribute("saba-section-type")
+//         // console.log(sectionTypeName)
+//         // if (sectionTypeName === "banner") {
+//         //   sectionTypeName = "header"
+//         // }
+//         // element.style.display = "inherit"
+//         let currentItem = publicAttributes.data.dynamicSection?.find(
+//           (item) => !item?.isHidden && item.type === sectionTypeName
+//         )
+//         // ?.map((sextion) => sextion.type === sectionTypeName)
+//         // console.log(currentItem)
+//         if (
+//           [
+//             "parallax-video",
+//             "overview",
+//             "team",
+//             "faq",
+//             "table-price",
+//             "services",
+//             "articles-latest",
+//             "slider_img",
+//             "blog_latest"
+//           ].includes(sectionTypeName) &&
+//           (!currentItem?.data || currentItem?.fieldLabel === "")
+//         ) {
+//           element.style.display = "none"
+//           element.remove()
+//         }
+//       })
+//       //   console.log(data)
+//       updateMainElements(data, defaultAttributes)
+
+//       // sectionsType.forEach((element) => {
+//       //   let sectionTypeName = element.getAttribute("saba-section-type")
+//       //   if (
+//       //     sectionTypeName === "parallax-video" &&
+//       //     !sections_order.includes("parallax-video")
+//       //   ) {
+//       //     element.style.display = "none"
+//       //   }
+//       // })
+//       // COLORS
+//       //   if (
+//       //     app_setting?.layout?.primaryColor ||
+//       //     data.data?.unit?.unit_app_attributes?.background_video_overlay ||
+//       //     data.data?.app?.setting?.background_video_overlay
+//       //   ) {
+//       //     addNewClassToHead([
+//       //       app_setting?.layout?.primaryColor ?? "#004899",
+//       //       data.data?.unit?.unit_app_attributes?.background_video_overlay ??
+//       //         data.data?.app?.setting?.background_video_overlay ??
+//       //         "#7B51CF"
+//       //     ])
+//       //   }
+
+//       // console.log(app_setting?.layout?.primaryColor)
+//       if (primaryColor) {
+//         // setTimeout(() => {
+//         replaceColorCode("#004899", primaryColor)
+//         // }, 1000)
+//       }
+//     })
+//     .then((response) => {
+//       setTimeout(() => {
+//         hideLoader()
+
+//         const carousels = document.querySelectorAll(".owl-carousel")
+
+//         carousels.forEach((el) => {
+//           const $el = $(el)
+
+//           if ($el.hasClass("owl-loaded")) {
+//             $el.trigger("destroy.owl.carousel")
+//             $el.find(".owl-stage-outer").children().unwrap()
+//             $el.removeClass("owl-loaded owl-hidden")
+//           }
+
+//           $el.owlCarousel({
+//             // items: 3,
+//             loop: true
+//             // margin: 10,
+//             // nav: true
+//           })
+//         })
+
+//         // ==== SLICK SLIDER ====
+//         if ($(".testimonial-slider").length > 0) {
+//           $(".testimonial-slider").slick({
+//             slidesToShow: 1,
+//             slidesToScroll: 1,
+//             arrows: false,
+//             fade: true,
+//             asNavFor: ".testimonial-nav"
+//           })
+
+//           $(".testimonial-nav").slick({
+//             slidesToShow: 5,
+//             slidesToScroll: 1,
+//             asNavFor: ".testimonial-slider",
+//             arrows: false,
+//             centerMode: true,
+//             focusOnSelect: true,
+//             variableWidth: false,
+//             responsive: [
+//               {
+//                 breakpoint: 991,
+//                 settings: {
+//                   slidesToShow: 3,
+//                   arrows: false
+//                 }
+//               },
+//               {
+//                 breakpoint: 480,
+//                 settings: {
+//                   slidesToShow: 1,
+//                   arrows: false
+//                 }
+//               }
+//             ]
+//           })
+//         }
+//       }, 100)
+//     })
+//     .catch((error) => {
+//       console.error("Error fetching data:", error)
+//     })
+// }
+
 async function fetchData() {
-  const postData = {
-    // key1: "value1",
-    // key2: "value2"
+  const domainClaimStorage = JSON.parse(localStorage.getItem("domainClaim"))
+  const fetchOrLoadDomain = async () => {
+    if (domainClaimStorage) {
+      // Simulasikan Promise agar tetap bisa pakai .then()
+      return Promise.resolve({
+        data: domainClaimStorage,
+        message: "Unit Claim Sent!"
+      })
+    }
+
+    const postData = {
+      // key1: "value1"
+    }
+
+    const response = await fetch(`${ssoUrl}domain_claims`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        public: "1"
+      },
+      body: JSON.stringify(postData)
+    })
+    return await response.json()
   }
 
-  await fetch(`${ssoUrl}domain_claims`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      public: "1"
-    },
-    body: JSON.stringify(postData)
-  })
-    .then((response) => response.json())
+  fetchOrLoadDomain()
     .then((data) => {
       if (data?.message === "Domain not found!") {
         return (window.location.href = currentDomain)
       }
+
+      // Simpan ke localStorage kalau belum ada
+      if (!domainClaimStorage) {
+        localStorage.setItem("domainClaim", JSON.stringify(data.data))
+      }
+
       const defaultAttributes = getDefaultAttributes(data.data)
       const publicAttributes = data?.data?.landing_page_attr
       const theme = publicAttributes?.gridTheme ?? defaultTheme
+      activeTheme = theme
 
       dataDomain = data?.data
       // console.log(data.data)
@@ -668,20 +1427,25 @@ async function fetchData() {
         ...(data?.data?.app?.setting ?? {})
       }
 
-      // console.log(app_setting)
+      // console.log(activeTheme)
       const primaryColor =
         app_setting?.layout?.primaryColor ??
         app_setting?.primaryColor ??
+        default_color_themes?.[activeTheme]?.[0] ??
         "#007aff"
       const secondaryColor =
-        app_setting?.layout?.secondaryColor ?? app_setting?.secondaryColor
+        app_setting?.layout?.secondaryColor ??
+        app_setting?.secondaryColor ??
+        default_color_themes?.[activeTheme]?.[1] ??
+        "#007aff"
       if (primaryColor) {
         replacePrimaryColor(primaryColor, secondaryColor)
 
         if (secondaryColor) {
           const style = document.createElement("style")
           style.type = "text/css"
-          style.textContent = `
+          if (activeTheme === "naxos") {
+            style.textContent = `
             .banner::before {
               background: linear-gradient(
                 -47deg,
@@ -690,6 +1454,7 @@ async function fetchData() {
               ) !important;
             }
           `
+          }
           document.head.appendChild(style)
         }
       }
@@ -720,52 +1485,66 @@ async function fetchData() {
       ]
 
       //   console.log(publicAttributes?.data?.mainMenu)
-      let newMenuElement = ``
-      let menuTextLength = 0
+      // let newMenuElement = ``
+      // let menuTextLength = 0
 
-      mainMenu.forEach((menu) => {
-        const hasChildren = Array.isArray(menu.data) && menu.data.length > 0
+      let { newMenuElement, menuTextLength, newMenuElementFooter } = renderMenu(
+        theme,
+        mainMenu
+      )
 
-        if (menu?.title) {
-          menuTextLength += menu.title.length
-        }
+      //   mainMenu.forEach((menu) => {
+      //     const hasChildren = Array.isArray(menu.data) && menu.data.length > 0
 
-        newMenuElement += `
-    <li class="nav-item ${hasChildren ? "dropdown" : ""}">
-      <a class="nav-link js-scroll-trigger ${
-        menu?.link === "#top-page" ? "active" : ""
-      }" 
-         href="${menu?.link}"
-         target="${menu?.link?.startsWith("http") ? "_blank" : "_self"}">
-        <span>${menu?.title}</span>
-      </a>`
+      //     if (menu?.title) {
+      //       menuTextLength += menu.title.length
+      //     }
 
-        if (hasChildren) {
-          newMenuElement += `<ul class="submenu">`
+      //     newMenuElement += `
+      // <li class="nav-item ${hasChildren ? "dropdown" : ""}">
+      //   <a class="nav-link js-scroll-trigger ${
+      //     menu?.link === "#top-page" ? "active" : ""
+      //   }"
+      //      href="${menu?.link}"
+      //      target="${menu?.link?.startsWith("http") ? "_blank" : "_self"}">
+      //     <span>${menu?.title}</span>
+      //   </a>`
 
-          menu.data.forEach((child) => {
-            newMenuElement += `
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" 
-             href="${child?.link}" 
-             target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
-            <span>${child?.title}</span>
-          </a>
-        </li>`
-          })
+      //     if (hasChildren) {
+      //       newMenuElement += `<ul class="submenu">`
 
-          newMenuElement += `</ul>`
-        }
+      //       menu.data.forEach((child) => {
+      //         newMenuElement += `
+      //     <li class="nav-item">
+      //       <a class="nav-link js-scroll-trigger"
+      //          href="${child?.link}"
+      //          target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
+      //         <span>${child?.title}</span>
+      //       </a>
+      //     </li>`
+      //       })
 
-        newMenuElement += `</li>`
-      })
+      //       newMenuElement += `</ul>`
+      //     }
+
+      //     newMenuElement += `</li>`
+      //   })
 
       const menuElement = document.querySelector(".saba_main_menu")
-      // console.log(menuTextLength)
-      if (menuTextLength > 80) {
-        menuElement.classList.add("saba_main_menu_long")
+      if (menuElement) {
+        if (menuTextLength > 80) {
+          menuElement.classList.add("saba_main_menu_long")
+        }
+        menuElement.innerHTML = newMenuElement
       }
-      menuElement.innerHTML = newMenuElement
+
+      const footerMenuElement = document.querySelector(".saba_footer_menu")
+      if (footerMenuElement) {
+        if (menuTextLength > 80) {
+          footerMenuElement.classList.add("saba_main_menu_long")
+        }
+        footerMenuElement.innerHTML = newMenuElementFooter
+      }
 
       //// RENDER BANNER
       let bannerDataDefault = defaultAttributes.data.dynamicSection.find(
@@ -876,9 +1655,12 @@ async function fetchData() {
 
         // console.log(sectionsMap)
         // Buat array baru yang menyusun elemen sesuai dengan urutan sections_order
-        const orderedSections = sections_order.map(
-          (sectionType) => sectionsMap[sectionType]
-        )
+        const orderedSections = activeTheme?.includes("appsland")
+          ? sections_order.map(
+              (sectionType) =>
+                sectionsMap[sectionType] && sectionType !== "banner"
+            )
+          : sections_order.map((sectionType) => sectionsMap[sectionType])
 
         // console.log(orderedSections)
 
@@ -886,12 +1668,15 @@ async function fetchData() {
           "remove_section_start"
         )
 
-        orderedSections.forEach((element) => {
-          if (element instanceof Node) {
-            // parentElementSection.appendChild(element)
-            parentElementSection.insertAdjacentElement("afterend", element)
-          }
-        })
+        if (parentElementSection) {
+          orderedSections.forEach((element) => {
+            // console.log(element)
+            if (element instanceof Node) {
+              // parentElementSection.appendChild(element)
+              parentElementSection.insertAdjacentElement("afterend", element)
+            }
+          })
+        }
       }
 
       // console.log(dynamicSection)
@@ -911,7 +1696,16 @@ async function fetchData() {
               ".saba_section_title"
             )
             if (childElementTitle && attr?.fieldLabel) {
-              childElementTitle.innerHTML = attr.fieldLabel
+              if (activeTheme?.includes("appsland")) {
+                let title_split = attr.fieldLabel.split(" ")
+                const middleIndex = Math.ceil(title_split.length / 2)
+
+                let left_text = title_split.slice(0, middleIndex).join(" ")
+                let right_text = title_split.slice(middleIndex).join(" ")
+                childElementTitle.innerHTML = `${left_text} <span>${right_text}</span>`
+              } else {
+                childElementTitle.innerHTML = attr.fieldLabel
+              }
               const childElementDesc =
                 element.querySelector(".saba_section_desc")
               if (childElementDesc && attr?.fieldDesc) {
@@ -925,13 +1719,25 @@ async function fetchData() {
                 childElementTitleCont.style.display = "none"
               }
             }
+            // console.log(attr?.videoLink)
 
             if (attributeValue === "parallax-video" && attr?.videoLink) {
               const parallaxVideoEl = element.querySelector(
                 ".saba_section_video"
               )
               if (parallaxVideoEl) {
-                parallaxVideoEl.href = attr.videoLink
+                if (theme?.includes("appsland")) {
+                  let watchUrl = attr.videoLink
+
+                  if (attr.videoLink.includes("/embed/")) {
+                    const afterEmbed = attr.videoLink.split("/embed/")[1]
+                    const videoId = afterEmbed.split(/[?#]/)[0] // Ambil sebelum ? atau #
+                    watchUrl = `https://www.youtube.com/watch?v=${videoId}`
+                  }
+                  parallaxVideoEl.href = watchUrl
+                } else {
+                  parallaxVideoEl.href = attr.videoLink
+                }
               }
             }
 
@@ -945,8 +1751,6 @@ async function fetchData() {
               let dataAttr = attr?.data ?? sampleData
 
               // console.log(attr)
-
-              // $(".owl-carousel").trigger("destroy.owl.carousel")
               if (attr?.html) {
                 childElement.innerHTML = attr.html
               } else if (!attr?.html && dataAttr) {
@@ -957,21 +1761,28 @@ async function fetchData() {
                   attr
                 )
               }
-
-              // $(".owl-carousel").trigger("refresh.owl.carousel")
             }
 
             let copyFooter = null
+
             if (!["header", "banner"].includes(attributeValue)) {
-              if (attributeValue === "footer") {
-                copyFooter = element
-                parentElement.removeChild(element)
+              if (element && element.parentNode === parentElement) {
+                if (attributeValue === "footer") {
+                  copyFooter = element
+                  parentElement.removeChild(element)
+                } else {
+                  let copyElement = element
+                  parentElement.removeChild(element)
+                  parentElement.appendChild(copyElement)
+                }
               } else {
-                let copyElement = element
-                parentElement.removeChild(element)
-                parentElement.appendChild(copyElement)
+                // Optional: log jika element bukan anak parent
+                console.warn(
+                  `Element '${attributeValue}' tidak ditemukan atau bukan child dari parentElement`
+                )
               }
             }
+
             if (copyFooter) {
               parentElement.appendChild(copyFooter)
             }
@@ -993,8 +1804,6 @@ async function fetchData() {
         // console.log(currentItem)
         if (
           [
-            "parallax-video",
-            "overview",
             "team",
             "faq",
             "table-price",
@@ -1038,69 +1847,14 @@ async function fetchData() {
       // console.log(app_setting?.layout?.primaryColor)
       if (primaryColor) {
         // setTimeout(() => {
-        replaceColorCode("#004899", primaryColor)
+        replaceColorCode("#004899", primaryColor, secondaryColor, activeTheme)
         // }, 1000)
       }
     })
     .then((response) => {
       setTimeout(() => {
         hideLoader()
-
-        const carousels = document.querySelectorAll(".owl-carousel")
-
-        carousels.forEach((el) => {
-          const $el = $(el)
-
-          if ($el.hasClass("owl-loaded")) {
-            $el.trigger("destroy.owl.carousel")
-            $el.find(".owl-stage-outer").children().unwrap()
-            $el.removeClass("owl-loaded owl-hidden")
-          }
-
-          $el.owlCarousel({
-            // items: 3,
-            loop: true
-            // margin: 10,
-            // nav: true
-          })
-        })
-
-        // ==== SLICK SLIDER ====
-        if ($(".testimonial-slider").length > 0) {
-          $(".testimonial-slider").slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            fade: true,
-            asNavFor: ".testimonial-nav"
-          })
-
-          $(".testimonial-nav").slick({
-            slidesToShow: 5,
-            slidesToScroll: 1,
-            asNavFor: ".testimonial-slider",
-            arrows: false,
-            centerMode: true,
-            focusOnSelect: true,
-            variableWidth: false,
-            responsive: [
-              {
-                breakpoint: 991,
-                settings: {
-                  slidesToShow: 3,
-                  arrows: false
-                }
-              },
-              {
-                breakpoint: 480,
-                settings: {
-                  slidesToShow: 1,
-                  arrows: false
-                }
-              }
-            ]
-          })
-        }
+        reInitiatePlugins(activeTheme)
       }, 100)
     })
     .catch((error) => {
@@ -1110,6 +1864,7 @@ async function fetchData() {
 
 function updateMainElements(storeDomainClaims, defaultAttributes) {
   const domainClaims = storeDomainClaims?.data
+  // console.log(domainClaims)
   const unit_app_attributes = storeDomainClaims?.data?.unit?.unit_app_attributes
   const unit_app_attributes_setting = unit_app_attributes?.setting
 
@@ -1309,20 +2064,41 @@ function updateUrlWithoutReload(newPath) {
   history.pushState(null, null, currentDomain + newPath)
 }
 
-function replaceColorCode(oldColor, newColor) {
-  const newStyles = `
+function replaceColorCode(oldColor, newColor, secondaryCol, theme) {
+  let newStyles = ""
+  let newStyles2 = ""
+  let newStyles3 = ""
+  if (theme === "naxos") {
+    newStyles = `
   a, h1 > a:hover, h2 > a:hover, h3 > a:hover, h4 > a:hover, h5 > a:hover, h6 > a:hover, .custom-btn, .play-btn:hover > i, .button-store .custom-btn:hover i, .button-store .custom-btn:hover p, .button-store .custom-btn:hover p span, .feature-box .box-icon .icon, .feature-box:hover .box-text > h4, .service-single:hover .icon, .service-single.service-style-2 .icon, .service-single.service-style-2:hover .icon, .service-single.service-style-2:hover h5, .overview-box:hover .icon, .overview-list .fa-li, .pricing-item .pricing-head .price, .pricing-item .pricing-head .price .dollar-sign, .fixed-menu .nav-menu li a.active, .nav-menu li.dropdown .submenu li a.active-submenu, .op-mobile-menu .nav-menu li a:hover, .page-header .page-header-content .breadcrumb li a:hover, .testimonial-carousel .carousel-text .single-box i, #accordion .accordion-header a:not(.collapsed), #accordion .accordion-header a:hover, .blog-home .blog-col:hover .blog-text h4 > a, .price-table .icon, .price-table:hover .plan-type, .contact-info .icon, .contact-form-result > h4, footer a:hover, .footer-social a:hover > i, .blog-post .image-slider .arrows .arrow:hover, .post-counters li > a:hover, .share-btn:hover > p, .share-btn li:hover > a, .nav-links a:hover, .sidebar .search-form button:hover, .sidebar .search-form button:focus, .sidebar ul.menu li a:hover, .sidebar ul.menu li a:focus, .sidebar ul.links li a:hover, .sidebar ul.links li a:focus, .author-social a:hover, .icon.colored i {
       color: ${newColor};
     }
   `
-  const newStyles2 = `.btn, .to-top:hover, .play-btn, .service-single:hover, .service-single .icon, .overview-box .icon, .overview-box:hover, .fixed-menu .nav-menu li a.active span:after, .nav-menu li.dropdown .submenu li a:hover, .nav-menu li.dropdown .submenu li a.active-submenu, .search-wrapper .search-close-btn:hover:before, .search-wrapper .search-close-btn:hover:after, .clients-slider .owl-dots .active span, .screenshot-slider .owl-dots .active span, .blog-home .blog-col:hover .blog-category, .page-title .blog-category > a:hover, .pagination li a.active, .pagination li a:hover, .pagination li:last-child a, .pagination li:first-child a, .sidebar ul.menu li span, .recent-post-image:before, .author-social a:hover, .member-info:after, .progress .progress-bar, .progress-heading .progress-value > span, .tags .tag:hover, blockquote {
+    newStyles2 = `.btn, .to-top:hover, .play-btn, .service-single:hover, .service-single .icon, .overview-box .icon, .overview-box:hover, .fixed-menu .nav-menu li a.active span:after, .nav-menu li.dropdown .submenu li a:hover, .nav-menu li.dropdown .submenu li a.active-submenu, .search-wrapper .search-close-btn:hover:before, .search-wrapper .search-close-btn:hover:after, .clients-slider .owl-dots .active span, .screenshot-slider .owl-dots .active span, .blog-home .blog-col:hover .blog-category, .page-title .blog-category > a:hover, .pagination li a.active, .pagination li a:hover, .pagination li:last-child a, .pagination li:first-child a, .sidebar ul.menu li span, .recent-post-image:before, .author-social a:hover, .member-info:after, .progress .progress-bar, .progress-heading .progress-value > span, .tags .tag:hover, blockquote {
     background-color: ${newColor};
   }
   `
 
-  const newStyles3 = `.custom-btn, .price-table.plan-popular, .service-single.service-style-2:hover, .testimonial-carousel .carousel-images .slick-center img, .clients-slider .owl-dots .owl-dot span, .screenshot-slider .owl-dots .owl-dot span, .progress-heading .progress-value > span:before {
+    newStyles3 = `.custom-btn, .price-table.plan-popular, .service-single.service-style-2:hover, .testimonial-carousel .carousel-images .slick-center img, .clients-slider .owl-dots .owl-dot span, .screenshot-slider .owl-dots .owl-dot span, .progress-heading .progress-value > span:before {
     border-color: ${newColor};
 }`
+  } else if (theme?.includes("appsland")) {
+    newStyles = `.gradiant-background, .bg-gradiant.mfp-bg, .box-icon, .team-member .team-photo:after {
+    background-image: -o-linear-gradient(157deg, ${newColor} 0%, ${secondaryCol} 100%);
+    background-image: linear-gradient(293deg, ${newColor} 0%, ${secondaryCol} 100%);
+} 
+    .active .steps h4, .heading span, .box-icon .fa, .box-icon .ti, .video-play, .video-play:hover, .video-play:focus, .owl-theme .owl-nav [class*=owl-], .single-features .ti, .single-features .fa, .contact-form h3, .contact-info h6 .fa, .footer-navigation li a:hover, .social-list li a:hover, .owl-theme .owl-nav [class*="owl-"]:hover, .footer-links li a:hover {
+    color: ${newColor};
+}
+    .owl-theme .owl-dots .owl-dot span:after, .affix .navbar-default .navbar-toggle, .affix .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    border-color: ${newColor};
+}
+
+    .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span, .affix .navbar-default .navbar-toggle, .affix .navbar-default .navbar-toggle, .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: ${newColor};
+}
+    `
+  }
 
   const head = document.head || document.getElementsByTagName("head")[0]
   const newStyleElement = document.createElement("style")
@@ -1331,33 +2107,10 @@ function replaceColorCode(oldColor, newColor) {
   newStyleElement.appendChild(document.createTextNode(newStyles2))
   newStyleElement.appendChild(document.createTextNode(newStyles3))
   head.appendChild(newStyleElement)
-
-  // const styleElement = document.getElementById("saba_css_color")
-
-  // if (styleElement && styleElement.sheet) {
-  //   const styleSheet = styleElement.sheet
-  //   const rules = styleSheet.rules || styleSheet.cssRules
-
-  //   for (let i = 0; i < rules.length; i++) {
-  //     const rule = rules[i]
-
-  //     if (rule.style) {
-  //       console.log(rule.style)
-  //       rule.style.cssText = rule.style.cssText.replace(
-  //         new RegExp(oldColor, "g"),
-  //         newColor
-  //       )
-
-  //       rule.style.backgroundColor = rule.style.backgroundColor.replace(
-  //         new RegExp(oldColor, "g"),
-  //         newColor
-  //       )
-  //     }
-  //   }
-  // }
 }
 
 const renderHtml = (type, theme, data, attr) => {
+  // console.log(theme)
   if (type === "banner") {
     return renderHtml_banner(theme, data, attr)
   } else if (type === "clients") {
@@ -1371,7 +2124,7 @@ const renderHtml = (type, theme, data, attr) => {
   } else if (type === "faq") {
     return renderHtml_faq(theme, data)
   } else if (type === "features") {
-    return renderHtml_features(theme, data, attr?.mainImage)
+    return renderHtml_features(theme, data, attr?.mainImage, attr)
   } else if (type === "services") {
     return renderHtml_services(theme, data, attr?.mainImage)
   } else if (type === "overview") {
@@ -1393,11 +2146,15 @@ const renderHtml_overview_data = (theme, data, style_type) => {
       result += `<!-- Items -->
             <div class="overview-item">`
       data.forEach((item, index) => {
+        let icon = `<div class="icon ${item?.icon ?? ""}"></div>`
+        if (icon?.includes(":")) {
+          icon = renderIcon(item?.icon, "icon", 20)
+        }
         result += `
                 <!-- Item ${index} -->
                 <div class="overview-box d-flex flex-wrap">
                     <!-- Icon -->
-                    <div class="icon ${item?.icon ?? ""}"></div>
+                    ${item?.icon ? icon : ""}
         
                     <!-- Content -->
                     <div class="content">
@@ -1426,22 +2183,92 @@ const renderHtml_overview_data = (theme, data, style_type) => {
       })
       result += `</ul>`
     }
+  } else if (theme?.includes("appsland")) {
+    if (style_type === 2) {
+      data.forEach((item, index) => {
+        let icon = `<em style="margin:2px;width: 47px;line-height: 47px;" class="${
+          item?.icon ?? "ti-check"
+        }"></em>`
+        if (icon?.includes(":")) {
+          icon = renderIcon(
+            item?.icon,
+            "ti",
+            20,
+            "margin:2px;width: 47px;line-height: 47px;"
+          )
+        }
+        result += `<div class="col-md-12 col-sm-12 saba-overview-style-default">
+                     <div style="display:flex;margin-bottom: 23px;" class="feature-box">
+                        <div style="margin-right: 14px;height: 51px;width: 53px;" class="box-icon box-icon-small">
+                          ${icon}
+                        </div>
+                        <div style="text-align:start;width: 100%;">
+                          <h4 style="margin-top: 0;">${item?.title ?? ""}</h4>
+                          <p>${item?.subtitle ?? ""}</p>
+                        </div>
+                      </div>
+                    </div>
+                `
+      })
+    } else {
+      data.forEach((item, index) => {
+        let icon = `<em style="margin:2px;width: 47px;line-height: 47px;" class="${
+          item?.icon ?? "ti-check"
+        }"></em>`
+        if (icon?.includes(":")) {
+          icon = renderIcon(
+            item?.icon,
+            "ti",
+            20,
+            "margin:2px;width: 47px;line-height: 47px;"
+          )
+        }
+        result += `<div class="col-md-12 col-sm-12 saba-overview-style-default">
+                     <div style="display:flex;margin-bottom: 23px;" class="feature-box">
+                        <div style="margin-right: 14px;height: 51px;width: 53px;" class="box-icon box-icon-small">
+                           ${icon}
+                        </div>
+                        <div style="text-align:start;width: 100%;">
+                          <h4 style="margin-top: 0;">${item?.title ?? ""}</h4>
+                          <p>${item?.subtitle ?? ""}</p>
+                        </div>
+                      </div>
+                    </div>
+                `
+      })
+    }
   }
   return result
 }
 
-const renderHtml_overview_btn = (buttons) => {
+const renderHtml_overview_btn = (buttons, theme) => {
   let result = ""
   buttons.forEach((btn, indexBtn) => {
-    result += `<!-- Button -->
+    let icon = btn?.icon ?? ""
+    if (icon?.includes(":")) {
+      icon = renderIcon(btn?.icon, "icon", 35)
+    } else {
+      icon = `<i class="icon ${btn.icon}"></i>`
+    }
+    if (theme === "naxos") {
+      result += `<!-- Button -->
                 <p class="text-center text-lg-start">
                     <a ${
                       btn?.link?.includes("#") ? "" : ' target="blank_"'
-                    } href="${btn?.link ?? "#"}" class="btn"> ${
-      btn?.icon ? `<i class="icon ${btn.icon}"></i>` : ""
-    } ${btn?.title}</a>
+                    } href="${btn?.link ?? "#"}" class="btn"> ${icon} ${
+        btn?.title
+      }</a>
                 </p>
                   `
+    } else if (theme?.includes("appsland")) {
+      result += `<a ${
+        btn?.link?.includes("#") ? "" : ' target="blank_"'
+      } href="${
+        btn?.link ?? "#"
+      }" class="button wow fadeInUp button-border" data-wow-duration=".5s" data-wow-delay=".6s" style="margin-right:5px; visibility: visible; animation-duration: 0.5s; animation-delay: 0.6s; animation-name: fadeInUp;">${icon} ${
+        btn?.title
+      }</a>`
+    }
   })
   return result
 }
@@ -1497,6 +2324,52 @@ const renderHtml_overview = (theme, data) => {
                         }
                     </div>`)
     })
+  } else if (theme.includes("appsland")) {
+    // console.log(data)
+    data.forEach((item, index) => {
+      let title_split = (item?.title).split(" ")
+      const middleIndex = Math.ceil(title_split.length / 2)
+      let left_text = title_split.slice(0, middleIndex).join(" ")
+      let right_text = title_split.slice(middleIndex).join(" ")
+      let titleEl = `${left_text} <span>${right_text}</span>`
+
+      result.push(`<div class="section-head text-center">
+                    <div class="row">
+                      <div class="col-md-12 text-left">
+                        <h2 class="heading">${titleEl}</h2>
+                        <p class="">${item?.subtitle ?? ""}</p>
+                      </div>
+                    </div>
+                  </div>
+        <div class="row text-center">
+        ${item?.image ? `<div class="col-12 col-md-8">` : ""}
+        ${
+          item?.data
+            ? renderHtml_overview_data(theme, item?.data, item?.style_type)
+            : ""
+        }
+        </div> 
+                  ${
+                    item?.buttons
+                      ? `<div style="display:flex;margin-top: 10px;margin-bottom: 10px;">${renderHtml_overview_btn(
+                          item?.buttons,
+                          theme
+                        )}</div>`
+                      : ""
+                  }
+
+         ${
+           item?.image
+             ? `<div class="col-12 col-md-4"><img src="${
+                 item?.image ?? ""
+               }" alt="" /></div>`
+             : ""
+         }
+         
+        ${item?.image ? `</div>` : ""}
+
+                 `)
+    })
   }
   let separator = ""
   return result.join(separator)
@@ -1505,18 +2378,19 @@ const renderHtml_overview = (theme, data) => {
 const renderHtml_blog_latest = (theme, data) => {
   // console.log(data)
   let result = []
-  if (theme === "naxos") {
-    data.forEach((item, index) => {
-      const title = item?.title ?? ""
-      const subtitle = item?.subtitle ?? ""
-      const link = item?.link ?? "#"
-      const image =
-        item?.image ?? "https://via.placeholder.com/300x200.png?text=No+Image"
-      const badgeText = item?.badgeText
-        ? `<span class="blog-category">${item?.badgeText}</span>`
-        : ""
-      const target =
-        link?.includes("http") || link?.includes("https") ? "blank" : "_self"
+  data.forEach((item, index) => {
+    const title = item?.title ?? ""
+    const subtitle = item?.subtitle ?? ""
+    const link = item?.link ?? "#"
+    const image =
+      item?.image ?? "https://via.placeholder.com/300x200.png?text=No+Image"
+    const badgeText = item?.badgeText
+      ? `<span class="blog-category">${item?.badgeText}</span>`
+      : ""
+    const target =
+      link?.includes("http") || link?.includes("https") ? "blank" : "_self"
+
+    if (theme === "naxos") {
       result.push(`
                 <!-- Item ${index} -->
                  <div class="col-12 col-lg-3 res-margin">
@@ -1537,7 +2411,7 @@ const renderHtml_blog_latest = (theme, data) => {
                           >
                         </h4>
 
-                        <p style="margin-bottom:25px;">
+                        <p>
                           ${subtitle}
                         </p>
                       </div>
@@ -1545,8 +2419,18 @@ const renderHtml_blog_latest = (theme, data) => {
                   </div>
                 </div>
                 `)
-    })
-  }
+    } else if (theme?.includes("appsland")) {
+      result.push(`<div style="margin-bottom: 18px;" class="col-sm-4">
+                  <div class="feature-col">
+                   <a target="${target}" href="${link}"><div class="bicon" style="margin-bottom: 16px; height: 200px;background: url(${image}) #f5f1f1 center no-repeat;background-size: 90%;border-radius: 6px;">
+                        </div></a>
+                    
+                    <h3 style="margin-bottom: 5px;"><a style="color: #666666;" target="${target}" href="${link}">${title}</a></h3>
+                    <p><a style="color: #666666;" target="${target}" href="${link}">${subtitle}</a></p>
+                  </div>
+                </div>`)
+    }
+  })
   let separator = ""
   return result.join(separator)
 }
@@ -1587,42 +2471,79 @@ const renderHtml_contact = (theme, data) => {
       </h5>
       <p id="contact-workingHour">${data?.workingHour ?? ""}</p>
     `)
-
-    const appName = dataDomain?.app?.name ?? ""
-    const contact_appname = document.getElementById("contact_appname")
-    if (contact_appname) {
-      contact_appname.value = appName
-      defaultFormValues["contact_appname"] = appName
-    }
-
-    if (data?.isRequestDemoApp) {
-      const contact_subject = document.getElementById("contact_subject")
-      if (contact_subject) {
-        const value = `Permintaan Demo ${appName}`
-        contact_subject.value = value
-        defaultFormValues["contact_subject"] = value
-      }
-
-      const contact_message = document.getElementById("contact_message")
-      if (contact_message) {
-        const value = `Dengan hormat, Saya bermaksud untuk mengajukan permohonan demo aplikasi ${appName} agar dapat memahami fitur dan fungsionalitasnya secara lebih mendalam. Atas perhatian dan kesempatannya, saya ucapkan terima kasih.`
-        contact_message.value = value
-        defaultFormValues["contact_message"] = value
-      }
-
-      const contact_message_category = document.getElementById(
-        "contact_message_category"
-      )
-      let value = ""
-      if (contact_message_category) {
-        value = `Permintaan Demo Aplikasi`
-      } else {
-        value = `Pesan Biasa`
-      }
-      contact_message_category.value = value
-      defaultFormValues["contact_message_category"] = value
-    }
+  } else if (theme?.includes("appsland")) {
+    result.push(`
+        <div class="contact-info white-bg ">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h6 id="contact-email"><em class="fa fa-envelope"></em> <a id="contact-email" href="mailto:${
+                    data?.email ?? ""
+                  }">
+          ${data?.email ?? ""}</a></h6>
+                </div>
+                <div class="col-sm-12">
+                  <h6 id="contact-phoneNum"><em class="fa fa-phone"></em> <a href="tel:${
+                    data?.phoneNum ?? ""
+                  }">${data?.phoneNum ?? ""}</a></h6>
+                </div>
+                <div class="col-sm-12">
+                  <h6 id="contact-workingHour"><em class="fa fa-clock"></em> ${
+                    data?.workingHour ?? ""
+                  }</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h6 id="contact-address">
+                    <em class="fa fa-map-marker"></em> ${data?.address ?? ""}
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <div style="height: 417px;background:#ebebeb;" id="map" latlng="${
+              data?.latlng ?? ""
+            }" class="google-map"></div>
+      `)
   }
+
+  const appName = dataDomain?.app?.name ?? ""
+  const contact_appname = document.getElementById("contact_appname")
+  if (contact_appname) {
+    contact_appname.value = appName
+    defaultFormValues["contact_appname"] = appName
+  }
+
+  if (data?.isRequestDemoApp) {
+    const contact_subject = document.getElementById("contact_subject")
+    if (contact_subject) {
+      const value = `Permintaan Demo ${appName}`
+      contact_subject.value = value
+      defaultFormValues["contact_subject"] = value
+    }
+
+    const contact_message = document.getElementById("contact_message")
+    if (contact_message) {
+      const value = `Dengan hormat, Saya bermaksud untuk mengajukan permohonan demo aplikasi ${appName} agar dapat memahami fitur dan fungsionalitasnya secara lebih mendalam. Atas perhatian dan kesempatannya, saya ucapkan terima kasih.`
+      contact_message.value = value
+      defaultFormValues["contact_message"] = value
+    }
+
+    const contact_message_category = document.getElementById(
+      "contact_message_category"
+    )
+    let value = ""
+    if (contact_message_category) {
+      value = `Permintaan Demo Aplikasi`
+    } else {
+      value = `Pesan Biasa`
+    }
+    contact_message_category.value = value
+    defaultFormValues["contact_message_category"] = value
+  }
+
+  activeLatLng = data?.latlng ?? ""
+  localStorage.setItem("activeLatLng", activeLatLng)
+
   return result.join(separator)
 }
 
@@ -1653,18 +2574,18 @@ const renderHtml_floating_wa = (theme, data, attr) => {
     return text.replace(/{(\w+)}/g, (_, key) => vars[key] ?? "")
   }
 
-  if (theme === "naxos") {
-    let phoneNum = normalizePhoneNumber(data?.phoneNum ?? "6281313964776")
-    let rawTemplate =
-      data?.messageTemplate ??
-      `Halo, Saya ingin konsultasi mengenai aplikasi ${appName}.`
-    let parsedMessage = replaceTemplateVars(rawTemplate, { appName })
-    let encodedMessage = encodeURIComponent(parsedMessage)
-    result.push(`<a class="${btn_class}" href="https://api.whatsapp.com/send?phone=${phoneNum}&text=${encodedMessage}" target="_blank">
+  // if (theme === "naxos") {
+  let phoneNum = normalizePhoneNumber(data?.phoneNum ?? "6281313964776")
+  let rawTemplate =
+    data?.messageTemplate ??
+    `Halo, Saya ingin konsultasi mengenai aplikasi ${appName}.`
+  let parsedMessage = replaceTemplateVars(rawTemplate, { appName })
+  let encodedMessage = encodeURIComponent(parsedMessage)
+  result.push(`<a class="${btn_class}" href="https://api.whatsapp.com/send?phone=${phoneNum}&text=${encodedMessage}" target="_blank">
     ${renderIcon("lordicon:edecmgef:colors=#ffffff-#ebe6ef", "", 15)}
    ${text}
   </a>`)
-  }
+  // }
   return result.join(separator)
 }
 
@@ -1684,17 +2605,67 @@ const renderHtml_services = (theme, data) => {
                         </div>
                     </div>`
     })
+  } else if (theme.includes("appsland")) {
+    let childContent1 = ""
+    let childContent2 = ""
+    let hasImageItem = false
+    data.forEach((item, index) => {
+      let icon = item?.icon ?? ""
+      if (icon?.includes(":")) {
+        icon = renderIcon(item?.icon, "", 35, "margin-right:8px")
+      } else {
+        icon = `<div style="margin-right: 8px;" class="${
+          item?.icon ?? ""
+        }"></div>`
+      }
+
+      let active = index === 0 ? "active" : ""
+      let active2 = index === 0 ? "in active" : ""
+      childContent1 += ` <li class="${active}" data-toggle="tab" data-target="#tab${
+        index + 1
+      }">
+                <div class="steps">
+                  <h4>${icon} ${item?.title ?? ""}</h4>
+                  <p>${item?.subtitle ?? ""}</p>
+                </div>
+              </li>`
+
+      let image =
+        item?.image ??
+        `${currentDomain}/website/${activeTheme}/images/software-screen-a.jpg`
+      hasImageItem = item?.image
+      childContent2 += `<div class="tab-pane fade ${active2}" id="tab${
+        index + 1
+      }"><img src="${image}" alt="step-screen" /></div>`
+    })
+
+    let class2 = hasImageItem
+      ? "col-md-5 col-sm-8 col-sm-offset-2 col-md-offset-0"
+      : "col-md-12 col-sm-12 col-sm-offset-0 col-md-offset-0"
+
+    result += `<div class="${class2}"><ul class="nav nav-tabs">${childContent1}</ul></div>`
+
+    if (hasImageItem) {
+      result += `<div class="col-md-7 col-sm-12 col-md-offset-0 text-center">
+            <div style="padding: 20px;" class="tab-content">${childContent2}</div></div>`
+    }
   }
+
   return result
 }
 
-const renderHtml_banner_btn = (buttons) => {
+const renderHtml_banner_btn = (buttons, theme) => {
   let result = ""
   buttons.forEach((btn, indexBtn) => {
     // console.log(btn?.icon)
     // console.log(renderIcon(btn?.icon))
-    let icon = btn?.icon ? renderIcon(btn?.icon, "me-2", 40) : ""
-    result += `<a
+    // let icon = btn?.icon ? renderIcon(btn?.icon, "me-2", 40) : ""
+    if (theme === "naxos") {
+      let icon = `<i style="margin-right:16px;" class="${btn?.icon ?? ""}"></i>`
+      if (icon?.includes(":")) {
+        icon = renderIcon(btn?.icon, "", 30, "margin-right:16px;")
+      }
+      result += `<a
                    ${btn?.link?.includes("#") ? "" : ' target="blank_"'}
                     href="${btn?.link ?? "#"}"
                     class="custom-btn d-inline-flex align-items-center m-2 m-sm-0 me-sm-3"
@@ -1702,6 +2673,24 @@ const renderHtml_banner_btn = (buttons) => {
                       ${icon}
                     <p>${btn?.subtitle}<span>${btn?.title}</span></p>
                 </a>`
+    } else if (theme?.includes("appsland")) {
+      let icon = `<i style="margin-right:4px;" class="${btn?.icon ?? ""}"></i>`
+      if (icon?.includes(":")) {
+        icon = renderIcon(btn?.icon, "", 16, "margin-right:4px;")
+      }
+
+      const isEven = indexBtn % 2 === 1
+      const additionalClass = isEven ? " button-border button-transparent" : ""
+
+      result += `<li>
+                    <a href="${btn?.link ?? "#"}"
+                     class="button wow fadeInUp${additionalClass}"
+                      data-wow-duration=".5s"
+                      data-wow-delay=".6s"
+                      >${icon} ${btn?.title}</a
+                    >
+                  </li>`
+    }
   })
   return result
 }
@@ -1746,7 +2735,6 @@ const renderHtml_banner = (theme, data, attr) => {
     (item) => item?.type === "banner"
   ).data[0]
   let result = ``
-
   data.forEach((item, index) => {
     if (theme === "naxos") {
       if (index === 0) {
@@ -1821,7 +2809,7 @@ const renderHtml_banner = (theme, data, attr) => {
                             >
                                 ${
                                   item?.buttons
-                                    ? renderHtml_banner_btn(item.buttons)
+                                    ? renderHtml_banner_btn(item.buttons, theme)
                                     : ""
                                 }
                             </div>
@@ -1867,15 +2855,146 @@ const renderHtml_banner = (theme, data, attr) => {
           ])
         }
       }
+    } else if (theme.includes("appsland")) {
+      const title = item?.title ?? bannerDataDefault.title
+      const isHtmlString = /<\/?[a-z][\s\S]*>/i.test(title)
+
+      let titleText
+
+      if (isHtmlString) {
+        const div = document.createElement("div")
+        div.innerHTML = title
+        titleText = Array.from(div.childNodes)
+          .map((node) => node.textContent.trim())
+          .filter((text) => text.length > 0)
+          .join(",")
+      } else {
+        titleText = title
+      }
+
+      // Pisahkan menjadi beberapa segmen (pakai pemisah yang sesuai)
+      const segments = titleText
+        .split(/[,.;|\/\-]+/)
+        .map((s) => s.trim())
+        .filter(Boolean)
+
+      const staticText = segments[0] || ""
+      const animatedSegments = segments.slice()
+
+      let bTags = ""
+
+      if (animatedSegments.length > 0) {
+        bTags = `<b class="is-visible">${animatedSegments[0]}</b>\n`
+        bTags += animatedSegments
+          .slice(1)
+          .map((seg) => `<b>${seg}</b>`)
+          .join("\n")
+      }
+
+      const image = item?.image ?? bannerDataDefault?.image
+      let imageEl = false
+
+      if (image) {
+        if (image?.endsWith(".lottie")) {
+          imageEl = ` <dotlottie-player  class="bounce-effect" src="${
+            item?.image ?? bannerDataDefault?.image
+          }" background="transparent" speed="1" style="width: 100%;height: 665px; margin-top: -128px;" direction="1" playMode="forward" loop autoplay></dotlottie-player>`
+        } else {
+          imageEl = `<img class="bounce-effect" src="${
+            item?.image ?? bannerDataDefault?.image
+          }"/>`
+        }
+      }
+
+      if (index === 0) {
+        if (theme === "appsland_gradient") {
+          result += `
+          <div class="row text-center">
+            <div style="z-index: 10;" class="col-md-12">
+              <div class="header-texts">
+                <h1
+                  class="cd-headline clip is-full-width wow fadeInUp"
+                  data-wow-duration=".5s"
+                >
+                 <!-- <span>${staticText}</span> -->
+               <span class="cd-words-wrapper">
+                   ${bTags.trim()}
+                  </span>
+                </h1>
+                <p style="max-width: 60%;margin: auto;"
+                  class="lead wow fadeInUp"
+                  data-wow-duration=".5s"
+                  data-wow-delay=".3s"
+                >${item?.subtitle ?? bannerDataDefault.subtitle}</p>
+                
+                <ul class="buttons">
+                ${
+                  item?.buttons
+                    ? renderHtml_banner_btn(item.buttons, theme)
+                    : ""
+                }
+                </ul>
+              </div>
+            </div>
+            <!-- .col -->
+          </div>
+          <!-- .row -->
+          <div class="row text-center">
+            <div style="z-index: 9;" class="col-md-10 col-md-offset-1">
+                ${imageEl}
+            </div>
+          </div>
+       `
+        } else {
+          result += `
+          <div class="row text-center">
+            <div style="z-index: 10;" class="col-md-12">
+              <div class="header-texts">
+                <h1
+                  class="cd-headline clip is-full-width wow fadeInUp"
+                  data-wow-duration=".5s"
+                >
+                 <!-- <span>${staticText}</span> -->
+               <span class="cd-words-wrapper">
+                   ${bTags.trim()}
+                  </span>
+                </h1>
+                <p style="max-width: 60%;margin: auto;"
+                  class="lead wow fadeInUp"
+                  data-wow-duration=".5s"
+                  data-wow-delay=".3s"
+                >${item?.subtitle ?? bannerDataDefault.subtitle}</p>
+                
+                <ul class="buttons">
+                ${
+                  item?.buttons
+                    ? renderHtml_banner_btn(item.buttons, theme)
+                    : ""
+                }
+                </ul>
+              </div>
+            </div>
+            <!-- .col -->
+          </div>
+          <!-- .row -->
+          <div class="row text-center">
+            <div style="z-index: 9;" class="col-md-10 col-md-offset-1">
+                ${imageEl}
+            </div>
+          </div>
+       `
+        }
+      }
     }
   })
   return result
 }
 
-const renderHtml_features = (theme, data, mainImage) => {
+const renderHtml_features = (theme, data, mainImage, attr) => {
   let result = ``
   let column1 = []
   let column2 = []
+  // console.log(theme)
   if (theme === "naxos") {
     data.forEach((item, index) => {
       let icon = item?.icon ?? ""
@@ -1909,7 +3028,7 @@ const renderHtml_features = (theme, data, mainImage) => {
                         <div class="features-thumb text-center">
                         <img src="${
                           mainImage ??
-                          `${currentDomain}/website/${defaultTheme}/` +
+                          `${currentDomain}/website/${activeThemeFolder}/` +
                             `images/features/awesome-features.png`
                         }" alt="" />
                         </div>
@@ -1928,6 +3047,58 @@ const renderHtml_features = (theme, data, mainImage) => {
                         </div>`
 
     result = resultLeft + (mainImage ? mainImageEl : "") + resultRight
+  } else if (theme?.startsWith("appsland")) {
+    // console.log(attr)
+    let title_split = (attr?.title ?? attr?.fieldLabel).split(" ")
+    const middleIndex = Math.ceil(title_split.length / 2)
+    let left_text = title_split.slice(0, middleIndex).join(" ")
+    let right_text = title_split.slice(middleIndex).join(" ")
+    let titleEl = `${left_text} <span>${right_text}</span>`
+    let classToggle = mainImage ? "col-md-7 pull-right" : "col-md-12"
+    result += `<div class="${classToggle}">
+              <div class="section-head heading-light mobile-center tab-center">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2 class="heading heading-light saba_section_title">${titleEl}</h2>
+                    <p class="saba_section_desc">${
+                      attr?.subtitle ?? attr?.fieldDesc ?? ""
+                    }</p>
+                  </div>
+                </div>
+              </div>
+              <!-- .section-head -->
+              <div class="row ">`
+    data.forEach((item, index) => {
+      let icon = item?.icon ?? ""
+      if (icon?.includes(":")) {
+        icon = renderIcon(item?.icon, "ti", 45)
+      } else {
+        icon = `<em class="ti ${item?.icon}"></em>`
+      }
+
+      result += `<div class="col-sm-6">
+                            <div class="single-features">
+                              ${icon}
+                              <h4>${item?.title}</h4>
+                              <p style="max-height: 75px;">${item?.subtitle}</p>
+                            </div>
+                          </div>`
+    })
+    result += ` </div></div>`
+    let images =
+      mainImage ??
+      `${currentDomain}/website/${activeThemeFolder}/images/software-screen-b.jpg`
+    let classBefore = mainImage ? `` : ""
+    if (mainImage) {
+      result += `<div class="col-md-5 pt-100 text-center saba_banner">
+              <div
+                class="wow fadeInLeft"
+                data-wow-duration=".5s"
+              >
+                <img src="${images}" alt="software-screen" />
+              </div>
+            </div>`
+    }
   }
   return result
 }
@@ -1942,13 +3113,41 @@ const renderHtml_client = (theme, data) => {
                     } href="${item?.link ?? "#"}"
                     ><img style=" max-width: 100% !important;width: auto !important;max-height: 75px;filter: grayscale(100%) brightness(50%);" src="${
                       item?.image ??
-                      `${currentDomain}/website/${defaultTheme}/images/clients/company-${
+                      `${currentDomain}/website/${activeThemeFolder}/images/clients/company-${
                         index + 1
                       }.png`
                     }" alt="${item?.title ?? `Company ${index + 1}`}"
                     /></a>
                 </div>`
     })
+  } else if (theme?.includes("appsland")) {
+    let dataToRender = [...data]
+    if (data.length < 5) {
+      const times = Math.ceil(5 / data.length)
+      dataToRender = Array(times).fill(data).flat().slice(0, 5)
+    }
+
+    // Hitung middleIndex dari panjang dataToRender
+    const middleIndex = Math.floor(dataToRender.length / 2)
+
+    // Render carousel
+    result += `<div class="image-carousel has-carousel slide-screen owl-carousel owl-theme" data-items="5" data-center="true" data-loop="true" data-auto="true" data-dots="false" data-navs="false" data-controls="false" data-startposition="${middleIndex}">`
+
+    dataToRender.forEach((item, index) => {
+      result += `<div style="margin:auto;" class="item"><a style="display:flex;justify-content:center;" ${
+        item?.link && item?.link !== "#" ? 'target="blank_"' : ""
+      } href="${item?.link ?? "#"}"
+      ><img src="${
+        item?.image ??
+        `${currentDomain}/website/${activeThemeFolder}/images/clients/company-${
+          index + 1
+        }.png`
+      }" style="height: 100px;width: auto;" alt="${
+        item?.title ?? `Company ${index + 1}`
+      }" /></a></div>`
+    })
+
+    result += `</div>`
   }
   return result
 }
@@ -1981,7 +3180,7 @@ const renderHtml_testimonial = (theme, data) => {
                             <img
                             src="${
                               item?.image ??
-                              `${currentDomain}/website/${defaultTheme}/images/testimonials/client-${
+                              `${currentDomain}/website/${activeThemeFolder}/images/testimonials/client-${
                                 index + 1
                               }.png`
                             }"
@@ -1996,6 +3195,30 @@ const renderHtml_testimonial = (theme, data) => {
                         </div>`
     })
     result = startEl + resultHeader + separator + resultContent + endEl
+  } else if (theme?.includes("appsland")) {
+    data.forEach((item, index) => {
+      let avatar =
+        item?.image ??
+        `${currentDomain}/website/${activeThemeFolder}/images/testimonials/client-${
+          index + 1
+        }.png`
+      result += `<div class="item text-center">
+                  <div class="quotes">
+                    <img
+                      src="${currentDomain}/website/${activeThemeFolder}/images/quote-icon.png"
+                      class="quote-icon"
+                      alt="quote-icon"
+                    />
+                    <blockquote>
+                      ${item?.content ?? ""}.
+                    </blockquote>
+                    <h6>${item?.title ?? ""}</h6>
+                    <div class="client-image">
+                      <img src="${avatar}" alt="${item?.title ?? ""}" />
+                    </div>
+                  </div>
+                </div>`
+    })
   }
 
   return result
@@ -2010,7 +3233,7 @@ const renderHtml_team = (theme, data) => {
                             <div class="team-image">
                                 <img style="min-height: 308px;" src="${
                                   item?.image ??
-                                  `${currentDomain}/website/${defaultTheme}/images/team/member-${
+                                  `${currentDomain}/website/${activeThemeFolder}/images/team/member-${
                                     index + 1
                                   }.jpg`
                                 }" alt="${
@@ -2035,6 +3258,27 @@ const renderHtml_team = (theme, data) => {
                         </div>
                     </div>`
     })
+  } else if (theme?.includes("appsland")) {
+    data.forEach((item, index) => {
+      let avatar =
+        item?.image ??
+        `${currentDomain}/website/${activeThemeFolder}/images/team/member-${
+          index + 1
+        }.jpg`
+      result += `<div class="col-md-3 col-sm-6">
+            <div style="min-height: 365px" class="team-member">
+              <div class="team-photo">
+                <img src="${avatar}" alt="team" />
+                <a href="javascript:void(0)" class="expand-trigger content-popup"
+                  ></a>
+              </div>
+              <div class="team-info">
+                <h4 class="name">${item?.title}</h4>
+                <p class="sub-title">${item?.subtitle}</p>
+              </div>
+            </div>
+          </div>`
+    })
   }
   return result
 }
@@ -2049,11 +3293,24 @@ const renderHtml_slider_img = (theme, data) => {
                     }">
                         <img src="${
                           item?.image ??
-                          `${currentDomain}/website/${defaultTheme}/screenshots/screenshot-${
+                          `${currentDomain}/website/${activeThemeFolder}/screenshots/screenshot-${
                             index + 1
                           }.jpg`
                         }" alt="${item?.title ?? `Screenshoot ${index + 1}`}" />
                     </a>
+                </div>`
+    })
+  } else if (theme?.includes("appsland")) {
+    data.forEach((item, index) => {
+      result += `<div class="item">
+                  <img
+                    src="${
+                      item?.image ??
+                      `${currentDomain}/website/${activeThemeFolder}/screenshots/screenshot-${
+                        index + 1
+                      }.jpg`
+                    }" alt="${item?.title ?? `Screenshoot ${index + 1}`}"
+                  />
                 </div>`
     })
   }
@@ -2097,6 +3354,37 @@ const renderHtml_faq = (theme, data) => {
                         </div>
                         </div>
                     </div>`
+    })
+  } else if (theme?.includes("appsland")) {
+    data.forEach((item, index) => {
+      result += ` <div class="panel panel-default">
+                  <div class="panel-heading" role="tab" id="accordion-i${
+                    index + 1
+                  }">
+                    <h6 class="panel-title">
+                      <a
+                        role="button"
+                        data-toggle="collapse"
+                        data-parent="#another"
+                        href="#accordion-pane-i${index + 1}"
+                        aria-expanded="false"
+                      >
+                         ${item?.title}
+                        <span class="plus-minus"><span></span></span>
+                      </a>
+                    </h6>
+                  </div>
+                  <div
+                    id="accordion-pane-i${index + 1}"
+                    class="panel-collapse collapse ${index === 0 ? "in" : ""}"
+                    role="tabpanel"
+                    aria-labelledby="accordion-i${index + 1}"
+                  >
+                    <div class="panel-body">
+                      <p>${item?.subtitle}</p>
+                    </div>
+                  </div>
+                </div>`
     })
   }
   return result

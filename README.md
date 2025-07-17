@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250713-1441 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250717-1526 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,13 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-07-17 15:26:35 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
+- 2025-07-17 15:26:22 | fixed bugs in landing page
+- 2025-07-17 14:24:47 | landing page update & new themes
+- 2025-07-16 10:56:08 | fixed widget does not appear on second load on dashboard
+- 2025-07-16 10:16:44 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
+- 2025-07-16 10:16:41 | show clickActionUrl button on my notification page
+- 2025-07-14 00:30:40 | all about fixed landing page : load attribute on router, hide floating whatsapp default, fixed re-init all plugins on naxos theme, fixed some style & load
 - 2025-07-13 14:41:11 | landing page send contact message fixed
 - 2025-07-13 12:41:06 | landing page : support sub menu, new section type "blog_latest" & "contact", contact support email notification
 - 2025-07-10 16:53:38 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
@@ -25,13 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-06-20 13:32:36 | read extraHead & extraStyle from App Attributes
 - 2025-06-19 17:18:11 | extra_css on page, fixed time on datetime input, fixed dataFrameLoading to false
 - 2025-06-16 22:35:47 | fixed if no secondaryColor error handle
-- 2025-06-16 09:38:28 | add features to hide and order system widgets, fixed some style
-- 2025-06-13 15:45:58 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
-- 2025-06-13 15:45:47 | http_request on extraActionButton, etc
-- 2025-06-10 12:47:53 | fix detail header style
-- 2025-06-10 09:20:04 | new paget type "report_dynamic" for SQL dynamic Reports, fixed map fullscreen side table, new widget type "slider_card", etc
-- 2025-05-22 12:51:56 | activate mapEvents, tableHeaderClassNames, afterEditRedirectPage === false
-- 2025-05-09 18:39:11 | pdf preview on input fileType "previewStyle" & "previewOnly"
 
 =====================================
 
