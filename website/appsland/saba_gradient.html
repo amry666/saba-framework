@@ -3,10 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="AppsLand is a powerful App Landing HTML Template with full of customization options and features"
-    />
+  <meta name="description" content="Saba Framework adalah kerangka kerja berbasis React dan Flask yang memudahkan pembuatan UI dan REST API hanya dengan JSON. Cocok untuk CMS, aplikasi CRUD, admin panel, dan sistem informasi.">
+  
+  <meta name="keywords" content="saba, saba framework, framework saba, framework CRUD, json ui builder, json to form, cms json, cms react, react form generator, framework react indonesia, react flask framework, sistem informasi web, cms cepat, dashboard react, low code framework">
+  
+  <meta name="author" content="Amry Maftuh">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="id">
+  <link rel="canonical" href="https://sabaframework.web.app/public">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Saba Framework",
+    "applicationCategory": "DeveloperTool",
+    "operatingSystem": "Web",
+    "url": "https://sabaframework.web.app/public",
+    "description": "Saba Framework adalah framework React + Flask untuk membangun antarmuka UI dan REST API berbasis JSON. Cocok untuk aplikasi CRUD, CMS, dan sistem informasi.",
+    "creator": {
+      "@type": "Person",
+      "name": "Amry Maftuh"
+    }
+  }
+  </script>
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="images/favicon.png" />
     <!-- Site Title  -->
@@ -69,18 +89,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="./">
+               <a style="display: flex;align-items: center;" class="navbar-brand" href="./">
                 <img
                   class="logo logo-light saba_appLogo"
                   style="filter: grayscale(100%) brightness(600%)"
                   src="images/logo-white.png"
                   alt="logo"
                 />
+                <span
+                    style="font-size: 1.2em;font-weight: 600;color: #FFF;margin-left: 12px;"
+                    class="saba_appLogoText logo-light"
+                  ></span>
                 <img
                   class="logo logo-color saba_appLogo"
                   src="images/logo.png"
                   alt="logo"
                 />
+                <span
+                    style="font-size: 1.2em;font-weight: 600;color: #258495;margin-left: 12px;"
+                    class="saba_appLogoText logo-color"
+                  ></span>
               </a>
             </div>
 
@@ -178,7 +206,7 @@
 
     <!-- Start .about-section  -->
     <div
-      saba-section-type="aboutus"
+      saba-section-type="about"
       id="about"
       class="about-section section pb-90 white-bg"
     >
@@ -1056,7 +1084,7 @@
             <div class="contact-form white-bg text-center">
               <h3>Kontak Kami</h3>
               <p class="saba_section_desc">..</p>
-              <form
+            <form
                 id="contact-form" action="javascript:void(0)" onsubmit="return false;"
                 class="form-message"
                 method="post"
@@ -1068,6 +1096,7 @@
                      required
                       type="text"
                       id="contact_name"
+                      name="name"
                       type="text"
                       placeholder="Nama Lengkap *"
                       class="form-control required"
@@ -1121,8 +1150,8 @@
                 <div class="form-group row fix-gutter-10">
                   <div style="margin-bottom: 10px;" class="form-field col-md-12 gutter-10 form-m-bttm">
                     <input
-                    id="contact_subject"
-                      name="contact_subject"
+                      name="subject"
+                      id="contact_subject"
                       type="text"
                       placeholder="Judul Pesan *"
                       class="form-control required"
@@ -1130,8 +1159,10 @@
                   </div>
                   <div class="form-field col-md-12 gutter-10">
                     <textarea
-                    id="contact_message"
-                      name="contact_message"
+                      required
+                      name="message"
+                      rows="4"
+                      id="contact_message"
                       placeholder="Pesan Anda *"
                       class="txtarea form-control required"
                     ></textarea>
@@ -1164,9 +1195,9 @@
                         >App Name</label
                       >
                       <input
-                        name="appname"
+                      name="appname"
                         type="text"
-                        id="contact_appname"
+                      id="contact_appname"
                         class="form-control field-appname"
                         placeholder="App Name"
                       ></input>

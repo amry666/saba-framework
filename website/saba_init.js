@@ -17,9 +17,10 @@ let activeThemeFolder = "naxos"
 let activeThemeFullName = "naxos"
 let activeLatLng = ""
 
+const primaryColorDefault = "#6E49D9"
 let default_color_themes = {
   naxos: ["#007aff", "#007aff"],
-  appsland: ["#6E49D9", "#01DBB0", "#ED9443"]
+  appsland: ["#3774e5", "#01DBB0", "#ED9443"]
 }
 function renderMenu(theme, mainMenu) {
   let newMenuElement = ``
@@ -79,29 +80,31 @@ function renderMenu(theme, mainMenu) {
         link === "#top-page" ? "active" : ""
       }"><a class="nav-item" href="${link}" target="${
         link?.startsWith("http") ? "_blank" : "_self"
-      }">${menu?.title}</a></li>
+      }">${menu?.title}</a>
     `
+      if (hasChildren) {
+        newMenuElement += `<ul class="submenu">`
+
+        menu.data.forEach((child) => {
+          newMenuElement += `
+        <li class="">
+          <a class="nav-item"
+             href="${child?.link}"
+             target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">${
+            child?.title
+          }
+          </a>
+        </li>`
+        })
+
+        newMenuElement += `</ul>`
+      }
+
+      newMenuElement += `</li>`
 
       newMenuElementFooter += ` <li><a class="nav-item" target="${
         menu?.link?.startsWith("http") ? "_blank" : "_self"
       }" href="${link}">${menu?.title}</a></li>`
-
-      // if (hasChildren) {
-      //   newMenuElement += `<ul class="submenu">`
-
-      //   menu.data.forEach((child) => {
-      //     newMenuElement += `
-      //   <li class="nav-item">
-      //     <a class="nav-link js-scroll-trigger"
-      //        href="${child?.link}"
-      //        target="${child?.link?.startsWith("http") ? "_blank" : "_self"}">
-      //       <span>${child?.title}</span>
-      //     </a>
-      //   </li>`
-      //   })
-
-      //   newMenuElement += `</ul>`
-      // }
 
       newMenuElement += `</li>`
     })
@@ -116,98 +119,99 @@ function renderIcon(
   stylex = "",
   skin = null
 ) {
-  let styleFix = stylex
-
-  if (size && !styleFix.includes("font-size")) {
-    if (iconStr.includes("material")) {
-      let newSize = parseInt(size) + 6
-      styleFix += `font-size: ${newSize}px`
-    } else if (iconStr.includes("fontAwesome")) {
-      let newSize = parseInt(size)
-      styleFix += `font-size: ${newSize}px`
-    } else if (iconStr.includes("lordicon")) {
-      let newSize = parseInt(size) + 2
-      styleFix += `font-size: ${newSize}px`
-    } else {
-      let newSize = parseInt(size) + 3
-      styleFix += `font-size: ${newSize}px`
-    }
-  }
-
   let iconStrType = "feather"
   let iconStrFix = iconStr
   let isSolid = false
-
-  const lordiconProps = {
-    trigger: "loop",
-    stroke: "regular",
-    state: "hover-pinch",
-    delay: "2000"
-  }
-
-  const parts = iconStr.split(":")
-  if (parts.length > 1) {
-    iconStrType = parts[0]
-    iconStrFix = parts[1]
-    isSolid = parts.length > 2 && iconStrType !== "lordicon"
-
-    if (parts.length > 2) {
-      const propStr = parts[2]
-      propStr.split(",").forEach((prop) => {
-        const [key, value] = prop.split("=")
-        if (key && value) {
-          if (key === "colors" && value.includes("-")) {
-            const colorParts = value.match(/var\(--[^)]+\)|[^-]+/g) || []
-            let primary = colorParts[0] ?? "#625f6e"
-            let secondary = colorParts[1] ?? "#83878C"
-            if (secondary.includes("var(--primary-color)")) {
-              secondary = getComputedStyle(document.documentElement)
-                .getPropertyValue("--primary-color")
-                .trim()
-            }
-            lordiconProps[key] = `primary:${primary},secondary:${secondary}`
-          } else if (key === "colors" && value === "system") {
-            classz += " lordicon-color-system"
-            if (skin === "dark") {
-              lordiconProps[key] = `primary:#FFFFFF,secondary:#FFFFFF`
-            } else {
-              lordiconProps[key] = `primary:#625f6e,secondary:#625f6e`
-            }
-          } else {
-            lordiconProps[key] = value
-          }
-        }
-      })
-    }
-  }
-
   let el
-
-  if (iconStrType.includes("material")) {
-    // el = document.createElement("span")
-    // el.textContent = iconStrFix
-    // el.className = `${
-    //   isSolid ? "material-icons" : "material-icons-outlined"
-    // } ${classz} align-middle`
-    // Object.assign(el.style, styleFix)
-    return `<span style="${styleFix}" class="material-icons ${classz}">${iconStrFix}</span>`
-  } else if (iconStrType === "fontAwesome") {
-    // el = document.createElement("i")
-    // el.className = `fa fa-${iconStrFix} ${classz} align-middle`
-    // Object.assign(el.style, styleFix)
-    // console.log(iconStrFix)
-    let classFirst = `${iconStrFix} ${classz}`
-    if (
-      !["fas ", "fab ", "far "].some((prefix) => iconStrFix.startsWith(prefix))
-    ) {
-      classFirst = `fas fa-${iconStrFix} ${classz}`
+  let classFirst = `${iconStrFix} ${classz}`
+  let styleFix = stylex
+  if (iconStr) {
+    if (size && !styleFix.includes("font-size")) {
+      if (iconStr.includes("material")) {
+        let newSize = parseInt(size) + 6
+        styleFix += `font-size: ${newSize}px`
+      } else if (iconStr.includes("fontAwesome")) {
+        let newSize = parseInt(size)
+        styleFix += `font-size: ${newSize}px`
+      } else if (iconStr.includes("lordicon")) {
+        let newSize = parseInt(size) + 2
+        styleFix += `font-size: ${newSize}px`
+      } else {
+        let newSize = parseInt(size) + 3
+        styleFix += `font-size: ${newSize}px`
+      }
     }
-    return `<i style="${styleFix}" class="${classFirst}"></i>`
-  } else if (iconStrType === "lordicon") {
-    const className = `align-middle ${classz?.replace("me-1", "me-75")}`
-    const width = `${(size ?? 24) + 8}px`
-    const height = `${(size ?? 24) + 8}px`
-    return `
+
+    const lordiconProps = {
+      trigger: "loop",
+      stroke: "regular",
+      state: "hover-pinch",
+      delay: "2000"
+    }
+
+    const parts = iconStr.split(":")
+    if (parts.length > 1) {
+      iconStrType = parts[0]
+      iconStrFix = parts[1]
+      isSolid = parts.length > 2 && iconStrType !== "lordicon"
+
+      if (parts.length > 2) {
+        const propStr = parts[2]
+        propStr.split(",").forEach((prop) => {
+          const [key, value] = prop.split("=")
+          if (key && value) {
+            if (key === "colors" && value.includes("-")) {
+              const colorParts = value.match(/var\(--[^)]+\)|[^-]+/g) || []
+              let primary = colorParts[0] ?? "#625f6e"
+              let secondary = colorParts[1] ?? "#83878C"
+              if (secondary.includes("var(--primary-color)")) {
+                secondary = getComputedStyle(document.documentElement)
+                  .getPropertyValue("--primary-color")
+                  .trim()
+              }
+              lordiconProps[key] = `primary:${primary},secondary:${secondary}`
+            } else if (key === "colors" && value === "system") {
+              classz += " lordicon-color-system"
+              if (skin === "dark") {
+                lordiconProps[key] = `primary:#FFFFFF,secondary:#FFFFFF`
+              } else {
+                lordiconProps[key] = `primary:#625f6e,secondary:#625f6e`
+              }
+            } else {
+              lordiconProps[key] = value
+            }
+          }
+        })
+      }
+    }
+
+    if (iconStrType.includes("material")) {
+      // el = document.createElement("span")
+      // el.textContent = iconStrFix
+      // el.className = `${
+      //   isSolid ? "material-icons" : "material-icons-outlined"
+      // } ${classz} align-middle`
+      // Object.assign(el.style, styleFix)
+      return `<span style="${styleFix}" class="material-icons ${classz}">${iconStrFix}</span>`
+    } else if (iconStrType === "fontAwesome") {
+      // el = document.createElement("i")
+      // el.className = `fa fa-${iconStrFix} ${classz} align-middle`
+      // Object.assign(el.style, styleFix)
+      // console.log(iconStrFix)
+      let classFirst = `${iconStrFix} ${classz}`
+      if (
+        !["fas ", "fab ", "far "].some((prefix) =>
+          iconStrFix.startsWith(prefix)
+        )
+      ) {
+        classFirst = `fas fa-${iconStrFix} ${classz}`
+      }
+      return `<i style="${styleFix}" class="${classFirst}"></i>`
+    } else if (iconStrType === "lordicon") {
+      const className = `align-middle ${classz?.replace("me-1", "me-75")}`
+      const width = `${(size ?? 24) + 8}px`
+      const height = `${(size ?? 24) + 8}px`
+      return `
       <lord-icon
       class="${className}"
         src="https://cdn.lordicon.com/${iconStrFix}.json"
@@ -216,25 +220,28 @@ function renderIcon(
         state="${lordiconProps.state}"
         delay="${lordiconProps.delay}"
         colors="${lordiconProps.colors}"
-        style="width:${width};height:${height}"
+        style="width:${width};height:${height};${styleFix}"
       ></lord-icon>`
-  } else {
-    // fallback feather icon atau default bulatan
-    // el = document.createElement("i")
-    // el.className = `feather-icon ${iconStrFix} ${classz} align-middle`
-    // Object.assign(el.style, styleFix)
-    // console.log(iconStrFix)
-    let classFirst = `${iconStrFix} ${classz}`
-    if (
-      !["fas ", "fab ", "far "].some((prefix) => iconStrFix.startsWith(prefix))
-    ) {
-      classFirst = `fas fa-${iconStrFix} ${classz}`
+    } else {
+      // fallback feather icon atau default bulatan
+      // el = document.createElement("i")
+      // el.className = `feather-icon ${iconStrFix} ${classz} align-middle`
+      // Object.assign(el.style, styleFix)
+      // console.log(iconStrFix)
+      let classFirst = `${iconStrFix} ${classz}`
+      if (
+        !["fas ", "fab ", "far "].some((prefix) =>
+          iconStrFix.startsWith(prefix)
+        )
+      ) {
+        classFirst = `fas fa-${iconStrFix} ${classz}`
+      }
+      return `<i style="${styleFix}" class="${classFirst}"></i>`
+      // return `<div class="icon ${item?.icon ?? ""}"></div>`
     }
+  } else {
     return `<i style="${styleFix}" class="${classFirst}"></i>`
-    // return `<div class="icon ${item?.icon ?? ""}"></div>`
   }
-
-  return el
 }
 
 function reInitiatePlugins(theme = "naxos") {
@@ -539,6 +546,13 @@ const getDefaultAttributes = (domainClaims) => {
               link: "https://sabaframework.web.app/public"
             }
           ]
+        },
+        {
+          fieldName: "about",
+          fieldLabel: "",
+          fieldDesc: "",
+          type: "about",
+          isHidden: true
         },
         {
           fieldName: "features",
@@ -1428,6 +1442,7 @@ async function fetchData() {
       }
 
       // console.log(activeTheme)
+
       const primaryColor =
         app_setting?.layout?.primaryColor ??
         app_setting?.primaryColor ??
@@ -1688,6 +1703,7 @@ async function fetchData() {
           const element = document.querySelector(
             `[${attributeName}="${attributeValue}"]`
           )
+          // console.log(element)
           if (element) {
             element.style.display = "inherit"
 
@@ -1761,6 +1777,14 @@ async function fetchData() {
                   attr
                 )
               }
+              // else if (attr?.type === "contact" && !attr?.html) {
+              //   childElement.innerHTML = renderHtml(
+              //     attributeValue,
+              //     theme,
+              //     dataAttr,
+              //     attr
+              //   )
+              // }
             }
 
             let copyFooter = null
@@ -1810,9 +1834,20 @@ async function fetchData() {
             "services",
             "articles-latest",
             "slider_img",
-            "blog_latest"
+            "blog_latest",
+            "about",
+            "parallax-video"
+            // "contact"
           ].includes(sectionTypeName) &&
           (!currentItem?.data || currentItem?.fieldLabel === "")
+        ) {
+          element.style.display = "none"
+          element.remove()
+        }
+
+        if (
+          ["contact"].includes(sectionTypeName) &&
+          currentItem?.fieldLabel === ""
         ) {
           element.style.display = "none"
           element.remove()
@@ -1926,8 +1961,17 @@ function updateMainElements(storeDomainClaims, defaultAttributes) {
     if (!appLogoBigExist) {
       const logoElements = document.querySelectorAll(".saba_appLogoText")
       logoElements.forEach((element) => {
-        element.style.display = "initial"
+        if (!activeTheme?.includes("appsland")) {
+          element.style.display = "initial"
+        }
         element.innerHTML = appNameFix
+      })
+    } else {
+      const logoElements = document.querySelectorAll(".saba_appLogoText")
+      logoElements.forEach((element) => {
+        if (!activeTheme?.includes("appsland")) {
+          element.style.display = "none"
+        }
       })
     }
   } else {
@@ -2115,6 +2159,8 @@ const renderHtml = (type, theme, data, attr) => {
     return renderHtml_banner(theme, data, attr)
   } else if (type === "clients") {
     return renderHtml_client(theme, data)
+  } else if (type === "about") {
+    return renderHtml_about(theme, data)
   } else if (type === "testimonials") {
     return renderHtml_testimonial(theme, data)
   } else if (type === "team") {
@@ -2133,7 +2179,7 @@ const renderHtml = (type, theme, data, attr) => {
     // console.log(data)
     return renderHtml_blog_latest(theme, data, attr?.mainImage)
   } else if (type === "contact") {
-    return renderHtml_contact(theme, data, attr?.mainImage)
+    return renderHtml_contact(theme, data, attr?.mainImage, attr)
   } else if (type === "floating_wa") {
     return renderHtml_floating_wa(theme, data, attr)
   }
@@ -2435,7 +2481,8 @@ const renderHtml_blog_latest = (theme, data) => {
   return result.join(separator)
 }
 
-const renderHtml_contact = (theme, data) => {
+const renderHtml_contact = (theme, data, mainImage, attr) => {
+  // console.log(data, datax, attr)
   let result = []
   let separator = ""
   if (theme === "naxos") {
@@ -2479,7 +2526,7 @@ const renderHtml_contact = (theme, data) => {
                   <h6 id="contact-email"><em class="fa fa-envelope"></em> <a id="contact-email" href="mailto:${
                     data?.email ?? ""
                   }">
-          ${data?.email ?? ""}</a></h6>
+                ${data?.email ?? ""}</a></h6>
                 </div>
                 <div class="col-sm-12">
                   <h6 id="contact-phoneNum"><em class="fa fa-phone"></em> <a href="tel:${
@@ -2663,7 +2710,7 @@ const renderHtml_banner_btn = (buttons, theme) => {
     if (theme === "naxos") {
       let icon = `<i style="margin-right:16px;" class="${btn?.icon ?? ""}"></i>`
       if (icon?.includes(":")) {
-        icon = renderIcon(btn?.icon, "", 30, "margin-right:16px;")
+        icon = renderIcon(btn?.icon, "", 16, "margin-right:16px;")
       }
       result += `<a
                    ${btn?.link?.includes("#") ? "" : ' target="blank_"'}
@@ -2674,16 +2721,20 @@ const renderHtml_banner_btn = (buttons, theme) => {
                     <p>${btn?.subtitle}<span>${btn?.title}</span></p>
                 </a>`
     } else if (theme?.includes("appsland")) {
-      let icon = `<i style="margin-right:4px;" class="${btn?.icon ?? ""}"></i>`
+      let icon = `<i style="margin-right:8px;" class="${btn?.icon ?? ""}"></i>`
       if (icon?.includes(":")) {
-        icon = renderIcon(btn?.icon, "", 16, "margin-right:4px;")
+        icon = renderIcon(btn?.icon, "", 20, "margin-right:8px;")
       }
 
       const isEven = indexBtn % 2 === 1
       const additionalClass = isEven ? " button-border button-transparent" : ""
 
       result += `<li>
-                    <a href="${btn?.link ?? "#"}"
+                    <a ${
+                      btn?.link?.startsWith("#") ? "" : ' target="blank_"'
+                    } style="display: flex;align-items: center;" href="${
+        btn?.link ?? "#"
+      }"
                      class="button wow fadeInUp${additionalClass}"
                       data-wow-duration=".5s"
                       data-wow-delay=".6s"
@@ -3152,6 +3203,11 @@ const renderHtml_client = (theme, data) => {
   return result
 }
 
+const renderHtml_about = (theme, data) => {
+  let result = ``
+  return result
+}
+
 const renderHtml_testimonial = (theme, data) => {
   let result = ``
 
@@ -3269,7 +3325,7 @@ const renderHtml_team = (theme, data) => {
             <div style="min-height: 365px" class="team-member">
               <div class="team-photo">
                 <img src="${avatar}" alt="team" />
-                <a href="javascript:void(0)" class="expand-trigger content-popup"
+                <a href="javascript:void(0)" class="content-popup"
                   ></a>
               </div>
               <div class="team-info">

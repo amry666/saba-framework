@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250717-1526 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250721-1436 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,8 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-07-21 14:36:44 | table_tree hide expand button on last level, debounceTime in form filterMode, domainClaim alwas get on public page, landing page fixed some issue
+- 2025-07-18 11:41:33 | test default route to public or login. add sub menu on appsland theme. add meta on html public.
 - 2025-07-17 15:26:35 | Merge branch 'mixed_all_branch' of https://github.com/amry666/insaba_web_react_starter into mixed_all_branch
 - 2025-07-17 15:26:22 | fixed bugs in landing page
 - 2025-07-17 14:24:47 | landing page update & new themes
@@ -30,8 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-06-25 22:50:05 | month shortcut on calendar dorpdown, subtotal v2,  etc
 - 2025-06-20 13:46:49 | fixed style btn-refresh
 - 2025-06-20 13:32:36 | read extraHead & extraStyle from App Attributes
-- 2025-06-19 17:18:11 | extra_css on page, fixed time on datetime input, fixed dataFrameLoading to false
-- 2025-06-16 22:35:47 | fixed if no secondaryColor error handle
 
 =====================================
 

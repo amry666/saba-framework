@@ -7,3 +7,57 @@
     margin-left: -300px;
   }
 }
+
+/* .nav-list > li:hover > a.nav-item {
+  background-color: #34495e;
+} */
+
+/* Submenu dasar */
+.submenu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  min-width: 180px;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #3d566e;
+  font-weight: 400;
+  font-size: 0.9375em;
+}
+
+/* Submenu muncul saat hover */
+.nav-list > li:hover .submenu {
+  display: block;
+}
+
+/* Item di dalam submenu */
+.submenu li a.nav-item {
+  display: block;
+  padding: 10px 14px;
+  color: #5b5a5a;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Item pertama di submenu */
+.submenu li:first-child a.nav-item {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* Item terakhir di submenu */
+.submenu li:last-child a.nav-item {
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.submenu li a.nav-item:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
