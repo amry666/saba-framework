@@ -205,26 +205,21 @@
     <div id="remove_section_start"></div>
 
     <!-- Start .about-section  -->
-    <div
-      saba-section-type="about"
-      id="about"
-      class="about-section section pb-90 white-bg"
+    <div saba-section-type="about" id="about" class="about-section section pb-90 white-bg"
     >
-      <div class="container tab-fix">
+      <div class="container tab-fix saba_section_container">
         <div class="section-head text-center">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
-              <h2 class="heading saba_section_title">About <span>AppsLand</span></h2>
+              <h2 class="heading saba_section_title">Tentang <span>Saba Framework</span></h2>
               <p class="saba_section_desc">
-                Nam et sagittis diam. Sed tempor augue sit amet egestas
-                scelerisque. Orci varius natoque penatibus et magnis dis
-                parturient montes, nascetur ridiculus mus.
+               Saba Framework adalah sebuah kerangka kerja UI dinamis dan REST API berbasis JSON yang dirancang untuk mempercepat proses pembuatan aplikasi web. Dengan hanya beberapa baris kode JSON, Anda sudah dapat menghasilkan antarmuka pengguna (UI) yang interaktif, sekaligus membangun layanan REST API dan Dokumentasinya secara otomatis dari skema yang sama.
               </p>
             </div>
           </div>
         </div>
         <!-- .section-head -->
-        <div class="row tab-center mobile-center">
+        <div class="row tab-center mobile-center saba_html_content">
           <div class="col-md-6">
             <div class="video wow fadeInLeft" data-wow-duration=".5s">
               <img src="images/about-video.jpg" alt="about-video" />
@@ -263,7 +258,33 @@
     </div>
     <!-- .about-section  -->
 
-     <!-- Start .parallax-section  -->
+     <!-- blog -->
+		<div saba-section-type="blog_latest" id="blog_latest" class="about-section pb-120 pt-90">
+			<div class="container tab-fix">
+				<div class="section-head pt-0 text-center">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+							<h2 style="margin-bottom: 10px;" class="heading saba_section_title">Stay with greap app</h2>
+							<div style="margin-bottom:0px;color: #666666;" class="meta-heading saba_section_desc">Amazing feature</div>
+						</div>
+					</div>
+				</div><!-- .section-head -->
+				<div class="row tab-center mobile-center text-center saba_html_content">
+					<div class="col-sm-4">
+						<div class="feature-col">
+							<div class="icon">
+								<em class="ti-server"></em>
+							</div>
+							<h3>Unlimited store</h3>
+							<p>Lorem ipsum dolor sit amet consect etur adipisicing elited do eiusmod tempor incidi dout labore magna.</p>
+						</div>
+					</div><!-- .col -->
+				</div><!-- .row -->
+			</div><!-- .container -->
+		</div>
+
+
+     <!-- Start .about-section  -->
     <div
       saba-section-type="parallax-video"
       id="parallax-video"
@@ -297,7 +318,8 @@
       </div>
       <!-- .container -->
     </div>
-    <!-- .parallax-section  -->
+    <!-- .about-section  -->
+
 
     <!-- Start .features-section  -->
     <div
@@ -305,7 +327,7 @@
       id="features"
       class="features-section section gradiant-background overflowvisible"
     >
-      <div class="container tab-fix">
+      <div class="container tab-fix saba_section_container">
         <div class="features-content pt-10">
           <div class="row saba_html_content">
             <div class="col-md-7 pull-right">
@@ -351,33 +373,6 @@
       <!-- .container -->
     </div>
     <!-- .features-section  -->
-
-    
-    <!-- blog -->
-		<div saba-section-type="blog_latest" id="blog_latest" class="about-section pb-120 pt-90">
-			<div class="container tab-fix">
-				<div class="section-head pt-0 text-center">
-					<div class="row">
-						<div class="col-md-8 col-md-offset-2">
-							<h2 style="margin-bottom: 10px;" class="heading saba_section_title">Stay with greap app</h2>
-							<div style="margin-bottom:0px;color: #666666;" class="meta-heading saba_section_desc">Amazing feature</div>
-						</div>
-					</div>
-				</div><!-- .section-head -->
-				<div class="row tab-center mobile-center text-center saba_html_content">
-					<div class="col-sm-4">
-						<div class="feature-col">
-							<div class="icon">
-								<em class="ti-server"></em>
-							</div>
-							<h3>Unlimited store</h3>
-							<p>Lorem ipsum dolor sit amet consect etur adipisicing elited do eiusmod tempor incidi dout labore magna.</p>
-						</div>
-					</div><!-- .col -->
-				</div><!-- .row -->
-			</div><!-- .container -->
-		</div>
-
 
     <!-- Start .screenshots-section  -->
     <div
@@ -487,12 +482,12 @@
     <!-- Start .statistics-section  -->
 
     <!-- Start .overview-section  -->
-		<div id="overview" saba-section-type="overview" class="features-box-section section pb-10 white-bg">
-			<div class="container tab-fix saba_html_content">
+		<div id="overview" saba-section-type="overview" class="features-box-section section  pb-10 white-bg">
+			<div class="container tab-fix saba_html_content saba_section_container">
 				<div class="section-head text-center">
 					<div class="row">
 						<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
-							<h2 class="heading "><span>Features</span></h2>
+							<h2 class="heading "><span></span></h2>
 							<p class="">..</p>
 						</div>
 					</div>
@@ -1071,7 +1066,7 @@
       saba-section-type="contact"
       class="contact-section section gradiant-background pb-90"
     >
-      <div class="container">
+      <div class="container saba_section_container">
         <div class="section-head heading-light text-center">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -1084,7 +1079,7 @@
             <div class="contact-form white-bg text-center">
               <h3>Kontak Kami</h3>
               <p class="saba_section_desc">..</p>
-            <form
+              <form
                 id="contact-form" action="javascript:void(0)" onsubmit="return false;"
                 class="form-message"
                 method="post"

@@ -61,3 +61,7 @@
   background-color: var(--primary-color);
   color: #fff;
 }
+
+.header-section .gradiant-overlay {
+  opacity: 0.75;
+}

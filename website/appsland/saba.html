@@ -69,7 +69,14 @@
       id="home"
       class="header-section flex-box-middle section gradiant-background header-curbed header-software"
     >
-      <div id="particles-js" class="particles-container"></div>
+        <div class="video-background saba_banner_video_background" style="display: none;">
+        <iframe class="saba_banner_video_background_iframe" style="display: none;"
+          src="https://www.youtube.com/embed/1F4Jjw93UWw?si=eDZJX7C3KhU2I9X1&controls=0&showinfo=0&rel=0&autoplay=1&mute=1&loop=1"
+        ></iframe>
+      </div>
+      <div class="video-foreground gradiant-background saba_banner_gradient_background gradiant-overlay"></div>
+
+      <div id="particles-js" class="particles-container saba_banner_animation_background"></div>
       <div
         id="navigation"
         class="navigation is-transparent"
@@ -123,13 +130,6 @@
             >
               <ul class="nav nav-list navbar-nav navbar-right saba_main_menu">
                 <li><a class="nav-item" href="#home">Home</a></li>
-                <!-- <li><a class="nav-item" href="#about">About</a></li>
-                <li><a class="nav-item" href="#features">Features</a></li>
-                <li><a class="nav-item" href="#screenshots">Screenshots</a></li>
-                <li><a class="nav-item" href="#pricing">Pricing</a></li>
-                <li><a class="nav-item" href="#team">Team</a></li>
-                <li><a class="nav-item" href="#testimonial">Testimonial</a></li>
-                <li><a class="nav-item" href="#contacts">Contacts</a></li> -->
               </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -331,7 +331,7 @@
       id="features"
       class="features-section section gradiant-background overflowvisible"
     >
-      <div class="container tab-fix">
+      <div class="container tab-fix saba_section_container">
         <div class="features-content pt-10">
           <div class="row saba_html_content">
             <div class="col-md-7 pull-right">
@@ -487,11 +487,11 @@
 
     <!-- Start .overview-section  -->
 		<div id="overview" saba-section-type="overview" class="features-box-section section  pb-10 white-bg">
-			<div class="container tab-fix saba_html_content">
+			<div class="container tab-fix saba_html_content saba_section_container">
 				<div class="section-head text-center">
 					<div class="row">
 						<div class="col-md-6 col-sm-8 col-md-offset-3 col-sm-offset-2">
-							<h2 class="heading "><span>Features</span></h2>
+							<h2 class="heading "><span></span></h2>
 							<p class="">..</p>
 						</div>
 					</div>
@@ -1070,7 +1070,7 @@
       saba-section-type="contact"
       class="contact-section section gradiant-background pb-90"
     >
-      <div class="container">
+      <div class="container saba_section_container">
         <div class="section-head heading-light text-center">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">

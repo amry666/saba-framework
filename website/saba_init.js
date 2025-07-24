@@ -22,6 +22,26 @@ let default_color_themes = {
   naxos: ["#007aff", "#007aff"],
   appsland: ["#3774e5", "#01DBB0", "#ED9443"]
 }
+
+function normalizeYouTubeLink(videoLink) {
+  const patterns = [
+    /youtube\.com\/watch\?v=([^&]+)/, // https://www.youtube.com/watch?v=ID
+    /youtu\.be\/([^?&]+)/, // https://youtu.be/ID
+    /youtube\.com\/embed\/([^?&]+)/ // https://www.youtube.com/embed/ID
+  ]
+
+  for (const pattern of patterns) {
+    const match = videoLink.match(pattern)
+    if (match) {
+      const videoId = match[1]
+      return `https://www.youtube.com/embed/${videoId}`
+    }
+  }
+
+  // Jika tidak cocok, kembalikan original link
+  return videoLink
+}
+
 function renderMenu(theme, mainMenu) {
   let newMenuElement = ``
   let menuTextLength = 0
@@ -768,6 +788,12 @@ function loadScript(src, callback) {
 }
 
 async function sabaInit() {
+  setTimeout(function () {
+    const naxosVideoEl = document.querySelector(".saba_video_background")
+    if (naxosVideoEl) {
+      naxosVideoEl.classList.add("visible")
+    }
+  }, 5000) // delay 1 detik sebelum fade-in
   showLoader()
   updateUrlWithoutReload("/public")
 
@@ -1752,7 +1778,7 @@ async function fetchData() {
                   }
                   parallaxVideoEl.href = watchUrl
                 } else {
-                  parallaxVideoEl.href = attr.videoLink
+                  parallaxVideoEl.href = normalizeYouTubeLink(attr.videoLink)
                 }
               }
             }
@@ -1836,8 +1862,8 @@ async function fetchData() {
             "slider_img",
             "blog_latest",
             "about",
-            "parallax-video"
-            // "contact"
+            "parallax-video",
+            "contact"
           ].includes(sectionTypeName) &&
           (!currentItem?.data || currentItem?.fieldLabel === "")
         ) {
@@ -2958,6 +2984,39 @@ const renderHtml_banner = (theme, data, attr) => {
       }
 
       if (index === 0) {
+        if (item?.background_video || bannerDataDefault.background_video) {
+          let videoBannerEl = document.querySelector(
+            ".saba_banner_video_background_iframe"
+          )
+          // console.log(videoBannerEl)
+
+          if (videoBannerEl) {
+            // videoBannerEl.forEach((element) => {
+            videoBannerEl.src = setBackgroundVideo(
+              item?.background_video ?? bannerDataDefault.background_video,
+              activeThemeFolder
+            )
+            videoBannerEl.style.display = "initial"
+
+            document.querySelector(
+              ".saba_banner_video_background"
+            ).style.display = "initial"
+            // })
+
+            let videoAnimEl = document.querySelector(
+              ".saba_banner_animation_background"
+            )
+            videoAnimEl.style.display = "none"
+
+            const homeEl = document.getElementById("home")
+            homeEl.classList.remove("gradiant-background")
+            // let videoGradientEl = document.querySelector(
+            //   ".saba_banner_gradient_background"
+            // )
+            // videoGradientEl.style.display = "none"
+          }
+        }
+
         if (theme === "appsland_gradient") {
           result += `
           <div class="row text-center">
@@ -3447,7 +3506,7 @@ const renderHtml_faq = (theme, data) => {
 }
 
 ///// HELPERS
-const setBackgroundVideo = (url) => {
+const setBackgroundVideo = (url, themes) => {
   let result = url
   if (url.indexOf("/embed/") === -1) {
     const videoId = getVideoIdFromUrl(url)

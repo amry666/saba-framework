@@ -224,3 +224,14 @@
     top: 0px;
   }
 }
+
+.saba_video_background {
+  filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, filter 0.8s ease-in-out;
+}
+
+.saba_video_background.visible {
+  filter: blur(0);
+  opacity: 1;
+}
