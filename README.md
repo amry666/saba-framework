@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250903-1047 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250908-1540 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,8 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-09-08 15:40:16 | popover on summary card widget, after post/put/delete refresh cache (include widget cache), rquiredIf fixed bugs, etc.
+- 2025-09-03 13:04:28 | convert to Int if level is string, hide language dropdown text
 - 2025-09-03 10:47:19 | support dynamicCard in pageType crud, add elementsOrder both dynamicCard-dynamicColumnsFilter-SummaryCard-, fix table pagination info, edit & delete button text, add new widget action_buttons with dynamicForm, html on input pageDesc, rquiredIf on form, tree-table level increment, footerInfo in form, detail page Subtitle with html, etc.
 - 2025-07-30 10:05:11 | set selection data on custom action button click, maxFileSize rules,
 - 2025-07-25 11:15:14 | landing page crud always get data
@@ -30,8 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-07-13 12:41:06 | landing page : support sub menu, new section type "blog_latest" & "contact", contact support email notification
 - 2025-07-10 16:53:25 | fixed landing page style
 - 2025-07-10 14:03:22 | fixed landing page style
-- 2025-07-09 16:15:08 | fixed some styles
-- 2025-06-30 15:52:06 | navbarColor selector
 
 =====================================
 
