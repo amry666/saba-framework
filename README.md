@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250908-1540 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250915-0124 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,14 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-09-15 01:24:15 | bottomNavMobile, timelineFixedHeader mobile disabled, direct print to html response, safeUrl on report print
+- 2025-09-13 13:29:39 | new widget "slider_html", badge column optimization, fixed initial value on dynamicForm, fixed init widget type html,
+- 2025-09-09 18:58:19 | fix dynamic card type html load
+- 2025-09-09 15:36:02 | fix dynamic card type html load
+- 2025-09-09 15:00:09 | fix dynamic card type html load
+- 2025-09-09 14:48:48 | fix dynamic card type html load
+- 2025-09-09 11:14:41 | value fixed for dropdown dataFrom value
+- 2025-09-09 10:45:14 | input dropdown add new prop loadOnfocus (default true), fix reInitBootstrap element on dynamicCards
 - 2025-09-08 15:40:16 | popover on summary card widget, after post/put/delete refresh cache (include widget cache), rquiredIf fixed bugs, etc.
 - 2025-09-03 13:04:28 | convert to Int if level is string, hide language dropdown text
 - 2025-09-03 10:47:19 | support dynamicCard in pageType crud, add elementsOrder both dynamicCard-dynamicColumnsFilter-SummaryCard-, fix table pagination info, edit & delete button text, add new widget action_buttons with dynamicForm, html on input pageDesc, rquiredIf on form, tree-table level increment, footerInfo in form, detail page Subtitle with html, etc.
@@ -24,14 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-07-21 14:36:44 | table_tree hide expand button on last level, debounceTime in form filterMode, domainClaim alwas get on public page, landing page fixed some issue
 - 2025-07-18 11:41:33 | test default route to public or login. add sub menu on appsland theme. add meta on html public.
 - 2025-07-17 15:26:22 | fixed bugs in landing page
-- 2025-07-17 14:24:47 | landing page update & new themes
-- 2025-07-16 10:56:08 | fixed widget does not appear on second load on dashboard
-- 2025-07-16 10:16:41 | show clickActionUrl button on my notification page
-- 2025-07-14 00:30:40 | all about fixed landing page : load attribute on router, hide floating whatsapp default, fixed re-init all plugins on naxos theme, fixed some style & load
-- 2025-07-13 14:41:11 | landing page send contact message fixed
-- 2025-07-13 12:41:06 | landing page : support sub menu, new section type "blog_latest" & "contact", contact support email notification
-- 2025-07-10 16:53:25 | fixed landing page style
-- 2025-07-10 14:03:22 | fixed landing page style
 
 =====================================
 
