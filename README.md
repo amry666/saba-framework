@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250915-0124 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20250915-1205 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-09-15 12:05:58 | fixed html type on dynamicCard
 - 2025-09-15 01:24:15 | bottomNavMobile, timelineFixedHeader mobile disabled, direct print to html response, safeUrl on report print
 - 2025-09-13 13:29:39 | new widget "slider_html", badge column optimization, fixed initial value on dynamicForm, fixed init widget type html,
 - 2025-09-09 18:58:19 | fix dynamic card type html load
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-07-21 15:15:55 | map polyline render on form
 - 2025-07-21 14:36:44 | table_tree hide expand button on last level, debounceTime in form filterMode, domainClaim alwas get on public page, landing page fixed some issue
 - 2025-07-18 11:41:33 | test default route to public or login. add sub menu on appsland theme. add meta on html public.
-- 2025-07-17 15:26:22 | fixed bugs in landing page
 
 =====================================
 
