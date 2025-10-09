@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20250930-1307 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20251009-1440 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-10-09 14:40:08 | fixed some style, fixed editable input bugs, announcements widget bugs, defaultDate with calculate day, etc
 - 2025-09-30 13:07:42 | showIf on form-repeater
 - 2025-09-26 22:31:23 | sliderHideOverlayFade true or false in card_slider, footer_html  on summaryCard, etc
 - 2025-09-22 23:56:51 | fixed some bugs
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-09-09 10:45:14 | input dropdown add new prop loadOnfocus (default true), fix reInitBootstrap element on dynamicCards
 - 2025-09-08 15:40:16 | popover on summary card widget, after post/put/delete refresh cache (include widget cache), rquiredIf fixed bugs, etc.
 - 2025-09-03 13:04:28 | convert to Int if level is string, hide language dropdown text
-- 2025-09-03 10:47:19 | support dynamicCard in pageType crud, add elementsOrder both dynamicCard-dynamicColumnsFilter-SummaryCard-, fix table pagination info, edit & delete button text, add new widget action_buttons with dynamicForm, html on input pageDesc, rquiredIf on form, tree-table level increment, footerInfo in form, detail page Subtitle with html, etc.
 
 =====================================
 
