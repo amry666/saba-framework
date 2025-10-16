@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20251009-1440 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20251016-1348 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,13 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-10-16 13:48:29 | afterChange event on input type "button", custom quotes fixed some bugs, navigation on JSON editor dev enchacement,
+- 2025-10-15 15:45:54 | JSON dev button dev on detail, JSON dev code highlight and navigation, add custom_quotes feature (place custom_quotes.json in public folder), IconPicker With FontAwesome & lordicon, input type "icon"
+- 2025-10-14 15:22:56 | defaultValue on input type "number" & add auto payload from initialFilterCondition
+- 2025-10-14 12:48:12 | fixed includeOnPayload on form-repeater
+- 2025-10-14 11:27:10 | fixed includeOnPayload on form-repeater, fixed detailPageFieldTitle
+- 2025-10-13 13:26:28 | badge column fixed, initialValueAdd from currentExpandedData fixed
+- 2025-10-13 12:20:05 | fixed some bugs and style
 - 2025-10-09 14:40:08 | fixed some style, fixed editable input bugs, announcements widget bugs, defaultDate with calculate day, etc
 - 2025-09-30 13:07:42 | showIf on form-repeater
 - 2025-09-26 22:31:23 | sliderHideOverlayFade true or false in card_slider, footer_html  on summaryCard, etc
@@ -25,13 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-09-15 01:24:15 | bottomNavMobile, timelineFixedHeader mobile disabled, direct print to html response, safeUrl on report print
 - 2025-09-13 13:29:39 | new widget "slider_html", badge column optimization, fixed initial value on dynamicForm, fixed init widget type html,
 - 2025-09-09 18:58:19 | fix dynamic card type html load
-- 2025-09-09 15:36:02 | fix dynamic card type html load
-- 2025-09-09 15:00:09 | fix dynamic card type html load
-- 2025-09-09 14:48:48 | fix dynamic card type html load
-- 2025-09-09 11:14:41 | value fixed for dropdown dataFrom value
-- 2025-09-09 10:45:14 | input dropdown add new prop loadOnfocus (default true), fix reInitBootstrap element on dynamicCards
-- 2025-09-08 15:40:16 | popover on summary card widget, after post/put/delete refresh cache (include widget cache), rquiredIf fixed bugs, etc.
-- 2025-09-03 13:04:28 | convert to Int if level is string, hide language dropdown text
 
 =====================================
 
