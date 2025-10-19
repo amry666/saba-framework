@@ -2,9 +2,9 @@
 
 # <p align="center">Welcome to Saba Framework!</p>
 
-<p align="center"><img src="https://res.cloudinary.com/insaba/image/upload/v1700625287/saba_framework/logo_saba_framework_gqw72y.png" alt="Saba Framework Logo" width="300"></p>
+<p align="center"><img src="https://saba-framework.gitbook.io/saba-framework-documentation/~gitbook/image?url=https%3A%2F%2F4009479446-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FELbr94H26l2v1l9CCypT%252Fuploads%252FfeGdZl626yj52PfFm27A%252FSF_logo_FE.png%3Falt%3Dmedia%26token%3D712fe116-60e6-4e91-b947-bd41f83d6dfa&width=768&dpr=4&quality=100&sign=3bf87596&sv=2" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20251016-1348 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20251019-2303 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,10 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2025-10-19 23:03:30 | expandableRowsExpandedFirst, dynamicCard dev navigation, fixed some style
+- 2025-10-19 00:49:48 | fixed main dashboard widgets first loading issue, resetAllData with summaryCard, add customLoading (place "custom_loading.lottie" in public folder)
+- 2025-10-18 11:04:12 | add code snippets rule
+- 2025-10-17 10:24:01 | code snippets in dev mode editor still on progress
 - 2025-10-16 13:48:29 | afterChange event on input type "button", custom quotes fixed some bugs, navigation on JSON editor dev enchacement,
 - 2025-10-15 15:45:54 | JSON dev button dev on detail, JSON dev code highlight and navigation, add custom_quotes feature (place custom_quotes.json in public folder), IconPicker With FontAwesome & lordicon, input type "icon"
 - 2025-10-14 15:22:56 | defaultValue on input type "number" & add auto payload from initialFilterCondition
@@ -28,10 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-09-17 13:25:50 | pageType "iframe" with dynamicColumnsFilter
 - 2025-09-16 23:37:23 | new pageType = "iframe"
 - 2025-09-16 15:47:18 | loader while Iframe load, etc
-- 2025-09-15 12:05:58 | fixed html type on dynamicCard
-- 2025-09-15 01:24:15 | bottomNavMobile, timelineFixedHeader mobile disabled, direct print to html response, safeUrl on report print
-- 2025-09-13 13:29:39 | new widget "slider_html", badge column optimization, fixed initial value on dynamicForm, fixed init widget type html,
-- 2025-09-09 18:58:19 | fix dynamic card type html load
 
 =====================================
 
