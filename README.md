@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://saba-framework.gitbook.io/saba-framework-documentation/~gitbook/image?url=https%3A%2F%2F4009479446-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FELbr94H26l2v1l9CCypT%252Fuploads%252FfeGdZl626yj52PfFm27A%252FSF_logo_FE.png%3Falt%3Dmedia%26token%3D712fe116-60e6-4e91-b947-bd41f83d6dfa&width=768&dpr=4&quality=100&sign=3bf87596&sv=2" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20251019-2303 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20260223-1247 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,13 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2026-02-23 12:47:39 | Iframe page with auto query string iframe=1&theme, iframe page get resize message from child, iframe page fix some bug, fix navigate on detail page, add and fixed some style,  add new options : tableHeaderTitleExpandable , tableHeaderTitleStyle, change tooltip to baloon.css in some table elements, avatar group fix tooltip issue, statisticCard support title html string, detect class .react-route in anchor for redirect route, fixed avatar img and color on dropdown input, add dataFrom stroe from dropdown input, drodpdown input support html label, fixed input datetime, add afterAddReloadParent on expandables, fixed default initial add form value on expandableRows, etc...
+- 2026-01-09 19:57:08 | fix multipleselect dropdown, iframe with jwt query, etc
+- 2025-11-12 14:32:43 | placeholder dataFrom api input type "text-static"
+- 2025-11-07 14:57:45 | fixed editable input value to sessionStorage on expandable -> expandable -> group_by
+- 2025-11-07 13:13:31 | fixed page type tabs, fixed save button editable input on expandable -> expandable -> group_by
+- 2025-10-22 13:14:11 | daysToMoment in input, add some dev code snippets, menu feature sixed some layout issue, fix duplicat widget in main dashboard, delete dev snippet rules.
+- 2025-10-20 11:08:46 | fixed main dashboard widgets first loading issue, fix initialFilters from query string, dateRange input initialValue fixed, etc
 - 2025-10-19 23:03:30 | expandableRowsExpandedFirst, dynamicCard dev navigation, fixed some style
 - 2025-10-19 00:49:48 | fixed main dashboard widgets first loading issue, resetAllData with summaryCard, add customLoading (place "custom_loading.lottie" in public folder)
 - 2025-10-18 11:04:12 | add code snippets rule
@@ -25,13 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-10-13 12:20:05 | fixed some bugs and style
 - 2025-10-09 14:40:08 | fixed some style, fixed editable input bugs, announcements widget bugs, defaultDate with calculate day, etc
 - 2025-09-30 13:07:42 | showIf on form-repeater
-- 2025-09-26 22:31:23 | sliderHideOverlayFade true or false in card_slider, footer_html  on summaryCard, etc
-- 2025-09-22 23:56:51 | fixed some bugs
-- 2025-09-22 13:56:33 | fixed some bugs.
-- 2025-09-18 23:29:04 | fix showIf condition on Columns, timeline disabled fixed scroll height on mobile, fixed landing page crud effect infinity loops,
-- 2025-09-17 13:25:50 | pageType "iframe" with dynamicColumnsFilter
-- 2025-09-16 23:37:23 | new pageType = "iframe"
-- 2025-09-16 15:47:18 | loader while Iframe load, etc
 
 =====================================
 

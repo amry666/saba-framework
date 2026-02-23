@@ -1270,5 +1270,6 @@
   "Nov": "Nov",
   "Dec": "Des",
   "Get input filling suggestions from Ai": "Dapatkan saran pengisian input dari AI",
-  "Each time you modify a cell value, the data is automatically updated and sent to the server instantly.": "Setiap kali Anda mengubah nilai pada sel, data akan otomatis diperbarui dan dikirim ke server secara langsung."
+  "Each time you modify a cell value, the data is automatically updated and sent to the server instantly.": "Setiap kali Anda mengubah nilai pada sel, data akan otomatis diperbarui dan dikirim ke server secara langsung.",
+  "No input changes detected, so no data was saved.": "Belum ada perubahan pada input, jadi tidak ada data yang disimpan."
 }
