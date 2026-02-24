@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://saba-framework.gitbook.io/saba-framework-documentation/~gitbook/image?url=https%3A%2F%2F4009479446-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FELbr94H26l2v1l9CCypT%252Fuploads%252FfeGdZl626yj52PfFm27A%252FSF_logo_FE.png%3Falt%3Dmedia%26token%3D712fe116-60e6-4e91-b947-bd41f83d6dfa&width=768&dpr=4&quality=100&sign=3bf87596&sv=2" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20260224-0115 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20260224-2303 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2026-02-24 23:03:37 | fixed reloadParent condition if data grid is filtered. hideBreadcrumb, pageTitleClassName, pageTitleStyle
 - 2026-02-24 01:15:33 | fixed on dynamicFilter if dynamicColumnsFilterToCurrentData false and hasFilterToCurrentData on each input
 - 2026-02-23 12:47:39 | Iframe page with auto query string iframe=1&theme, iframe page get resize message from child, iframe page fix some bug, fix navigate on detail page, add and fixed some style,  add new options : tableHeaderTitleExpandable , tableHeaderTitleStyle, change tooltip to baloon.css in some table elements, avatar group fix tooltip issue, statisticCard support title html string, detect class .react-route in anchor for redirect route, fixed avatar img and color on dropdown input, add dataFrom stroe from dropdown input, drodpdown input support html label, fixed input datetime, add afterAddReloadParent on expandables, fixed default initial add form value on expandableRows, etc...
 - 2026-01-09 19:57:08 | fix multipleselect dropdown, iframe with jwt query, etc
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-10-14 11:27:10 | fixed includeOnPayload on form-repeater, fixed detailPageFieldTitle
 - 2025-10-13 13:26:28 | badge column fixed, initialValueAdd from currentExpandedData fixed
 - 2025-10-13 12:20:05 | fixed some bugs and style
-- 2025-10-09 14:40:08 | fixed some style, fixed editable input bugs, announcements widget bugs, defaultDate with calculate day, etc
 
 =====================================
 
