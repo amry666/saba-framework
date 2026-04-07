@@ -4,7 +4,7 @@
 
 <p align="center"><img src="https://saba-framework.gitbook.io/saba-framework-documentation/~gitbook/image?url=https%3A%2F%2F4009479446-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FELbr94H26l2v1l9CCypT%252Fuploads%252FfeGdZl626yj52PfFm27A%252FSF_logo_FE.png%3Falt%3Dmedia%26token%3D712fe116-60e6-4e91-b947-bd41f83d6dfa&width=768&dpr=4&quality=100&sign=3bf87596&sv=2" alt="Saba Framework Logo" width="300"></p>
 
-## <p align="center">Version : </p><p align="center"><~ 20260302-1316 ~></p>
+## <p align="center">Version : </p><p align="center"><~ 20260407-0904 ~></p>
 
 This Repository is **Saba Framework React Js Version (Compiled)**. Helping frontend developers to make UI easier and faster. This framework/CMS is very flexible, can be customized and can create various types of CRUD pages such as tables, grids, serverside processes, map markers / polygons, org-charts, gantt charts, expandable tables, relations crud & forms, and many more. Frontend developers don't have to linger too much with writing code to create fields & forms. More details can be read in the online documentation.
 
@@ -12,6 +12,7 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 
 ============ Recent Changes =============
 
+- 2026-04-07 09:04:20 | custom quotes with dynamic image, custom greeting card images, canceling duplicate http request interceptor, countTextColor stat widget,  style for custom greeting, fixed style on mobile,  gridCard peformance with lazy load on scroll,  afterDeleteReloadOtherCacheLogInfo, fixed getApiAfterPut to resetData,  fixed disableBtnAddFromParent on expandable, disableIf to __userData.member_of__, input image & youtube fix some bugs & style,  fix some tooltip on table cell,  fixed input datetime minTime, fixed widget iframe style & bugs, change leaderboard src img, etc...
 - 2026-03-02 13:16:03 | Update filtered data if there is an active filter in the table, fix error messages from the backend and add alert type messages, fix several styles, etc.
 - 2026-02-24 23:03:37 | fixed reloadParent condition if data grid is filtered. hideBreadcrumb, pageTitleClassName, pageTitleStyle
 - 2026-02-24 01:15:33 | fixed on dynamicFilter if dynamicColumnsFilterToCurrentData false and hasFilterToCurrentData on each input
@@ -31,7 +32,6 @@ This Repository is **Saba Framework React Js Version (Compiled)**. Helping front
 - 2025-10-14 15:22:56 | defaultValue on input type "number" & add auto payload from initialFilterCondition
 - 2025-10-14 12:48:12 | fixed includeOnPayload on form-repeater
 - 2025-10-14 11:27:10 | fixed includeOnPayload on form-repeater, fixed detailPageFieldTitle
-- 2025-10-13 13:26:28 | badge column fixed, initialValueAdd from currentExpandedData fixed
 
 =====================================
 
